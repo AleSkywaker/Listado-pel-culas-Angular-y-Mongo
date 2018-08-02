@@ -2,15 +2,6 @@
 
 const User = require('../models/user');
 
-function home(req, res) {
-    res.status(200).send({ message: "Pruebas en servidor NodeJs" })
-}
-
-function pruebas(req, res) {
-    console.log(req.body);
-    res.status(200).send({ message: "Pruebas en servidor NodeJs" })
-}
-
 function saveUser(req, res) {
     let params = req.body;
     // let user = new User();
@@ -24,7 +15,5 @@ function saveUser(req, res) {
 }
 
 module.exports = {
-    home,
-    pruebas,
     saveUser
 }
