@@ -17,6 +17,11 @@ function saveUser(req, res) {
         user.email = params.email;
         user.role = 'ROLE_USER';
         user.image = null;
+        user.find({
+            $or: [{ email: user.email.toLowercase() },
+                { nick: user.nick.toLowercae() }
+            ]
+        })
 
         bcrypt.hash(params.password, null, null, (err, hash) => {
             user.password = hash;
