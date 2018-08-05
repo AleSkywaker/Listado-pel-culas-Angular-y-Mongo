@@ -24,21 +24,24 @@ function saveUser(req, res) {
             ]
         }).exec((err, users) => {
             if (err) { return res.status(500).send({ message: "Error al guardar el usuario" }) }
-            if (users && users.length >= 1) { return res.status(200).send({ message: "El email o nick ya existe en la base de datos" }) }
+            if (users && users.length >= 1) { return res.status(200).send({ message: "El email o nick ya existe en la base de datos" }) } else {
+
+                bcrypt.hash(params.password, null, null, (err, hash) => {
+                    user.password = hash;
+
+                    user.save((errr, userStored) => {
+                        if (err) return res.status(500).send({ message: "Error al guardar el usuario" })
+                        if (userStored) {
+                            res.status(200).send({ send: userStored });
+                        } else {
+                            res.status(404).send({ message: "No se ha registrado el usuario" });
+                        }
+                    })
+                })
+
+            }
         })
 
-        bcrypt.hash(params.password, null, null, (err, hash) => {
-            user.password = hash;
-
-            user.save((errr, userStored) => {
-                if (err) return res.status(500).send({ message: "Error al guardar el usuario" })
-                if (userStored) {
-                    res.status(200).send({ send: userStored });
-                } else {
-                    res.status(404).send({ message: "No se ha registrado el usuario" });
-                }
-            })
-        })
 
     } else {
         res.status(200).send({ message: "Debes rellenar todos los campos" })
