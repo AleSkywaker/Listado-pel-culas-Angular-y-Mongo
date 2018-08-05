@@ -21,6 +21,8 @@ function saveUser(req, res) {
             $or: [{ email: user.email.toLowercase() },
                 { nick: user.nick.toLowercae() }
             ]
+        }).exec((err, user) => {
+            if (err) { return res.status(500).send({ message: "Error al guardar el usuario" }) }
         })
 
         bcrypt.hash(params.password, null, null, (err, hash) => {
