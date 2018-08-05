@@ -18,11 +18,12 @@ function saveUser(req, res) {
         user.role = 'ROLE_USER';
         user.image = null;
         user.find({
-            $or: [{ email: user.email.toLowercase() },
-                { nick: user.nick.toLowercae() }
+            $or: [{ email: user.email.toLowerCase() },
+                { nick: user.nick.toLowerCase() }
             ]
         }).exec((err, user) => {
             if (err) { return res.status(500).send({ message: "Error al guardar el usuario" }) }
+            if (user) { return res.status(200).send({ message: "El email o nick ya existe en labase de datos" }) }
         })
 
         bcrypt.hash(params.password, null, null, (err, hash) => {
