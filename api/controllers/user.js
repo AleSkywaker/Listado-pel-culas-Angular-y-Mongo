@@ -28,7 +28,6 @@ function saveUser(req, res) {
 
                 bcrypt.hash(params.password, null, null, (err, hash) => {
                     user.password = hash;
-
                     user.save((errr, userStored) => {
                         if (err) return res.status(500).send({ message: "Error al guardar el usuario" })
                         if (userStored) {
@@ -38,17 +37,35 @@ function saveUser(req, res) {
                         }
                     })
                 })
-
             }
         })
-
-
     } else {
         res.status(200).send({ message: "Debes rellenar todos los campos" })
     }
-
 }
 
+function loginUser(req, res) {
+    let params = req.body;
+    let email = params.email;
+    let password = params.password;
+    User.findOne({ email: email }, (err, user) => {
+        if (err) return res.status(500).send({ message: 'Error en la peticion' })
+        if (user) {
+            bcrypt.compare(password, user.password, (err, check) => {
+                if (check) {
+                    //devolver datos usuario
+                    user.password = undefined;
+                    return res.status(200).send({ user })
+                } else {
+                    return res.status(500).send({ message: 'El usuario no se ha podido logear' })
+                }
+            })
+        } else {
+            return res.status(500).send({ message: 'El usuario no se ha podido logear!!!' })
+        }
+    })
+}
 module.exports = {
-    saveUser
+    saveUser,
+    loginUser
 }
