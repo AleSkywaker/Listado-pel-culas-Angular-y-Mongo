@@ -2,7 +2,9 @@
 
 var jwt = require('jwt-simple');
 var moment = require('moment');
-var secret = CLAVE_SECRETA
+require('dotenv').config();
+
+var secret = process.env.CLAVE_SECRETA
 
 exports.createToken = function(user) {
     var payload = {
