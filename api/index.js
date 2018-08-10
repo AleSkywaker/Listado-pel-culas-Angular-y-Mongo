@@ -1,7 +1,8 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var app = require('./app')
+var app = require('./app');
+require('dotenv').config();
 var port = 3600;
 
 //Conexion base de datos
