@@ -1,5 +1,6 @@
 */node_modules
 */.env
-*/client/src/environments/**
-*/environments/environment.ts
-*/environments/environment.prod.ts
+**/client/src/environmentts/**
+**/environments/environmentt.ts
+**/environments/environmentt.prod.ts
+**/app/environments/environmentt.ts
