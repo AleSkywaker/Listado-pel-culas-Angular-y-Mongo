@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="mt-4">Buscador de peliculas</h1>
+    <form class="mt-4" #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buscar peliculas" ngModel name="pelis">
+        </div>
+        <button type=" submit " class="btn btn-primary ">Buscar</button>
+    </form>
+</div>
