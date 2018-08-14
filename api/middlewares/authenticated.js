@@ -10,4 +10,6 @@ exports.ensureAuth = function(req, res, next) {
         res.status(403).send({ message: "La cabecera no tiene authorazación" })
     }
 
+    let token = req.headers.authorization.replace(/['"]/ + g, '')
+
 }
