@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
 const jwtService = require('../services/jwt');
 
+function pruebas(req, res) {
+    return res.status(200).send({ message: "Hola guapo", user: req.user })
+}
+
 
 function saveUser(req, res) {
     let params = req.body;
@@ -79,5 +83,6 @@ function loginUser(req, res) {
 }
 module.exports = {
     saveUser,
-    loginUser
+    loginUser,
+    pruebas
 }
