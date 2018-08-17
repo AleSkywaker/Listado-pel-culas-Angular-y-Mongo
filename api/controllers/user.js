@@ -3,6 +3,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
 const jwtService = require('../services/jwt');
+const mongoosePaginate = require('mongoose-pagination')
 
 function pruebas(req, res) {
     return res.status(200).send({ message: "Hola guapo", user: req.user })
@@ -81,8 +82,48 @@ function loginUser(req, res) {
         }
     })
 }
+
+//Conseguir datos de un usuario
+
+function getUser(req, res) {
+    console.log()
+    let userID = req.params.id;
+
+    User.findById(userID, (err, user) => {
+        if (err) return res.status(403).send({ message: "error al devolver usuario" })
+        if (!user) return res.status(404).send({ message: "El usuario no existe" })
+        user.password = ":)"
+        return res.status(200).send({
+            user
+        })
+    })
+}
+
+function getUsers(req, res) {
+    let userLogeado = req.user.sub;
+    let page = 1;
+
+    if (req.params.page) {
+        page = req.params.page;
+    }
+
+    let userPerPage = 5;
+
+    User.find().sort('_id').paginate(page, userPerPage, (err, users, total) => {
+        if (err) return res.status(403).send({ message: "error al devolver los usuarios" })
+        if (!users) return res.status(404).send({ message: "No existen usuarios" })
+
+        return res.status(200).send({
+            usuarios: users,
+            totalusuarios: total,
+            paginas: Math.ceil(total / userPerPage)
+        })
+    })
+}
 module.exports = {
     saveUser,
     loginUser,
-    pruebas
+    pruebas,
+    getUser,
+    getUsers
 }
