@@ -3,7 +3,19 @@
     <form class="mt-4" #f="ngForm" (ngSubmit)="onFormSubmit(f)">
         <div class="form-group">
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buscar peliculas" ngModel name="pelis">
+
         </div>
         <button type=" submit " class="btn btn-primary ">Buscar</button>
     </form>
+
+    <hr>
+    <div class="grid-container">
+        <div *ngFor="let pelis of peliculas" class="tar">
+            <img src="{{pelis.Poster}}">
+            <h5 class="card-title text-center pt-3">{{pelis.Title}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+
+
 </div>
