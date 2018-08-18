@@ -25,7 +25,8 @@ let PeliculasSchema = Schema({
     year: String,
     imdbID: String,
     imdbRating: String,
-    imdbVotes: String
+    imdbVotes: String,
+    points: String
 })
 
 module.exports = mongoose.model('Pelicula', PeliculasSchema);
