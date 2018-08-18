@@ -8,7 +8,7 @@ import { PeliculaService } from '../service/pelicula.service';
 })
 export class BuscadorComponent implements OnInit {
 
-  public peliculas = [];
+  private peliculas = [];
 
   constructor(private _peliService: PeliculaService) { }
 
