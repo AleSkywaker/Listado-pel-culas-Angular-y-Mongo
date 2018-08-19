@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculaService } from '../service/pelicula.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscador',
@@ -10,7 +11,8 @@ export class BuscadorComponent implements OnInit {
 
   private peliculas = [];
 
-  constructor(private _peliService: PeliculaService) { }
+  constructor(private _peliService: PeliculaService,
+    private _router: Router) { }
 
   ngOnInit() {
   }
@@ -22,5 +24,10 @@ export class BuscadorComponent implements OnInit {
       console.log("Peliculas", this.peliculas)
     })
 
+  }
+
+  detalles(id) {
+    this._router.navigate(['/pelicula', id])
+    console.log("hola", id);
   }
 }
