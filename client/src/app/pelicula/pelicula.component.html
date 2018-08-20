@@ -1,3 +1,37 @@
-<p>
-  pelicula works!
-</p>
+<div class="container mt-3 mb-5" *ngIf="pelicula">
+    <h3 class="text-center">Detalles {{pelicula.Type}}</h3>
+    <div class="row mt-5 ">
+        <div class="col-md-5 tar mb-5">
+            <div class="card">
+                <img class="card-img-top" [src]="pelicula.Poster" [alt]="pelicula.Title">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card sombreado">
+                <div class="card-header">
+                    <h4 class="text-center">{{pelicula.Title}}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{pelicula.Plot}}</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>  Director : </strong>{{pelicula.Director}}</li>
+                        <li class="list-group-item"><strong>  Estreno : </strong>{{pelicula.Released}}</li>
+                        <li class="list-group-item"><strong>  Duración : </strong>{{pelicula.Runtime}}</li>
+                        <li class="list-group-item"><strong>  Actores : </strong>{{pelicula.Actors}}</li>
+                        <li class="list-group-item"><strong>  Genero : </strong>{{pelicula.Genre}}</li>
+                        <li class="list-group-item"><strong>  Nota IMDB: </strong>{{pelicula.imdbRating}}</li>
+                        <li class="list-group-item"><strong>  Total votos: </strong>{{pelicula.imdbVotes}}</li>
+                        <li class="list-group-item"><strong>  Productora: </strong>{{pelicula.Production}}</li>
+                        <li class="list-group-item"><strong>  Permitida: </strong>{{pelicula.Rated}}</li>
+                        <li class="list-group-item"><strong>  Pais: </strong>{{pelicula.Country}}</li>
+                        <li class="list-group-item"><strong>  Premios: </strong>{{pelicula.Awards}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="grabarPeli(pelicula.imdbID)" class="btn btn-outline-danger">Guardar</button>
+    <button class="btn btn-outline-dark">ver en IMDB</button>
+    <button [routerLink]="['/peliculas']" class="btn btn-outline-success">Volver</button>
+
+</div>
