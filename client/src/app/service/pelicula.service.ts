@@ -10,6 +10,7 @@ export class PeliculaService implements OnInit {
 
   public apikey = environment.apikey;
   public url = 'http://www.omdbapi.com/?s=';
+  public urlDetail = 'http://www.omdbapi.com/?i=';
   constructor(private _http: HttpClient) { }
 
   ngOnInit() {
@@ -17,9 +18,19 @@ export class PeliculaService implements OnInit {
   }
 
   getPeliculas(pelis): Observable<any> {
-
     return this._http.get(this.url + pelis + '&apikey=' + this.apikey);
+  }
 
+  getDetallePelicula(id) {
+    return this._http.get(this.urlDetail + id + '&apikey=' + this.apikey);
+  }
+
+  guardarPelicula(pelicula): Observable<any> {
+
+    let params = JSON.stringify(pelicula);
+    let headers = new HttpHeaders().set("Content-type", "application/json");
+
+    return this._http.post('http://localhost:3600/api/grabarpeli', params, { headers: headers });
   }
 
 }
