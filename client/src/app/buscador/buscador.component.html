@@ -3,7 +3,6 @@
     <form class="mt-4" #f="ngForm" (ngSubmit)="onFormSubmit(f)">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Buscar peliculas" ngModel name="pelis">
-
         </div>
         <button type=" submit " class="btn btn-primary ">Buscar</button>
     </form>
@@ -33,8 +32,12 @@
 
     <div class="card-deck grid-container">
         <div class="card col-md-2" *ngFor="let pelis of peliculas" class="tar">
-            <img *ngIf="pelis.Poster == 'N/A'" class="card-img-top" src="../../assets/noposter.png">
-            <img *ngIf="pelis.Poster != 'N/A'" class="card-img-top" src="{{pelis.Poster}}" alt="Card image cap">
+            <div class="padlef">
+
+                <img *ngIf="pelis.Poster == 'N/A'" class="card-img-top" src="../../assets/noposter.png">
+                <img *ngIf="pelis.Poster != 'N/A'" class="card-img-top" src="{{pelis.Poster}}" alt="Card image cap">
+            </div>
+
             <div class="card-body">
                 <h5 class="card-title">{{pelis.Title}}</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
