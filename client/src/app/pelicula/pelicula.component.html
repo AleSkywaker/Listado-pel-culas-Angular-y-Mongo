@@ -5,6 +5,13 @@
             <div class="card">
                 <img class="card-img-top" [src]="pelicula.Poster" [alt]="pelicula.Title">
             </div>
+            <div class="alert alert-success mt-5 sombreado" *ngIf="status == 'success'">
+                {{message}}
+                <!-- <a [routerLink]="['/login']">Identificate aqui</a> -->
+            </div>
+            <div class="alert alert-danger mt-5 sombreado" *ngIf="status == 'error'">
+                {{message}}
+            </div>
         </div>
         <div class="col-md-7">
             <div class="card sombreado">
@@ -25,13 +32,14 @@
                         <li class="list-group-item"><strong>  Permitida: </strong>{{pelicula.Rated}}</li>
                         <li class="list-group-item"><strong>  Pais: </strong>{{pelicula.Country}}</li>
                         <li class="list-group-item"><strong>  Premios: </strong>{{pelicula.Awards}}</li>
+                        <li class="list-group-item"><strong>  Mis puntos: </strong>
+                            <input type="number" class="inp" name="puntos" #puntos="ngModel" [(ngModel)]="pelicula.puntos" min=0 max=10></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <button (click)="grabarPeli(pelicula.imdbID)" class="btn btn-outline-danger">Guardar</button>
+    <button (click)="grabarPeli(pelicula.imdbID,pelicula.puntos )" class="btn btn-outline-danger">Guardar</button>
     <button class="btn btn-outline-dark">ver en IMDB</button>
     <button [routerLink]="['/peliculas']" class="btn btn-outline-success">Volver</button>
-
 </div>
