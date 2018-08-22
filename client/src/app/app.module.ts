@@ -12,13 +12,15 @@ import { AppComponent } from './app.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { PeliculaService } from './service/pelicula.service';
 import { PeliculaComponent } from './pelicula/pelicula.component';
+import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BuscadorComponent,
-    PeliculaComponent
+    PeliculaComponent,
+    MispeliculasComponent
   ],
   imports: [
     BrowserModule,
