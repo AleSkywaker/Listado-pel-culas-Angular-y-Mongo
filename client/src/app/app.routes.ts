@@ -4,12 +4,13 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { BuscadorComponent } from '../app/buscador/buscador.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
-
+import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 
 
 const routes: Routes = [
   { path: 'buscador', component: BuscadorComponent },
   { path: 'pelicula/:id', component: PeliculaComponent },
+  { path: 'mispeliculas', component: MispeliculasComponent },
   { path: "**", component: BuscadorComponent }
 
   // { path: '**', component: PageNotFoundComponent },
