@@ -33,4 +33,8 @@ export class PeliculaService implements OnInit {
     return this._http.post('http://localhost:3600/api/grabarpeli', params, { headers: headers });
   }
 
+  getMisPeliculas(): Observable<any> {
+    return this._http.get('http://localhost:3600/api/pelis')
+  }
+
 }
