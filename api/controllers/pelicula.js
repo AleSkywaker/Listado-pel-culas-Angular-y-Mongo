@@ -42,6 +42,18 @@ function grabarPeli(req, res) {
     })
 }
 
+function getMovies(req, res) {
+    Pelicula.find().sort('points').exec(
+        (err, movies) => {
+            if (err) {
+                res.status(400).send({ message: "Error en la peticion" })
+            } else {
+                res.status(200).send({ pelisbuenas: movies })
+            }
+        })
+}
+
 module.exports = {
-    grabarPeli
+    grabarPeli,
+    getMovies
 }
