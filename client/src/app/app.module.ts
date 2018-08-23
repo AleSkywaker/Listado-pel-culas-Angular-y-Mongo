@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule, MatSortModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 //Rutas
 import { APP_ROUITNG } from './app.routes'
@@ -14,7 +16,6 @@ import { PeliculaService } from './service/pelicula.service';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,10 @@ import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
     BrowserModule,
     HttpClientModule, // cargamos el módulo en el array de imports
     FormsModule,
-    APP_ROUITNG
+    APP_ROUITNG,
+    MatTableModule,
+    MatSortModule,
+    BrowserAnimationsModule
   ],
   providers: [PeliculaService],
   bootstrap: [AppComponent]
