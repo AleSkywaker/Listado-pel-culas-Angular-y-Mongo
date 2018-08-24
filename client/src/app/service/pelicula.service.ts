@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../../environments/environmentt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 
 
