@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule } from '@angular/material'
+import { MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 //Rutas
@@ -15,13 +15,15 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { PeliculaService } from './service/pelicula.service';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
+import { DataTableComponent } from './component/data-table/data-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BuscadorComponent,
     PeliculaComponent,
-    MispeliculasComponent
+    MispeliculasComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
     APP_ROUITNG,
     MatTableModule,
     MatSortModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [PeliculaService],
   bootstrap: [AppComponent]
