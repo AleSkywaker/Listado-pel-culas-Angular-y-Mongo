@@ -7,6 +7,7 @@ import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 
 
+
 const routes: Routes = [
   { path: 'buscador', component: BuscadorComponent },
   { path: 'pelicula/:id', component: PeliculaComponent },
