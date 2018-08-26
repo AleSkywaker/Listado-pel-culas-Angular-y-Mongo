@@ -8,6 +8,9 @@ import { APP_ROUITNG } from './app.routes'
 // Importar HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
 
+//DataTable
+import { DataTablesModule } from 'angular-datatables';
+
 import { AppComponent } from './app.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { PeliculaService } from './service/pelicula.service';
@@ -26,7 +29,8 @@ import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
     BrowserModule,
     HttpClientModule, // cargamos el módulo en el array de imports
     FormsModule,
-    APP_ROUITNG
+    APP_ROUITNG,
+    DataTablesModule
   ],
   providers: [PeliculaService],
   bootstrap: [AppComponent]
