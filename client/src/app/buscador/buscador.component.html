@@ -5,6 +5,7 @@
             <input type="text" class="form-control" placeholder="Buscar peliculas" ngModel name="pelis">
         </div>
         <button type=" submit " class="btn btn-primary ">Buscar</button>
+        <button [routerLink]="['/mispeliculas']" class="btn btn-outline-primary ml-3">Mis pelis</button>
     </form>
     <hr>
     <!-- <h3>Prueba buscador</h3>
@@ -50,6 +51,7 @@
                         Detalles
                  </button>
                 <a [routerLink]="['/pelicula', pelis.imdbID]" class="btn btn-outline-primary">ver mas....</a>
+
             </div>
 
         </div>
