@@ -1,36 +1,33 @@
 <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="tarje">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Pais</th>
+                    <th>Director</th>
+                    <th>Puntuación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let peli of mispelis" (click)="hazalgo(peli.imdbID)">
+                    <!-- <td><a href="https://www.imdb.com/title/{{peli.imdbID}}" target="_blank">{{ peli.title }}</a></td> -->
+                    <td>{{ peli.title }}</td>
+                    <td>{{ peli.country }}</td>
+                    <td>{{ peli.director }}</td>
+                    <td>{{ peli.points }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
     <button [routerLink]="['/peliculas']" class="btn btn-outline-success">Buscar mas</button>
-
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.director}} </mat-cell>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.runtime}} </mat-cell>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.country}} </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
 </div>
