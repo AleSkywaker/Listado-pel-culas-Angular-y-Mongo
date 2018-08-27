@@ -6,7 +6,10 @@ const moment = require('moment')
 function grabarPeli(req, res) {
     let params = req.body;
 
+    let aux = (params.puntos / 10) * 100;
+
     let pelicula = new Pelicula();
+    pelicula.porcentaje = (Math.round(aux / 10) * 10);
     pelicula.actors = params.Actors;
     pelicula.awards = params.Awards;
     pelicula.country = params.Country;
@@ -48,7 +51,9 @@ function getMovies(req, res) {
             if (err) {
                 res.status(400).send({ message: "Error en la peticion" })
             } else {
-                res.status(200).send({ pelisbuenas: movies })
+                res.status(200).send({
+                    pelisbuenas: movies
+                })
             }
         })
 }
