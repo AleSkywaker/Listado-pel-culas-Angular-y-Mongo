@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { DOCUMENT } from '@angular/common';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -16,6 +17,10 @@ import { DOCUMENT } from '@angular/common';
 export class MispeliculasComponent implements OnDestroy, OnInit {
   dtOptions: DataTables.Settings = {};
   mispelis;
+  starsTotal = 5;
+  points;
+  pelis;
+  starsPercetaje;
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
@@ -55,8 +60,18 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
 
   hazalgo(id) {
     // this.document.location.href = "https://www.imdb.com/title/" + id;
-
     this._router.navigate(['/pelicula', id])
-
   }
+  // getRatings() {
+  //   this._peliculaService.getMisPeliculas().subscribe(data => {
+  //     if (data) {
+  //       this.pelis = data.pelisbuenas;
+  //       this.pelis.map(d => {
+  //         this.points = d.points
+  //         console.log("inside loop", this.points);
+  //       })
+  //     }
+  //   });
+  // }
+
 }
