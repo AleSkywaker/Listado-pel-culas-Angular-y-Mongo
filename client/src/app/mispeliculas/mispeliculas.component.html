@@ -1,7 +1,5 @@
 <div class="container">
-    <br>
-    <br>
-    <br>
+    <h1 class="mt-4 text-center">Mi selección de peliculas</h1>
     <br>
     <div class="tarje">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -10,7 +8,8 @@
                     <th>Titulo</th>
                     <th>Pais</th>
                     <th>Director</th>
-                    <th>Puntuación</th>
+                    <th>Estrellas</th>
+                    <th>Puntos</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +18,12 @@
                     <td>{{ peli.title }}</td>
                     <td>{{ peli.country }}</td>
                     <td>{{ peli.director }}</td>
-                    <td>{{ peli.points }}</td>
+                    <td>
+                        <div class="stars-outer">
+                            <div [style.width.%]=peli.porcentaje class="stars-inner"></div>
+                        </div>
+                    </td>
+                    <td>{{peli.points}} </td>
                 </tr>
             </tbody>
         </table>
