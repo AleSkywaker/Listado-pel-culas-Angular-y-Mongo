@@ -5,6 +5,7 @@
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
             <thead>
                 <tr>
+                    <!-- <th>Poster</th> -->
                     <th>Titulo</th>
                     <th>Pais</th>
                     <th>Director</th>
@@ -15,6 +16,7 @@
             <tbody>
                 <tr *ngFor="let peli of mispelis" (click)="hazalgo(peli.imdbID)">
                     <!-- <td><a href="https://www.imdb.com/title/{{peli.imdbID}}" target="_blank">{{ peli.title }}</a></td> -->
+                    <!-- <td class="poster"><img src="{{ peli.poster }}" alt=""></td> -->
                     <td>{{ peli.title }}</td>
                     <td>{{ peli.country }}</td>
                     <td>{{ peli.director }}</td>
