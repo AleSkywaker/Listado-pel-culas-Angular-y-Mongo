@@ -9,7 +9,7 @@ function grabarPeli(req, res) {
     let aux = (params.puntos / 10) * 100;
 
     let pelicula = new Pelicula();
-    pelicula.porcentaje = (Math.round(aux / 10) * 10);
+    pelicula.porcentaje = (aux / 10) * 10;
     pelicula.actors = params.Actors;
     pelicula.awards = params.Awards;
     pelicula.country = params.Country;
