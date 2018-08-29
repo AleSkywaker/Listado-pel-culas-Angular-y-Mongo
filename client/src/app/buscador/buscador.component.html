@@ -4,10 +4,10 @@
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Buscar peliculas" ngModel name="pelis">
         </div>
-        <button type=" submit " class="btn btn-primary ">Buscar</button>
+        <button type=" submit " class="btn btn-primary " placement="top" ngbTooltip="Tooltip on top">Buscar</button>
         <button [routerLink]="['/mispeliculas']" class="btn btn-outline-primary ml-3">Mis pelis</button>
     </form>
-    <hr>
+
     <!-- <h3>Prueba buscador</h3>
     <div class='busca' tabindex='1'>
         <div class='search-busca' tabindex='1'>
@@ -18,7 +18,7 @@
         </div>
     </div> -->
 
-    <hr>
+
     <!-- <div class="grid-container">
         <div *ngFor="let pelis of peliculas" class="tar">
             <img src="{{pelis.Poster}}">
