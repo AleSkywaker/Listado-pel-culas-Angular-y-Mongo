@@ -11,11 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 //DataTable
 import { DataTablesModule } from 'angular-datatables';
 
+//Bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { PeliculaService } from './service/pelicula.service';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 
 @NgModule({
@@ -23,14 +27,16 @@ import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
     AppComponent,
     BuscadorComponent,
     PeliculaComponent,
-    MispeliculasComponent
+    MispeliculasComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule, // cargamos el módulo en el array de imports
     FormsModule,
     APP_ROUITNG,
-    DataTablesModule
+    DataTablesModule,
+    NgbModule
   ],
   providers: [PeliculaService],
   bootstrap: [AppComponent]
