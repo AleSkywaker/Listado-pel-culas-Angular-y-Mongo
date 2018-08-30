@@ -39,8 +39,7 @@
             </div>
         </div>
     </div>
-    <button (click)="grabarPeli(pelicula.imdbID,pelicula.puntos )" class="btn btn-outline-danger">Guardar</button>
-    <a href="https://www.imdb.com/title/{{pelicula.imdbID}}" target="_blank" class="btn btn-outline-dark">IMDB</a>
-    <button [routerLink]="['/peliculas']" class="btn btn-outline-success">Buscar mas</button>
-    <button [routerLink]="['/mispeliculas']" class="btn btn-outline-primary">Mis pelis</button>
+    <button (click)="grabarPeli(pelicula.imdbID,pelicula.puntos )" class="btn btn-outline-danger mr-2">Guardar en mi lista</button>
+    <a href="https://www.imdb.com/title/{{pelicula.imdbID}}" target="_blank" class="btn btn-outline-dark">Ver en IMDB</a>
+    <button [routerLink]="['/mispeliculas']" class="btn btn-outline-primary ml-2">ver mis pelis</button>
 </div>
