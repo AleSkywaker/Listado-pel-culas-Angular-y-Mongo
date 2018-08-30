@@ -15,20 +15,20 @@ import { DataTablesModule } from 'angular-datatables';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { BuscadorComponent } from './buscador/buscador.component';
 import { PeliculaService } from './service/pelicula.service';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { ListadoPelisComponent } from './listado-pelis/listado-pelis.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BuscadorComponent,
     PeliculaComponent,
     MispeliculasComponent,
-    InicioComponent
+    InicioComponent,
+    ListadoPelisComponent
   ],
   imports: [
     BrowserModule,
