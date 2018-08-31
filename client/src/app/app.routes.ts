@@ -2,17 +2,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 
-import { BuscadorComponent } from '../app/buscador/buscador.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
+import { ListadoPelisComponent } from './listado-pelis/listado-pelis.component';
 
 
 
 const routes: Routes = [
-  { path: 'buscador', component: BuscadorComponent },
   { path: 'pelicula/:id', component: PeliculaComponent },
+  { path: 'listado/:pelicula', component: ListadoPelisComponent },
   { path: 'mispeliculas', component: MispeliculasComponent },
-  { path: "**", component: BuscadorComponent }
+  { path: "**", component: MispeliculasComponent }
 
   // { path: '**', component: PageNotFoundComponent },
   //{ path: 'path/:routeParam', component: MyComponent },
@@ -23,4 +23,4 @@ const routes: Routes = [
 ];
 
 
-export const APP_ROUITNG: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
+export const APP_ROUITNG: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: false });
