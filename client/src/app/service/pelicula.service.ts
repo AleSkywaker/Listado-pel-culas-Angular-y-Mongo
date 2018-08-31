@@ -36,5 +36,9 @@ export class PeliculaService implements OnInit {
   getMisPeliculas(): Observable<any> {
     return this._http.get('http://localhost:3600/api/pelis')
   }
+  deleteMovie(id): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+    return this._http.delete('http://localhost:3600/api/eliminarpeli/' + id, { headers: headers })
+  }
 
 }
