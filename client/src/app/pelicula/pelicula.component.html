@@ -32,7 +32,7 @@
                         <li class="list-group-item"><strong>  Permitida: </strong>{{pelicula.Rated}}</li>
                         <li class="list-group-item"><strong>  Pais: </strong>{{pelicula.Country}}</li>
                         <li class="list-group-item"><strong>  Premios: </strong>{{pelicula.Awards}}</li>
-                        <li class="list-group-item"><strong>  Mis puntos: </strong>
+                        <li class="list-group-item" [ngClass]="{'puntos': errorClass}"><strong>  Mis puntos: </strong>
                             <input type="number" class="inp" name="puntos" #puntos="ngModel" [(ngModel)]="pelicula.puntos" min=0 max=10></li>
                     </ul>
                 </div>
