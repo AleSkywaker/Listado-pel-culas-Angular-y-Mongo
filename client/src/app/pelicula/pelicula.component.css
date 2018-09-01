@@ -23,3 +23,10 @@ h5 {
 .inp {
     border: none;
 }
+
+.puntos {
+    border: 2px red solid;
+    border-bottom: 5px red solid !important;
+    border-left: 5px red solid !important;
+    border-radius: 8px;
+}
