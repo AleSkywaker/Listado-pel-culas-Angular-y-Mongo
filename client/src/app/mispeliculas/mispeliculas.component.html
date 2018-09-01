@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="mt-4 text-center">Mi selección de peliculas</h1>
+    <h1 class="text-center">Mi selección de peliculas</h1>
     <br>
     <div class="tarje">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -11,13 +11,14 @@
                     <th>Director</th>
                     <th>Estrellas</th>
                     <th>Puntos</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let peli of mispelis" (click)="hazalgo(peli.imdbID)">
+                <tr *ngFor="let peli of mispelis" placement="left" ngbTooltip="Pulsa para ver mas detalles de {{ peli.title }}">
                     <!-- <td><a href="https://www.imdb.com/title/{{peli.imdbID}}" target="_blank">{{ peli.title }}</a></td> -->
                     <!-- <td class="poster"><img src="{{ peli.poster }}" alt=""></td> -->
-                    <td>{{ peli.title }}</td>
+                    <td (click)="hazalgo(peli.imdbID)">{{ peli.title }}</td>
                     <td>{{ peli.country }}</td>
                     <td>{{ peli.director }}</td>
                     <td>
@@ -26,14 +27,11 @@
                         </div>
                     </td>
                     <td>{{peli.points}} </td>
+                    <td><i class="fas fa-trash-alt" (click)="borrarPeli(peli.imdbID)"></i></td>
                 </tr>
             </tbody>
         </table>
-
     </div>
     <br>
     <br>
-    <br>
-    <br>
-    <button [routerLink]="['/peliculas']" class="btn btn-outline-success">Buscar mas</button>
 </div>
