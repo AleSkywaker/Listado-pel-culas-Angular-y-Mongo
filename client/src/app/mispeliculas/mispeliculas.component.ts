@@ -62,16 +62,14 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
     // this.document.location.href = "https://www.imdb.com/title/" + id;
     this._router.navigate(['/pelicula', id])
   }
-  // getRatings() {
-  //   this._peliculaService.getMisPeliculas().subscribe(data => {
-  //     if (data) {
-  //       this.pelis = data.pelisbuenas;
-  //       this.pelis.map(d => {
-  //         this.points = d.points
-  //         console.log("inside loop", this.points);
-  //       })
-  //     }
-  //   });
-  // }
+
+  borrarPeli(id) {
+    console.log("Esto es el id", id);
+    this._peliculaService.deleteMovie(id).subscribe(data => {
+      console.log(data);
+      this.getPelis()
+    })
+  }
+
 
 }
