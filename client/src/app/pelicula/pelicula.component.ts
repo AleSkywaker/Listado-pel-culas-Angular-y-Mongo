@@ -1,6 +1,6 @@
 import { PeliculaService } from './../service/pelicula.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pelicula',
@@ -11,9 +11,12 @@ export class PeliculaComponent implements OnInit {
   public pelicula: any;
   public message: String;
   public status: String;
+  public errorClass;
 
-  constructor(private _activatedRoute: ActivatedRoute,
-    private _peliculaService: PeliculaService) {
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _peliculaService: PeliculaService,
+    private _router: Router) {
     this._activatedRoute.params.subscribe(params => {
       this._peliculaService.getDetallePelicula(params.id).subscribe(data => {
         this.pelicula = data;
@@ -33,20 +36,23 @@ export class PeliculaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.errorClass = false;
   }
   grabarPeli(id, puntos) {
-    console.log("puntos", puntos)
-    if (puntos == undefined || puntos == "" || puntos == null) {
-      this.status = "error";
-      this.message = "Debes puntuar la pelicula antes de guardar"
-      return
-    }
     this._peliculaService.getDetallePelicula(id).subscribe(data => {
       this.pelicula = data;
       this.pelicula.puntos = puntos;
-      this._peliculaService.guardarPelicula(this.pelicula).subscribe(data => {
-        console.log("que es::", data);
-      })
+      this._peliculaService.guardarPelicula(this.pelicula).subscribe((data) => {
+        console.log("pelicula guardada", data);
+        console.log("data.message", data.message);
+      },
+        err => {
+          this.status = "error";
+          this.message = err.error.message;
+          if (this.message == 'Debes indicar tu puntos') {
+            this.errorClass = true;
+          }
+        })
       this.status = "success";
       this.message = "La pelicula se ha guardado correctamente!!!"
     })
