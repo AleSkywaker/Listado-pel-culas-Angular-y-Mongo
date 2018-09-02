@@ -5,11 +5,13 @@ import { ModuleWithProviders } from '@angular/core';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 import { ListadoPelisComponent } from './listado-pelis/listado-pelis.component';
+import { MiPeliculaComponent } from './mi-pelicula/mi-pelicula.component';
 
 
 
 const routes: Routes = [
   { path: 'pelicula/:id', component: PeliculaComponent },
+  { path: 'mipelicula/:id', component: MiPeliculaComponent },
   { path: 'listado/:pelicula', component: ListadoPelisComponent },
   { path: 'mispeliculas', component: MispeliculasComponent },
   { path: "**", component: MispeliculasComponent }
