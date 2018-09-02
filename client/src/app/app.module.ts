@@ -20,6 +20,7 @@ import { PeliculaComponent } from './pelicula/pelicula.component';
 import { MispeliculasComponent } from './mispeliculas/mispeliculas.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ListadoPelisComponent } from './listado-pelis/listado-pelis.component';
+import { MiPeliculaComponent } from './mi-pelicula/mi-pelicula.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ListadoPelisComponent } from './listado-pelis/listado-pelis.component';
     PeliculaComponent,
     MispeliculasComponent,
     InicioComponent,
-    ListadoPelisComponent
+    ListadoPelisComponent,
+    MiPeliculaComponent
   ],
   imports: [
     BrowserModule,
