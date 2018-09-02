@@ -26,7 +26,8 @@ let PeliculasSchema = Schema({
     imdbRating: String,
     imdbVotes: String,
     points: String,
-    porcentaje: String
+    porcentaje: String,
+    type: String
 })
 
 module.exports = mongoose.model('Pelicula', PeliculasSchema);
