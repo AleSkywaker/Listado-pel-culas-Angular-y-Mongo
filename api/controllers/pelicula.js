@@ -30,6 +30,7 @@ function grabarPeli(req, res) {
     pelicula.imdbID = params.imdbID;
     pelicula.imdbRating = params.imdbRating;
     pelicula.imdbVotes = params.imdbVotes;
+    pelicula.type = params.Type;
     pelicula.points = params.puntos;
 
     if (pelicula.points == null || pelicula.points == undefined || pelicula.points == "") {
@@ -91,8 +92,28 @@ function deleteMovie(req, res) {
             })
         })
 }
+
+function getMyMovie(req, res) {
+    let movieID = req.params.id;
+
+    Pelicula.findById(movieID, (err, movie) => {
+        if (err) return res.status(500).send({
+            imdbID,
+            // error: err,
+            message: 'Error al devolver pelicula'
+        })
+        if (!movie) return res.status(404).send({
+            message: 'No existe la pelicula'
+        })
+        return res.status(200).send({
+            pelicula: movie
+        })
+    })
+
+}
 module.exports = {
     grabarPeli,
     getMovies,
-    deleteMovie
+    deleteMovie,
+    getMyMovie
 }
