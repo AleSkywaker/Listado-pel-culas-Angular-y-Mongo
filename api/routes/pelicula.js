@@ -10,6 +10,7 @@ const api = express.Router();
 api.post('/grabarpeli', PeliculaController.grabarPeli);
 api.delete('/eliminarpeli/:id', PeliculaController.deleteMovie);
 api.get('/pelis', PeliculaController.getMovies);
+api.get('/pelicula/:id', PeliculaController.getMyMovie);
 
 
 module.exports = api;
