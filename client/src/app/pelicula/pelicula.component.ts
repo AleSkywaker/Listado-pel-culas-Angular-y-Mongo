@@ -1,5 +1,5 @@
-import { PeliculaService } from './../service/pelicula.service';
 import { Component, OnInit } from '@angular/core';
+import { PeliculaService } from './../service/pelicula.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,8 @@ export class PeliculaComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _peliculaService: PeliculaService,
-    private _router: Router) {
+    private _router: Router
+  ) {
     this._activatedRoute.params.subscribe(params => {
       this._peliculaService.getDetallePelicula(params.id).subscribe(data => {
         this.pelicula = data;
@@ -43,8 +44,9 @@ export class PeliculaComponent implements OnInit {
       this.pelicula = data;
       this.pelicula.puntos = puntos;
       this._peliculaService.guardarPelicula(this.pelicula).subscribe((data) => {
-        console.log("pelicula guardada", data);
-        console.log("data.message", data.message);
+        this.status = "success";
+        this.message = data.message;
+        this._router.navigate(['mispeliculas'])
       },
         err => {
           this.status = "error";
@@ -53,8 +55,6 @@ export class PeliculaComponent implements OnInit {
             this.errorClass = true;
           }
         })
-      this.status = "success";
-      this.message = "La pelicula se ha guardado correctamente!!!"
     })
   }
 }
