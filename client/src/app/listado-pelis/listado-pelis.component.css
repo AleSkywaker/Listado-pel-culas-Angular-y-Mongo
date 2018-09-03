@@ -1,0 +1,39 @@
+.tar {
+    border: 1px solid black;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.tar img {
+    border-radius: 10px 10px 0px 0px
+    /* padding: 2%; */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    justify-content: space-between;
+    align-content: center;
+    grid-gap: 15px;
+}
+
+.button-container {
+    align-self: end;
+    grid-template-columns: auto auto;
+    display: grid;
+    padding: 10px;
+    justify-content: space-between;
+    align-content: end;
+    grid-gap: 15px;
+}
+
+.boton {
+    align-self: center;
+}
+
+.padlef {
+    padding-left: 1px;
+}
