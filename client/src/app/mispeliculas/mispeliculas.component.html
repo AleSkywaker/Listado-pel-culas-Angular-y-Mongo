@@ -18,7 +18,7 @@
                 <tr *ngFor="let peli of mispelis" placement="left" ngbTooltip="Pulsa para ver mas detalles de {{ peli.title }}">
                     <!-- <td><a href="https://www.imdb.com/title/{{peli.imdbID}}" target="_blank">{{ peli.title }}</a></td> -->
                     <!-- <td class="poster"><img src="{{ peli.poster }}" alt=""></td> -->
-                    <td (click)="hazalgo(peli.imdbID)">{{ peli.title }}</td>
+                    <td (click)="hazalgo(peli._id)">{{ peli.title }}</td>
                     <td>{{ peli.country }}</td>
                     <td>{{ peli.director }}</td>
                     <td>
