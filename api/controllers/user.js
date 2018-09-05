@@ -25,6 +25,7 @@ function saveUser(req, res) {
         user.role = 'ROLE_USER';
         user.image = null;
         user.description = params.description;
+        user.created_at = Date.now();
 
         User.find({
             $or: [{ email: user.email.toLowerCase() },
