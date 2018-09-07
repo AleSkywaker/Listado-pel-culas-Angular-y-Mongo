@@ -68,8 +68,6 @@ function loginUser(req, res) {
                         return res.status(200).send({
                             token: jwtService.createToken(user)
                         })
-
-
                     } else {
                         //Devolver datos de usuario
                         user.password = undefined;
