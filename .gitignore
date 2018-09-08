@@ -4,3 +4,10 @@
 **/environments/environmentt.ts
 **/environments/environmentt.prod.ts
 **/app/environments/environmentt.ts
+
+node_modules/
+config.js
+*.jpg
+*.jpeg
+*.gif
+*.png
