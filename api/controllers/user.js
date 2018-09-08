@@ -149,14 +149,18 @@ function uploadImage(req, res) {
         var file_ext = ext_split[1];
 
         if (userId != req.user.sub) {
-            removeFilesOfUploads(res, file_path, "No tienes permisos para subir una imagen a este avatar")
+            return removeFilesOfUploads(res, file_path, "No tienes permisos para subir una imagen a este avatar")
         }
 
         if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
             //Actualizar documento de usuario logeado
-            res.status(200).send({ message: "perfecto" })
+            User.findByIdAndUpdate(userId, { image: file_name }, { new: true }, (err, userUpdated) => {
+                if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
+                if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
+                return res.status(200).send({ user: userUpdated })
+            })
         } else {
-            removeFilesOfUploads(res, file_path, "Extension no valida")
+            return removeFilesOfUploads(res, file_path, "Extension no valida")
         }
     } else {
         return res.status(200).send({ message: 'No se han subido imagenes' })
