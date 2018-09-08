@@ -3,7 +3,9 @@
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
 const jwtService = require('../services/jwt');
-const mongoosePaginate = require('mongoose-pagination')
+const mongoosePaginate = require('mongoose-pagination');
+const fs = require('fs');
+const path = require('path');
 
 function pruebas(req, res) {
     return res.status(200).send({ message: "Hola guapo", user: req.user })
@@ -139,18 +141,32 @@ function updateUser(req, res) {
 function uploadImage(req, res) {
     var userId = req.params.id;
 
-    if (userId != req.user.sub) {
-        return res.status(500).send({ message: "No tienes permisos para subir una imagen a este avatar" })
-    }
     if (req.files) {
         var file_path = req.files.image.path;
         var file_split = file_path.split('\\')
         var file_name = file_split[2];
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
+
+        if (userId != req.user.sub) {
+            removeFilesOfUploads(res, file_path, "No tienes permisos para subir una imagen a este avatar")
+        }
+
+        if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
+            //Actualizar documento de usuario logeado
+            res.status(200).send({ message: "perfecto" })
+        } else {
+            removeFilesOfUploads(res, file_path, "Extension no valida")
+        }
     } else {
         return res.status(200).send({ message: 'No se han subido imagenes' })
     }
+}
+
+function removeFilesOfUploads(res, file, message) {
+    fs.unlink(file, (err) => {
+        return res.status(200).send({ message: message })
+    })
 }
 module.exports = {
     saveUser,
