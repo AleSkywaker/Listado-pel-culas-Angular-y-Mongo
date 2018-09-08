@@ -124,20 +124,33 @@ function getUsers(req, res) {
 function updateUser(req, res) {
     var userId = req.params.id;
     var update = req.body;
-
     //borrar propiedad password
     delete update.password;
-
     if (userId != req.user.sub) {
         return res.status(500).send({ message: "No tienes permisos para actualizar los datos del usuario" })
     }
-
     User.findByIdAndUpdate(userId, update, { new: true }, (err, userUpdated) => {
         if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
         if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
-
         return res.status(200).send({ user: userUpdated })
     })
+}
+
+function uploadImage(req, res) {
+    var userId = req.params.id;
+
+    if (userId != req.user.sub) {
+        return res.status(500).send({ message: "No tienes permisos para subir una imagen a este avatar" })
+    }
+    if (req.files) {
+        var file_path = req.files.image.path;
+        var file_split = file_path.split('\\')
+        var file_name = file_split[2];
+        var ext_split = file_name.split('\.');
+        var file_ext = ext_split[1];
+    } else {
+        return res.status(200).send({ message: 'No se han subido imagenes' })
+    }
 }
 module.exports = {
     saveUser,
@@ -145,5 +158,6 @@ module.exports = {
     pruebas,
     getUser,
     getUsers,
-    updateUser
+    updateUser,
+    uploadImage
 }
