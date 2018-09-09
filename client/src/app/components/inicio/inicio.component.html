@@ -1,0 +1,103 @@
+<!-- <app-login>
+</app-login> -->
+
+
+
+
+
+
+
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar" class="pl-2 pr-2">
+        <div class="sidebar-header">
+            <h4>Buscador de Peliculas</h4>
+        </div>
+
+        <h5>Acerca de este buscador</h5>
+        <p>He utilizado la api publica de IMDB, por este motivo, todos los titulos de las peliculas estan en ingles, si no encuentras tu peli, prueba a poner el titulo en ingles, una vez encontrada podras guardarla en tu lista personal. pero antes deberás
+            puntuarla.
+        </p>
+        <hr>
+        <h5>Acerca de mi</h5>
+        <p>
+            Soy Alex Colombo y me encanta la programacion, entusiasta de ML, AI, BlockChain y Domotica.
+        </p>
+        <!-- <ul class="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li> <a href="#">Home 1</a> </li>
+                    <li> <a href="#">Home 2</a> </li>
+                    <li> <a href="#">Home 3</a> </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li> <a href="#">Page 1</a> </li>
+                    <li> <a href="#">Page 2</a> </li>
+                    <li> <a href="#">Page 3</a> </li>
+                </ul>
+            </li>
+            <li> <a href="#">Portfolio</a> </li>
+            <li> <a href="#">Contact</a> </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li> <a href="#" class="download btn btn-dark">Buscar</a> </li>
+            <li> <a href="#" class="article btn btn-dark">Volver</a> </li>
+        </ul> -->
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="navbar-btn" (click)="abrirSidebar()" placement="right" ngbTooltip="Pulsa aqui para {{tooltipName}} panel lateral">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-align-justify"></i>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link mr-3" [routerLink]="['/mispeliculas']" placement="bottom" ngbTooltip="Ver mi lista de peliculas">Mis peliculas</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline" #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar mas peliculas" aria-label="Search" ngModel name="nombrePeli" placement="bottom" ngbTooltip="Escribe el titulo en ingles, y pulsa 'enter' o click en boton de buscar">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="card-deck grid-container">
+            <div class="card col-md-2" *ngFor="let pelis of peliculas" class="tar">
+                <div class="padlef">
+                    <img *ngIf="pelis.Poster == 'N/A'" class="card-img-top" src="../../assets/noposter.png">
+                    <img *ngIf="pelis.Poster != 'N/A'" class="card-img-top" src="{{pelis.Poster}}" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{pelis.Title}}</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
+                <div class="button-container">
+                    <button class="btn btn-outline-primary boton" (click)="detalles(pelis.imdbID)">
+                            Detalles
+                    </button>
+                    <a [routerLink]="['/pelicula', pelis.imdbID]" class="btn btn-outline-primary">ver mas....</a>
+                </div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
