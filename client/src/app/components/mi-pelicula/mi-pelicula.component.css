@@ -1,0 +1,32 @@
+h3,
+h4,
+h5 {
+    font-family: 'Lobster', cursive;
+}
+
+.tar img {
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid black;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.sombreado {
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid black;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.inp {
+    border: none;
+}
+
+.puntos {
+    border: 2px red solid;
+    border-bottom: 5px red solid !important;
+    border-left: 5px red solid !important;
+    border-radius: 8px;
+}
