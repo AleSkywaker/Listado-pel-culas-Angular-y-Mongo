@@ -18,8 +18,12 @@ export class UserService implements OnInit {
   ngOnInit() {
 
   }
-  register(user_to_register){
-    console.log("usuario a registrar", user_to_register);
+  register(user: User): Observable<any> {
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+    console.log("usuario a registrar", user);
+
+    return this._http.post(this.url + '/save-user', params, { headers: headers })
   }
 
 }
