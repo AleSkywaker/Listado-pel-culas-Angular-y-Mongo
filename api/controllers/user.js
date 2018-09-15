@@ -71,19 +71,23 @@ function loginUser(req, res) {
                     if (params.gettoken) {
                         //generar y devolver token
                         return res.status(200).send({
-                            token: jwtService.createToken(user)
+                            token: jwtService.createToken(user),
+                            message: "Usuario logeado correctamente"
                         })
                     } else {
                         //Devolver datos de usuario
                         user.password = undefined;
-                        return res.status(200).send({ user })
+                        return res.status(200).send({
+                            user,
+                            message: "Usuario logeado correctamente"
+                        })
                     }
                 } else {
-                    return res.status(500).send({ message: 'El usuario no se ha podido logear' })
+                    return res.status(500).send({ message: '¡¡Usuario o contraseña incorrecta!!' })
                 }
             })
         } else {
-            return res.status(500).send({ message: 'El usuario no se ha podido logear!!!' })
+            return res.status(500).send({ message: 'El usuario no existe o la contraseña es incorrecta!!' })
         }
     })
 }
