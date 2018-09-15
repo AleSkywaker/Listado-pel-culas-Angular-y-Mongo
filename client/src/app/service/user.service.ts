@@ -25,5 +25,14 @@ export class UserService implements OnInit {
 
     return this._http.post(this.url + '/save-user', params, { headers: headers })
   }
+  singUp(user: User, gettoken = null): Observable<any> {
+    if (gettoken != null) {
+      user.gettoken = gettoken;
+    }
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.post(this.url + '/login', params, { headers: headers })
+  }
 
 }
