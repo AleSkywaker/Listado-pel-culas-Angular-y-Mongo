@@ -57,7 +57,7 @@
     <h1 class="h1-strong">{{titulo}}</h1>
 
     <div class="alert alert-success" *ngIf="status == 'success'">
-        {{message}} <a [routerLink]="['/login']">Identificate aqui</a>
+        {{message}}
     </div>
     <div class="alert alert-danger" *ngIf="status == 'error'">
         No se ha podido registrar, {{message}}
