@@ -11,6 +11,7 @@ export class User {
     public description: String,
     public genero: String,
     public dateOfBirth: String,
-    public role: String
+    public role: String,
+    public gettoken: any
   ) { }
 }
