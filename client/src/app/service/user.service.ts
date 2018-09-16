@@ -10,8 +10,8 @@ import { User } from '../models/users';
 export class UserService implements OnInit {
 
   public url: String;
-  public identity;
-  public token;
+  public identity: String;
+  public token: String;
 
   constructor(private _http: HttpClient) {
     this.url = GLOBAL.url;
