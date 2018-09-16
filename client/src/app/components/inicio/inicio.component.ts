@@ -1,3 +1,4 @@
+import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
@@ -11,15 +12,18 @@ export class InicioComponent implements OnInit {
 
   public tooltip: boolean;
   public tooltipName;
+  public identity;
 
   constructor(
-    private _router: Router) {
+    private _router: Router,
+    private _userService: UserService
+  ) {
     this.tooltip = true;
     this.tooltipName = "cerrar"
   }
 
   ngOnInit() {
-
+    this.identity = this._userService.getIdentity();
   }
 
   abrirSidebar() {
