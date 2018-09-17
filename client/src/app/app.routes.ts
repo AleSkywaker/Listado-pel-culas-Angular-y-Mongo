@@ -7,15 +7,21 @@ import { ListadoPelisComponent } from './components/listado-pelis/listado-pelis.
 import { MiPeliculaComponent } from './components/mi-pelicula/mi-pelicula.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
-  { path: 'pelicula/:id', component: PeliculaComponent },
-  { path: 'mipelicula/:id', component: MiPeliculaComponent },
-  { path: 'listado/:pelicula', component: ListadoPelisComponent },
-  { path: 'mispeliculas', component: MispeliculasComponent },
+  {
+    path: '', component: InicioComponent, children: [
+      { path: 'pelicula/:id', component: PeliculaComponent },
+      { path: 'mipelicula/:id', component: MiPeliculaComponent },
+      { path: 'listado/:pelicula', component: ListadoPelisComponent },
+      { path: 'mispeliculas', component: MispeliculasComponent }
+
+    ]
+  },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "**", component: MispeliculasComponent }
+  { path: "**", component: InicioComponent }
 
   // { path: '**', component: PageNotFoundComponent },
   //{ path: 'path/:routeParam', component: MyComponent },
