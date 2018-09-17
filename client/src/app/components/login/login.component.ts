@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
         //TODO: Conseguir Token
         this.getToken();
         this.message = response.message;
+
       }
     },
       error => {
@@ -69,6 +70,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token))
         //TODO: Conseguir las estadisticas del usuario
         this.message = response.message;
+        this._router.navigate(['inicio'])
       }
     },
       error => {
