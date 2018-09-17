@@ -8,15 +8,13 @@ import { Component, OnInit } from '@angular/core';
   providers: [UserService]
 })
 export class AppComponent implements OnInit {
-  public titulo: String;
-  public identity;
+
 
   constructor(private _userService: UserService) {
-    this.titulo = "Peliculas"
+
   }
 
   ngOnInit() {
-    this.identity = this._userService.getIdentity();
-    console.log("Peliculas", this.identity)
+
   }
 }
