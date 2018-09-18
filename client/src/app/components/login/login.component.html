@@ -1,63 +1,7 @@
-<!-- <div class="login-wrap mt-5">
-    <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-        <div class="login-form">
-            <div class="sign-in-htm">
-                <div class="group">
-                    <label for="user" class="label">Username</label>
-                    <input id="user" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <input id="check" type="checkbox" class="check" checked>
-                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                </div>
-                <div class="group">
-                    <input type="submit" class="button" value="Sign In">
-                </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
-                </div>
-            </div>
-            <div class="sign-up-htm" *ngIf="false">
-                <div class="group">
-                    <label for="user" class="label">Username</label>
-                    <input id="user" type="text" class="input">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Password</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Repeat Password</label>
-                    <input id="pass" type="password" class="input" data-type="password">
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Email Address</label>
-                    <input id="pass" type="text" class="input">
-                </div>
-                <div class="group">
-                    <input type="submit" class="button" value="Sign Up">
-                </div>
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#" for="tab-1">Already Member?</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<div class="prueba3">
+<!-- <div class="prueba3">
     <div class="prueba23">
-
         <div class="col-md-6">
             <h1 class="h1-strong">{{titulo}}</h1>
-
             <div class="alert alert-success" *ngIf="status == 'success'">
                 {{message}}
             </div>
@@ -65,7 +9,6 @@
                 No se ha podido registrar, {{message}}
             </div>
             <div class="card pru">
-
                 <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="p-4">
                     <p>
                         <label for="">Correo electrónico</label>
@@ -79,79 +22,17 @@
                     </p>
                     <input type="submit" value={{titulo}} class="btn btn-success mt-2" [disabled]="!loginForm.form.valid" />
                 </form>
-
             </div>
         </div>
-
-
     </div>
 </div>
+<hr> -->
+<!-- NEW LOGIN -->
 
-<hr>
 <div class="antesMain">
-
-
     <div class="main">
         <div class="bg"></div>
         <div class="bg2"></div>
-        <div class="top">
-            <div class="top-contents">
-                <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" width="36" height="60" viewBox="0 0 36 60"><path d="M9 33.727h20M9 41h20M9 48.273h20" fill="#fff" fill-rule="evenodd" stroke="#fff" stroke-width="1.818"/></svg>
-                <svg class="magnifier" xmlns="http://www.w3.org/2000/svg" width="36" height="60" viewBox="0 0 36 60"><g transform="translate(0 -992.362)" stroke="#fff" stroke-width="1.816"><circle cx="17.734" cy="1030.556" r="8.826" fill="none" stroke-linejoin="round"/><path d="M23.924 1037.09l5.158 4.356" fill="#fff" fill-rule="evenodd" stroke-linecap="round"/></g></svg>
-                <div class="goodmorning">Good Morning!</div>
-                <div class="user">
-                    <img class="tachina" src="data:image/jpg;base64,">
-                    <div class="notification">3</div>
-                </div>
-                <div class="left-arrow"></div>
-                <div class="month">FEBRUARY</div>
-                <div class="right-arrow"></div>
-            </div>
-        </div>
-        <div class="calendar">
-            <div class="calendar-contents">
-                <div class="days">
-                    <div>SUN</div>
-                    <div>MON</div>
-                    <div>TUE</div>
-                    <div>WED</div>
-                    <div>THU</div>
-                    <div>FRI</div>
-                    <div>SAT</div>
-                </div>
-                <div class="date">
-                    <div>7</div>
-                    <div class="current action">8</div>
-                    <div>9</div>
-                    <div>10</div>
-                    <div>11</div>
-                    <div>12</div>
-                    <div class="action">13</div>
-                </div>
-                <div class="person person1">
-                    <div class="avatar avatar1"></div>
-                    <div class="what">
-                        <div class="title">New page for <b>Janet</b></div>
-                        <div class="sub">8 - 10, Her desk</div>
-                    </div>
-                </div>
-                <div class="person person2">
-                    <div class="avatar avatar2"></div>
-                    <div class="what">
-                        <div class="title">Catch up with <b>Tammie</b></div>
-                        <div class="sub">11 - 12, The roof terrace</div>
-                    </div>
-                </div>
-                <div class="person person3">
-                    <div class="avatar avatar3"></div>
-                    <div class="what">
-                        <div class="title">Lunch with <b>Diane</b></div>
-                        <div class="sub">12, The Falafel Place</div>
-                    </div>
-                </div>
-            </div>
-            <div class="restart" onclick="restart()">← BACK</div>
-        </div>
         <div class="content">
             <div class="button-container">
                 <button class="button" onclick="materialClick(event)"><div class="circle animate"></div><span class="sign-in">Entrar</span><div class="loader"></div></button>
@@ -169,7 +50,5 @@
                 </div>
             </div>
         </div>
-        <!-- <script src="anime.min.js"></script>
-        <script src="il.js"></script> -->
     </div>
 </div>
