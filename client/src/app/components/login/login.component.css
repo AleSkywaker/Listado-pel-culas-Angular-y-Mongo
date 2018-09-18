@@ -211,22 +211,27 @@ a {
 
 /* nuevo */
 
-body {
+
+/* body {
     margin: 0;
     margin-top: 10px;
-}
+} */
 
 .antesMain {
-    margin: 0;
+    /* margin: 0; */
     background: url("../../../assets/fondo1.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-    padding-top: 33px;
-    padding-bottom: 10px;
-    margin-bottom: -50px;
-    margin-top: -50px;
+    padding-top: 6%;
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .main {
@@ -718,5 +723,41 @@ body {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+/* Portrait and Landscape */
+
+@media (max-width: 360px) and (max-height: 640px) {
+    .main {
+        margin-left: 75px;
+        width: 200px;
+        height: 400px;
+        margin-top: 57px;
+    }
+}
+
+
+/* Portrait */
+
+@media (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+    .main {
+        margin-left: 75px;
+        width: 200px;
+        height: 400px;
+        margin-top: 57px;
+    }
+}
+
+
+/* Landscape */
+
+@media (max-width: 360px) and (max-height: 640px) (orientation: landscape) {
+    .main {
+        margin-left: 75px;
+        width: 200px;
+        height: 400px;
+        margin-top: 57px;
     }
 }
