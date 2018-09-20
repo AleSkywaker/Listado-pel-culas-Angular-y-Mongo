@@ -83,4 +83,8 @@ export class LoginComponent implements OnInit {
       })
 
   }
+  hazalgo() {
+    console.log("esto es usuario", this.user)
+    // this._router.navigate(['inicio'])
+  }
 }
