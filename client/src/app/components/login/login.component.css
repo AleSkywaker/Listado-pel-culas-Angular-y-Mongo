@@ -26,6 +26,16 @@
     border-radius: 8px;
 }
 
+.main2 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    height: 20px;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
 .bg {
     background-image: url('../../../assets/bladeRunner.jpg');
     -webkit-background-size: cover;
@@ -43,12 +53,12 @@
 
 .bg:after {
     /* background-image: url('../../../assets/bladeRunner.jpg'); */
-    /* content: ' ';
+    content: ' ';
     background-color: #ff9101;
-    opacity: .5;
+    opacity: .3;
     height: 100%;
     position: absolute;
-    width: 100%; */
+    width: 100%;
 }
 
 .bg2 {
@@ -259,6 +269,12 @@
     cursor: pointer;
 }
 
+.button-container h3 {
+    color: white;
+    text-align: center;
+    margin-top: -300px;
+}
+
 
 /* Portrait and Landscape */
 
@@ -293,4 +309,19 @@
         height: 400px;
         margin-top: 57px;
     }
+}
+
+.registro {
+    color: white;
+    text-align: center;
+}
+
+.registro a {
+    color: white;
+    font-weight: bold;
+}
+
+.registro p {
+    margin-top: 356px;
+    margin-bottom: 1rem;
 }
