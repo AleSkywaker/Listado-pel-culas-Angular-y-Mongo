@@ -1,214 +1,3 @@
-body {
-    margin: 0;
-    color: #6a6f8c;
-    background: #c8c8c8;
-    font: 600 16px/18px 'Open Sans', sans-serif;
-}
-
-*,
-:after,
-:before {
-    box-sizing: border-box
-}
-
-.clearfix:after,
-.clearfix:before {
-    content: '';
-    display: table
-}
-
-.clearfix:after {
-    clear: both;
-    display: block
-}
-
-a {
-    color: inherit;
-    text-decoration: none
-}
-
-.login-wrap {
-    width: 100%;
-    margin: auto;
-    max-width: 525px;
-    min-height: 670px;
-    position: relative;
-    background: url('../../../assets/bladeRunner.jpg') no-repeat center;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
-}
-
-.login-html {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding: 90px 70px 50px 70px;
-    background: rgba(233, 193, 108, 0.8);
-}
-
-.login-html .sign-in-htm,
-.login-html .sign-up-htm {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
-    transition: all .4s linear;
-}
-
-.login-html .sign-in,
-.login-html .sign-up,
-.login-form .group .check {
-    display: none;
-}
-
-.login-html .tab,
-.login-form .group .label,
-.login-form .group .button {
-    text-transform: uppercase;
-}
-
-.login-html .tab {
-    font-size: 22px;
-    margin-right: 15px;
-    padding-bottom: 5px;
-    margin: 0 15px 10px 0;
-    display: inline-block;
-    border-bottom: 2px solid transparent;
-}
-
-.login-html .sign-in:checked+.tab,
-.login-html .sign-up:checked+.tab {
-    color: #fff;
-    border-color: #ff5900;
-}
-
-.login-form {
-    min-height: 345px;
-    position: relative;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-}
-
-.login-form .group {
-    margin-bottom: 15px;
-}
-
-.login-form .group .label,
-.login-form .group .input,
-.login-form .group .button {
-    width: 100%;
-    color: #fff;
-    display: block;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-}
-
-.login-form .group .input,
-.login-form .group .button {
-    border: none;
-    padding: 15px 20px;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, .1);
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-}
-
-.login-form .group input[type=text]:focus {
-    border: 3px solid rgb(252, 75, 6);
-    border-radius: 25px;
-}
-
-.login-form .group input[type=password]:focus {
-    border: 3px solid rgb(252, 75, 6);
-    border-radius: 25px;
-}
-
-
-/* .login-form .group input[data-type="password"] {
-text-security: circle;
--webkit-text-security: circle;
-} */
-
-.login-form .group .label {
-    color: #aaa;
-    font-size: 12px;
-}
-
-.login-form .group .button {
-    background: #ff5900;
-}
-
-.login-form .group label .icon {
-    width: 15px;
-    height: 15px;
-    border-radius: 2px;
-    position: relative;
-    display: inline-block;
-    background: rgba(255, 255, 255, .1);
-}
-
-.login-form .group label .icon:before,
-.login-form .group label .icon:after {
-    content: '';
-    width: 10px;
-    height: 2px;
-    background: #fff;
-    position: absolute;
-    transition: all .2s ease-in-out 0s;
-}
-
-.login-form .group label .icon:before {
-    left: 3px;
-    width: 5px;
-    bottom: 6px;
-    transform: scale(0) rotate(0);
-}
-
-.login-form .group label .icon:after {
-    top: 6px;
-    right: 0;
-    transform: scale(0) rotate(0);
-}
-
-.login-form .group .check:checked+label {
-    color: #fff;
-}
-
-.login-form .group .check:checked+label .icon {
-    background: #ff5900;
-}
-
-.login-form .group .check:checked+label .icon:before {
-    transform: scale(1) rotate(45deg);
-}
-
-.login-form .group .check:checked+label .icon:after {
-    transform: scale(1) rotate(-45deg);
-}
-
-.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
-    transform: rotate(0);
-}
-
-.login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
-    transform: rotate(0);
-}
-
-.hr {
-    height: 2px;
-    margin: 60px 0 50px 0;
-    background: rgba(255, 255, 255, .2);
-}
-
-.foot-lnk {
-    text-align: center;
-    margin-top: -80px;
-}
-
 .h1-strong {
     font-size: 35px;
     font-weight: bold;
@@ -216,4 +5,334 @@ text-security: circle;
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid grey;
+    color: white;
+}
+
+.antesMain {
+    /* margin: 0; */
+    background: url("../../../assets/fondo3.jpg") no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 6%;
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.main {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    height: 600px;
+    margin: 0 auto;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+    border-radius: 8px;
+}
+
+.bg {
+    background-image: url('../../../assets/watchmen.jpg');
+    -webkit-background-size: cover;
+    background-size: cover;
+    filter: brightness(.7);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.bg.no-image {
+    background-image: none;
+}
+
+.bg:after {
+    /* background-image: url('../../../assets/bladeRunner.jpg'); */
+    content: ' ';
+    background-color: #ff9101;
+    opacity: .3;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.bg2 {
+    /* background-image: url('../../../assets/bladeRunner.jpg');
+    filter: contrast(0.5) brightness(.7);
+    height: 100%;
+    opacity: .01;
+    position: absolute;
+    top: 0;
+    transition: opacity 200ms, transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(-100px);
+    width: 100%; */
+}
+
+.bg2.visible {
+    /* opacity: 1;
+    transform: translateY(0); */
+}
+
+.top {
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+}
+
+.top.visible {
+    visibility: visible;
+}
+
+.top-contents {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 6px;
+}
+
+.hamburger {
+    opacity: 0;
+    transition: opacity 200ms 50ms;
+}
+
+.top.visible .hamburger {
+    opacity: .5;
+}
+
+.magnifier {
+    opacity: 0;
+    float: right;
+    transition: opacity 200ms 50ms;
+}
+
+.title {
+    color: #777;
+}
+
+.sub {
+    color: #c3c3c3;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.restart {
+    color: #888;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-family: sans-serif;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.restart:hover {
+    color: black;
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.content.removed {
+    display: none;
+}
+
+.controls.hidden {
+    visibility: hidden;
+}
+
+.icon {
+    height: 400px;
+    margin: 0 auto;
+    width: 200px;
+}
+
+
+/* .bar {
+    background-color: white;
+    width: 30px;
+}
+
+.bar1 {
+    background: linear-gradient(to bottom, #fff 0%, #ccc 100%);
+    height: 60px;
+    transform: translateX(30px) translateY(140px) rotate(-45deg);
+}
+
+.bar2 {
+    height: 160px;
+    transform: translateX(107px) translateY(15px) rotate(45deg);
+} */
+
+.inputs {
+    position: relative;
+    margin: 0 50px;
+    bottom: 168px;
+    margin-top: -45px;
+}
+
+.inputs i {
+    color: white;
+}
+
+.login {
+    left: 0;
+    opacity: .4;
+    position: absolute;
+    top: -10px;
+    width: 20px;
+}
+
+.lock {
+    left: 0;
+    opacity: .4;
+    position: absolute;
+    top: 52px;
+    width: 20px;
+}
+
+.input {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0;
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    /* margin-bottom: 30px; */
+    outline: none !important;
+    opacity: 1;
+    /* padding-bottom: 15px; */
+    padding-left: 50px;
+    width: 100%;
+    padding-bottom: 0;
+    margin-bottom: 17px;
+    margin-top: -17px;
+}
+
+.input::before {
+    content: "";
+    background: transparent;
+}
+
+.input::after {
+    content: "";
+    background: transparent;
+    color: white;
+}
+
+.button-container {
+    height: 100%;
+    left: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.button-container h3 {
+    color: white;
+    text-align: center;
+    margin-top: -495px;
+}
+
+.button {
+    color: white;
+    font-family: 'Iceland', cursive;
+    /* background-color: rgb(247, 33, 33); */
+    background-color: rgba(53, 181, 48, 1);
+    border: 0;
+    border-radius: 28px;
+    display: block;
+    font-size: 22px;
+    height: 35px;
+    margin: 0 auto;
+    max-width: 300px;
+    outline: none !important;
+    overflow: hidden;
+    position: relative;
+    top: 506px;
+    /* top: 353px; */
+    transition: box-shadow 150ms;
+    width: 100%;
+}
+
+.button:after {
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: .2;
+    position: absolute;
+    top: -50px;
+    width: 50px;
+    -webkit-transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(35deg);
+    z-index: -10;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+
+/* Portrait and Landscape */
+
+@media (max-width: 360px) and (max-height: 640px) {
+    .main {
+        margin-left: 75px;
+        width: 200px;
+        height: 400px;
+        margin-top: 57px;
+    }
+}
+
+
+/* Portrait */
+
+@media (max-width: 360px) and (max-height: 640px) and (orientation: portrait) {
+    .main {
+        margin-left: 75px;
+        width: 200px;
+        height: 400px;
+        margin-top: 57px;
+    }
+}
+
+
+/* Landscape */
+
+@media (max-width: 360px) and (max-height: 640px) and (orientation: landscape) {
+    .main {
+        margin-left: 75px;
+        width: 200px;
+        height: 400px;
+        margin-top: 57px;
+    }
+}
+
+.registro {
+    color: white;
+    text-align: center;
+}
+
+.registro a {
+    color: white;
+    font-weight: bold;
+}
+
+.registro p {
+    margin-top: 534px;
+    margin-bottom: 1rem;
 }
