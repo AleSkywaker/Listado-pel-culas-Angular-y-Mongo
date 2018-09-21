@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/users';
 import { UserService } from '../../service/user.service';
@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
   public user: User;
   public status: String;
   public message: String;
+  public showHelp: Boolean;
+  public texto: String;
+  @ViewChild('input1') inputEl: ElementRef;
 
   constructor(
     private _router: Router,
@@ -27,6 +30,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     console.log("registro cargado");
   }
+
   onSubmit(form) {
     this._userService.register(this.user).subscribe(response => {
       if (response.user && response.user._id) {
@@ -42,5 +46,32 @@ export class RegisterComponent implements OnInit {
       console.log(<any>error)
     })
   }
+
+  registrate() {
+    console.log(this.inputEl)
+    console.log("Usuario a registrar", this.user)
+  }
+
+
+  onfireContrasena() {
+    this.showHelp = true;
+    this.texto = "Escriba contraseña"
+  }
+  onfireContrasena2() {
+    this.showHelp = true;
+    this.texto = "Repita contraseña"
+  }
+  onfireNombre() {
+    this.showHelp = true;
+    this.texto = "Escriba su nombre"
+  }
+  onfireEmail() {
+    this.showHelp = true;
+    this.texto = "Escriba su email"
+  }
+  limpiar() {
+    this.showHelp = false;
+  }
+
 
 }
