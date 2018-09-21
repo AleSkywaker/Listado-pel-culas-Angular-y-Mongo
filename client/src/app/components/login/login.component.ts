@@ -57,6 +57,33 @@ export class LoginComponent implements OnInit {
         }
       })
   }
+  logearte() {
+    //logear usuario y conseguir datos
+    this._userService.singUp(this.user).subscribe(response => {
+      this.identity = response.user;
+      if (!this.identity || !this.identity._id) {
+        this.status = "error";
+        this.message = "Usuario no existe o contraseña invalida"
+      } else {
+        this.status = "success";
+        //TODO: Persistir datos en localStorage
+        console.log("Datos a persistir", this.identity)
+        localStorage.setItem('identity', JSON.stringify(this.identity))
+        //TODO: Conseguir Token
+        this.getToken();
+        this.message = response.message;
+
+      }
+    },
+      error => {
+        var errorMessage = <any>error;
+        console.log("errores", errorMessage)
+        if (errorMessage = ! null) {
+          this.status = "error";
+          this.message = error.error.message;
+        }
+      })
+  }
 
   getToken() {
     this._userService.singUp(this.user, 'true').subscribe(response => {
@@ -83,8 +110,5 @@ export class LoginComponent implements OnInit {
       })
 
   }
-  hazalgo() {
-    console.log("esto es usuario", this.user)
-    // this._router.navigate(['inicio'])
-  }
+
 }
