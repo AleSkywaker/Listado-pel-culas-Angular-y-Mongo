@@ -60,7 +60,7 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
 
   hazalgo(id) {
     // this.document.location.href = "https://www.imdb.com/title/" + id;
-    this._router.navigate(['/mipelicula', id])
+    this._router.navigate(['/inicio/mipelicula', id])
   }
 
   borrarPeli(id) {
