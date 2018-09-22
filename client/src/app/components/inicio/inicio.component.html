@@ -1,6 +1,6 @@
 <div class="wrapper">
     <!-- Sidebar Holder -->
-    <nav id="sidebar" class="pl-2 pr-2">
+    <nav id="sidebar" class="pl-2 pr-2" *ngIf="!identity">
         <div class="sidebar-header">
             <h4>Buscador de Peliculas</h4>
         </div>
@@ -14,33 +14,47 @@
         <p>
             Soy Alex Colombo y me encanta la programacion, entusiasta de ML, AI, BlockChain y Domotica.
         </p>
-        <!-- <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+    </nav>
+
+    <!-- si esta identificado -->
+
+
+    <nav id="sidebar" class="pl-2 pr-2" *ngIf="identity">
+        <div class="sidebar-header">
+            <h4>Bienvenido {{identity.name}}</h4>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Panel de administracion</p>
+            <!-- <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis peliculas</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li> <a href="#">Home 1</a> </li>
                     <li> <a href="#">Home 2</a> </li>
                     <li> <a href="#">Home 3</a> </li>
                 </ul>
             </li>
-            <li>
-                <a href="#">About</a>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+             <li>
+                <a href="#">Acerca de mi</a>
+                <a href="#">Mis amigos</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mi música</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li> <a href="#">Page 1</a> </li>
                     <li> <a href="#">Page 2</a> </li>
                     <li> <a href="#">Page 3</a> </li>
                 </ul>
-            </li>
-            <li> <a href="#">Portfolio</a> </li>
-            <li> <a href="#">Contact</a> </li>
+            </li> -->
+            <li> <a href="#">Mis peliculas</a> </li>
+            <li> <a href="#">Mi música</a> </li>
+            <li> <a href="#">Mis publicaciones</a> </li>
+            <li> <a href="#">Mis amigos</a> </li>
+            <li> <a href="#">Acerca de mi</a> </li>
         </ul>
 
         <ul class="list-unstyled CTAs">
-            <li> <a href="#" class="download btn btn-dark">Buscar</a> </li>
-            <li> <a href="#" class="article btn btn-dark">Volver</a> </li>
-        </ul> -->
+            <li> <a href="#" class="download btn btn-dark">Editar perfil</a> </li>
+            <li> <a href="#" class="article btn btn-dark">Logout</a> </li>
+        </ul>
     </nav>
 
     <!-- Page Content Holder -->
