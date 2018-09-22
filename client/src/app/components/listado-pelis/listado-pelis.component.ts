@@ -25,6 +25,6 @@ export class ListadoPelisComponent implements OnInit {
     })
   }
   detalles(id) {
-    this._router.navigate(['/pelicula', id])
+    this._router.navigate(['/inicio/pelicula', id])
   }
 }
