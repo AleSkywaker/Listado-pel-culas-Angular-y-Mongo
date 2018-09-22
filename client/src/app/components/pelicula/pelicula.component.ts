@@ -46,7 +46,7 @@ export class PeliculaComponent implements OnInit {
       this._peliculaService.guardarPelicula(this.pelicula).subscribe((data) => {
         this.status = "success";
         this.message = data.message;
-        this._router.navigate(['mispeliculas'])
+        this._router.navigate(['inicio/mispeliculas'])
       },
         err => {
           this.status = "error";
