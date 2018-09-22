@@ -41,5 +41,5 @@
     </div>
     <button (click)="grabarPeli(pelicula.imdbID,pelicula.puntos )" class="btn btn-outline-danger mr-2">Guardar en mi lista</button>
     <a href="https://www.imdb.com/title/{{pelicula.imdbID}}" target="_blank" class="btn btn-outline-dark">Ver en IMDB</a>
-    <button [routerLink]="['/mispeliculas']" class="btn btn-outline-primary ml-2">ver mis pelis</button>
+    <button [routerLink]="['/inicio/mispeliculas']" class="btn btn-outline-primary ml-2">ver mis pelis</button>
 </div>
