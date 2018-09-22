@@ -42,11 +42,11 @@ export class InicioComponent implements OnInit {
 
   onFormSubmit(f) {
     let pelicula = f.value.nombrePeli;
-    this._router.navigate(['/listado', pelicula])
+    this._router.navigate(['/inicio/listado', pelicula])
   }
 
   detalles(id) {
-    this._router.navigate(['/pelicula', id])
+    this._router.navigate(['/inicio/pelicula', id])
     console.log("hola", id);
   }
 
