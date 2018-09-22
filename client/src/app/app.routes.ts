@@ -11,7 +11,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   {
-    path: '', component: InicioComponent, children: [
+    path: 'inicio', component: InicioComponent, children: [
       { path: 'pelicula/:id', component: PeliculaComponent },
       { path: 'mipelicula/:id', component: MiPeliculaComponent },
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
@@ -19,6 +19,7 @@ const routes: Routes = [
 
     ]
   },
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "**", component: InicioComponent }
