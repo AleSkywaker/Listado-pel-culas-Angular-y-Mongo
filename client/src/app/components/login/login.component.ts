@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
       } else {
         this.status = "success";
         //TODO: Persistir datos en localStorage
-        console.log("Datos a persistir", this.identity)
         localStorage.setItem('identity', JSON.stringify(this.identity))
         //TODO: Conseguir Token
         this.getToken();
@@ -93,7 +92,6 @@ export class LoginComponent implements OnInit {
       } else {
         this.status = "success";
         //TODO: Persistir token del usuario
-        console.log("Tokken a persistir", this.token)
         localStorage.setItem('token', JSON.stringify(this.token))
         //TODO: Conseguir las estadisticas del usuario
         this.message = response.message;
