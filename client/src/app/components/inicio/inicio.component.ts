@@ -1,6 +1,6 @@
 import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -48,6 +48,12 @@ export class InicioComponent implements OnInit {
   detalles(id) {
     this._router.navigate(['/inicio/pelicula', id])
     console.log("hola", id);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.identity = null;
+    this._router.navigate([''])
   }
 
 }
