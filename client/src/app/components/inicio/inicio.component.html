@@ -44,16 +44,17 @@
                     <li> <a href="#">Page 3</a> </li>
                 </ul>
             </li> -->
-            <li> <a href="#">Mis peliculas</a> </li>
+            <li> <a [routerLink]="['/inicio/mispeliculas']">Mis peliculas</a> </li>
             <li> <a href="#">Mi música</a> </li>
             <li> <a href="#">Mis publicaciones</a> </li>
             <li> <a href="#">Mis amigos</a> </li>
             <li> <a href="#">Acerca de mi</a> </li>
+            <li> <a href="#">Mas usuarios</a> </li>
         </ul>
 
         <ul class="list-unstyled CTAs">
             <li> <a href="#" class="download btn btn-dark">Editar perfil</a> </li>
-            <li> <a href="#" class="article btn btn-dark">Logout</a> </li>
+            <li> <a href="#" class="article btn btn-dark" (click)="logout()">Cerrar session</a> </li>
         </ul>
     </nav>
 
