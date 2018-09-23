@@ -11,6 +11,7 @@ var app = express();
 //Cargamos rutas
 var user_routes = require('./routes/user')
 var pelicula_routes = require('./routes/pelicula')
+var follow_routes = require('./routes/follow')
     //middlewares, es un metodo que se ejecuta antes de un controlador, en cada peticion se ejectutará este middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 //convertimos todo los que nos llegue en json
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 //rutas
 app.use('/api', user_routes)
 app.use('/api', pelicula_routes)
+app.use('/api', follow_routes)
 
 //exportar (exportamos lo que app tenga)
 module.exports = app;
