@@ -39,13 +39,14 @@ function saveUser(req, res) {
 
                 bcrypt.hash(params.password, null, null, (err, hash) => {
                     user.password = hash;
-                    user.save((errr, userStored) => {
+                    user.save((err, userStored) => {
                         if (err) return res.status(500).send({ message: "Error al guardar el usuario" })
                         if (userStored) {
-                            res.status(200).send({
-                                user: userStored,
-                                message: "¡¡Usuario registrado correctamente!!"
-                            });
+                            user.password = ";)",
+                                res.status(200).send({
+                                    user: userStored,
+                                    message: "¡¡Usuario registrado correctamente!!"
+                                });
                         } else {
                             res.status(404).send({ message: "No se ha registrado el usuario" });
                         }
@@ -193,9 +194,9 @@ function getImageFile(req, res) {
     })
 }
 module.exports = {
+    pruebas,
     saveUser,
     loginUser,
-    pruebas,
     getUser,
     getUsers,
     updateUser,
