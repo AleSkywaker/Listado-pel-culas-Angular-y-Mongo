@@ -58,4 +58,5 @@ export class UserService implements OnInit {
     }
     return token;
   }
+
 }
