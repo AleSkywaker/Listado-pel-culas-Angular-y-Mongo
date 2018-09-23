@@ -9,8 +9,15 @@ var UserSchema = Schema({
     nick: String,
     email: String,
     description: String,
-    password: String,
-    password2: String,
+    password: {
+        type: String,
+        required: true,
+        select: false,
+    },
+    password2: {
+        type: String,
+        select: false,
+    },
     image: String,
     role: String,
     created_at: Date
