@@ -11,12 +11,11 @@ var UserSchema = Schema({
     description: String,
     password: {
         type: String,
-        required: true,
-        select: false,
+        required: true
     },
     password2: {
         type: String,
-        select: false,
+        select: false
     },
     image: String,
     role: String,
