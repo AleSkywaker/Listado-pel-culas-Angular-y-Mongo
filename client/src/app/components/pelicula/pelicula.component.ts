@@ -1,3 +1,4 @@
+import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { PeliculaService } from '../../service/pelicula.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,12 +13,15 @@ export class PeliculaComponent implements OnInit {
   public message: String;
   public status: String;
   public errorClass;
+  public token;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _peliculaService: PeliculaService,
-    private _router: Router
+    private _router: Router,
+    private _userService: UserService
   ) {
+    this.token = this._userService.getToken();
     this._activatedRoute.params.subscribe(params => {
       this._peliculaService.getDetallePelicula(params.id).subscribe(data => {
         this.pelicula = data;
@@ -43,7 +47,7 @@ export class PeliculaComponent implements OnInit {
     this._peliculaService.getDetallePelicula(id).subscribe(data => {
       this.pelicula = data;
       this.pelicula.puntos = puntos;
-      this._peliculaService.guardarPelicula(this.pelicula).subscribe((data) => {
+      this._peliculaService.guardarPelicula(this.token, this.pelicula).subscribe((data) => {
         this.status = "success";
         this.message = data.message;
         this._router.navigate(['inicio/mispeliculas'])
