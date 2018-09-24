@@ -5,10 +5,12 @@ const moment = require('moment')
 
 function grabarPeli(req, res) {
     let params = req.body;
+    let userLogeado = req.user.sub;
 
     let aux = (params.puntos / 10) * 100;
 
     var pelicula = new Pelicula();
+    pelicula.user = userLogeado;
     pelicula.porcentaje = (aux / 10) * 10;
     pelicula.actors = params.Actors;
     pelicula.awards = params.Awards;
@@ -42,7 +44,7 @@ function grabarPeli(req, res) {
         return res.status(402).send({ message: 'Los puntos deben estar entre 0 y 10' })
     }
 
-    Pelicula.find({ imdbID: pelicula.imdbID })
+    Pelicula.find({ $and: [{ imdbID: pelicula.imdbID }, { user: userLogeado }] })
         .exec((err, peli) => {
             if (err) {
                 return res.status(406).send({ message: "Error al encontrar pelicula" })
@@ -67,7 +69,8 @@ function grabarPeli(req, res) {
 }
 
 function getMovies(req, res) {
-    Pelicula.find().sort('points').exec(
+    let userLogeado = req.user.sub;
+    Pelicula.find({ user: userLogeado }).sort('points').exec(
         (err, movies) => {
             if (err) {
                 res.status(400).send({ message: "Error en la peticion" })
