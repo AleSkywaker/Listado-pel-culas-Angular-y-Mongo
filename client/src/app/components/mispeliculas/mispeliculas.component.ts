@@ -1,3 +1,4 @@
+import { UserService } from './../../service/user.service';
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { PeliculaService } from '../../service/pelicula.service';
 import { Router } from '@angular/router';
@@ -21,12 +22,16 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
   points;
   pelis;
   starsPercetaje;
+  token;
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
-  constructor(private _peliculaService: PeliculaService,
+  constructor(
+    private _peliculaService: PeliculaService,
     private _router: Router,
+    private _userService: UserService,
     @Inject(DOCUMENT) private document: any) {
+    this.token = this._userService.getToken();
   }
 
   ngOnInit() {
@@ -34,7 +39,7 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
       pagingType: 'full_numbers',
       pageLength: 5,
     }
-    this._peliculaService.getMisPeliculas().subscribe(data => {
+    this._peliculaService.getMisPeliculas(this.token).subscribe(data => {
       if (data) {
         this.mispelis = data.pelisbuenas;
         console.log(this.mispelis);
@@ -50,7 +55,7 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
 
 
   getPelis() {
-    this._peliculaService.getMisPeliculas().subscribe(data => {
+    this._peliculaService.getMisPeliculas(this.token).subscribe(data => {
       if (data) {
         this.mispelis = data.pelisbuenas;
         console.log(this.mispelis);
