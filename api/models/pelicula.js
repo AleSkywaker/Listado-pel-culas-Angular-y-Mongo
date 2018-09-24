@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let PeliculasSchema = Schema({
-    // user: { type: Schema.ObjectId, ref: 'User' },
+    user: { type: Schema.ObjectId, ref: 'User' },
     actors: String,
     awards: String,
     country: String,
