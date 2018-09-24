@@ -11,6 +11,7 @@ export class PeliculaService implements OnInit {
   public apikey = environment.apikey;
   public url = 'http://www.omdbapi.com/?s=';
   public urlDetail = 'http://www.omdbapi.com/?i=';
+  public token;
   constructor(private _http: HttpClient) { }
 
   ngOnInit() {
@@ -25,16 +26,19 @@ export class PeliculaService implements OnInit {
     return this._http.get(this.urlDetail + id + '&apikey=' + this.apikey);
   }
 
-  guardarPelicula(pelicula): Observable<any> {
+  guardarPelicula(token, pelicula): Observable<any> {
 
     let params = JSON.stringify(pelicula);
-    let headers = new HttpHeaders().set("Content-type", "application/json");
+    let headers = new HttpHeaders().set("Content-type", "application/json")
+      .set('authorization', token)
 
     return this._http.post('http://localhost:3600/api/grabarpeli', params, { headers: headers });
   }
 
-  getMisPeliculas(): Observable<any> {
-    return this._http.get('http://localhost:3600/api/pelis')
+  getMisPeliculas(token): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('authorization', token)
+    return this._http.get('http://localhost:3600/api/pelis', { headers: headers })
   }
   deleteMovie(id): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
