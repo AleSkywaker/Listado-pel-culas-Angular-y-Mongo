@@ -23,6 +23,7 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
   pelis;
   starsPercetaje;
   token;
+  identity;
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
@@ -32,9 +33,11 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
     private _userService: UserService,
     @Inject(DOCUMENT) private document: any) {
     this.token = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
   }
 
   ngOnInit() {
+    console.log("Balssss", this.identity)
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
