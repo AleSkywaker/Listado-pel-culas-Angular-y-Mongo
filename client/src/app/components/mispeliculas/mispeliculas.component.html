@@ -1,5 +1,6 @@
 <div class="container">
-    <h1 class="text-center">Mi selección de peliculas</h1>
+    <h1 *ngIf="identity" class="text-center">Selección de peliculas de {{identity.name}}</h1>
+    <h1 *ngIf="!identity" class="text-center">Mi Selección de peliculas</h1>
     <br>
     <div class="tarje">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
