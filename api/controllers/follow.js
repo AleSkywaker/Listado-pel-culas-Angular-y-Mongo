@@ -22,7 +22,7 @@ function deleteFollow(req, res) {
     var userId = req.user.sub;
     var followId = req.params.id;
 
-    Follow.find({ 'userLogeado': userId, 'userSeguido': followId }).remove(err => {
+    Follow.find({ 'userSeguidor': userId, 'userSeguido': followId }).remove(err => {
         if (err) return res.status(500).send({ message: 'Error al dejar de seguir' })
         return res.status(200).send({ message: 'El seguimiento se ha eliminado!!' })
     })
@@ -41,7 +41,7 @@ function getFollowingUsers(req, res) {
     }
     var itemsPerPage = 4;
 
-    Follow.find({ 'userLogeado': userLogeado }).populate({ path: 'userSeguido' }).paginate(page, itemsPerPage, (err, follows, total) => {
+    Follow.find({ 'userSeguidor': userLogeado }).populate({ path: 'userSeguido' }).paginate(page, itemsPerPage, (err, follows, total) => {
         if (err) return res.status(500).send({ message: 'Error en el servidor' })
         if (!follows) return res.status(200).send({ message: 'No sigue a ningun usuario' })
 
@@ -67,7 +67,7 @@ function getFollowedUsers(req, res) {
     }
     var itemsPerPage = 4;
 
-    Follow.find({ 'userSeguido': userLogeado }).populate({ path: 'userSeguido' }).paginate(page, itemsPerPage, (err, follows, total) => {
+    Follow.find({ 'userSeguido': userLogeado }).populate('userSeguidor').paginate(page, itemsPerPage, (err, follows, total) => {
         if (err) return res.status(500).send({ message: 'Error en el servidor' })
         if (!follows) return res.status(200).send({ message: 'No te sigue ningun usuario' })
 
