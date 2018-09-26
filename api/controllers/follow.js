@@ -78,6 +78,15 @@ function getFollowedUsers(req, res) {
         })
     })
 }
+// Devolver usuarios que sigo sin paginar
+function getMyFollows(req, res) {
+
+}
+// Devolver usuarios que me siguen
+function getFollowsBack(req, res) {
+
+}
+
 module.exports = {
     seguirUsuario,
     deleteFollow,
