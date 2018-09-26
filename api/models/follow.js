@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var FollowSchema = Schema({
-    userLogeado: { type: Schema.ObjectId, ref: 'User' },
+    userSeguidor: { type: Schema.ObjectId, ref: 'User' },
     userSeguido: { type: Schema.ObjectId, ref: 'User' }
 })
 
