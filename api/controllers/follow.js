@@ -78,29 +78,29 @@ function getFollowedUsers(req, res) {
         })
     })
 }
-// Devolver usuarios que sigo sin paginar
-function getMyFollows(req, res) {
-    let userLogeado = req.user.sub;
+// Devolver usuarios que sigo o me siguen sin paginar
+function getFollows(req, res) {
+    var userLogeado = req.user.sub;
 
-    Follow.find({ userSeguidor: userLogeado }).populate('user followed').exec((err, follows) => {
+    var find = Follow.find({ userSeguidor: userLogeado });
+
+    if (req.params.followed) {
+        find = Follow.find({ userSeguido: userLogeado });
+    }
+
+    find.populate('userSeguido userSeguidor').exec((err, follows) => {
         if (err) return res.status(500).send({ message: "Error en el servidor" });
-
         if (!follows) return res.status(404).send({ message: "No sigues a ningun usuario" })
-
         return res.status(200).send({
             follows
         })
     })
-
-}
-// Devolver usuarios que me siguen
-function getFollowsBack(req, res) {
-
 }
 
 module.exports = {
     seguirUsuario,
     deleteFollow,
     getFollowingUsers,
-    getFollowedUsers
+    getFollowedUsers,
+    getFollows
 }
