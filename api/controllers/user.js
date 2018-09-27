@@ -2,6 +2,7 @@
 
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
+const Follow = require('../models/follow');
 const jwtService = require('../services/jwt');
 const mongoosePaginate = require('mongoose-pagination');
 const fs = require('fs');
@@ -102,9 +103,14 @@ function getUser(req, res) {
     User.findById(userID, (err, user) => {
         if (err) return res.status(403).send({ message: "error al devolver usuario" })
         if (!user) return res.status(404).send({ message: "El usuario no existe" })
-        user.password = ":)"
-        return res.status(200).send({
-            user
+
+        Follow.findOne({ userSeguidor: req.user.sub, userSeguido: userID }).exec((err, follow) => {
+            if (err) return res.status(403).send({ message: "error al comprobar el seguimiento" })
+            user.password = ":)"
+            return res.status(200).send({
+                user,
+                follow
+            })
         })
     })
 }
