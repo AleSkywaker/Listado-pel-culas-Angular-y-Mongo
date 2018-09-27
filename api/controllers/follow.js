@@ -8,13 +8,13 @@ var Follow = require('../models/follow');
 function seguirUsuario(req, res) {
     var params = req.body;
     var follow = new Follow();
-    follow.userLogeado = req.user.sub;
+    follow.userSeguidor = req.user.sub;
     follow.userSeguido = params.seguido;
 
-    follow.save((err, followtored) => {
+    follow.save((err, followed) => {
         if (err) return res.status(500).send({ message: 'Error al guardar el seguimiento' })
-        if (!followtored) return res.status(404).send({ message: "El seguimiento no se ha guardado" })
-        return res.status(200).send({ follow: followtored })
+        if (!followed) return res.status(404).send({ message: "El seguimiento no se ha guardado" })
+        return res.status(200).send({ follow: followed })
     })
 }
 
