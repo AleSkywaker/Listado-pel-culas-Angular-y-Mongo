@@ -104,32 +104,39 @@ function getUser(req, res) {
         if (err) return res.status(403).send({ message: "error al devolver usuario" })
         if (!user) return res.status(404).send({ message: "El usuario no existe" })
 
-        Follow.findOne({ userSeguidor: req.user.sub, userSeguido: userID }).exec((err, follow) => {
-            if (err) return res.status(403).send({ message: "error al comprobar el seguimiento" })
-            user.password = ":)"
+        followThisUser(req.user.sub, userID).then((value) => {
+            user.password = undefined;
             return res.status(200).send({
                 user,
-                follow
+                siguiendo: value.siguiendo,
+                seguido: value.seguido,
             })
         })
     })
 }
 
 async function followThisUser(identity_user_id, user_id) {
-    var siguiendo = await Follow.findOne({ userSeguidor: identity_user_id, userSeguido: user_id })
-        .exec((err, follow) => {
-            if (err) return handleError(err)
-            return follow
-        })
-    var seguido = await Follow.findOne({ userSeguidor: user_id, userSeguido: identity_user_id })
-        .exec((err, follow) => {
-            if (err) return handleError(err)
-            return follow
-        })
-
-    return {
-        siguiendo: siguiendo,
-        seguido: seguido
+    try {
+        var siguiendo = await Follow.findOne({ 'userSeguidor': identity_user_id, 'userSeguido': user_id })
+            .exec().then((siguiendo) => {
+                return siguiendo
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
+        var seguido = await Follow.findOne({ 'userSeguidor': user_id, 'userSeguido': identity_user_id })
+            .exec().then((seguido) => {
+                return seguido
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
+        return {
+            siguiendo,
+            seguido
+        }
+    } catch (e) {
+        console.log(e);
     }
 }
 
