@@ -126,6 +126,11 @@ async function followThisUser(identity_user_id, user_id) {
             if (err) return handleError(err)
             return follow
         })
+
+    return {
+        siguiendo: siguiendo,
+        seguido: seguido
+    }
 }
 
 function getUsers(req, res) {
