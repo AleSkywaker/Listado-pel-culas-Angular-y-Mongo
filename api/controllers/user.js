@@ -116,7 +116,7 @@ function getUser(req, res) {
 }
 
 async function followThisUser(identity_user_id, user_id) {
-    var following = await Follow.findOne({ userSeguidor: identity_user_id, userSeguido: user_id })
+    var siguiendo = await Follow.findOne({ userSeguidor: identity_user_id, userSeguido: user_id })
         .exec((err, follow) => {
             if (err) return handleError(err)
             return follow
