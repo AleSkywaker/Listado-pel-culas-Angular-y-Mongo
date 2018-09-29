@@ -262,6 +262,25 @@ function getImageFile(req, res) {
         }
     })
 }
+
+function getCounters(req, res) {
+
+}
+
+async function getCounterFollow(user_id) {
+    var numeroSeguidos = await Follow.count({ 'userSeguidor': user_id }).exec((err, count) => {
+        if (err) return handleError(err)
+        return count;
+    })
+    var numeroSeguidores = await Follow.count({ 'userSeguido': user_id }).exec((err, count) => {
+        if (err) return handleError(err)
+        return count;
+    })
+    return {
+        numeroSeguidos,
+        numeroSeguidores
+    }
+}
 module.exports = {
     pruebas,
     saveUser,
