@@ -154,12 +154,50 @@ function getUsers(req, res) {
         if (err) return res.status(403).send({ message: "error al devolver los usuarios" })
         if (!users) return res.status(404).send({ message: "No existen usuarios" })
 
-        return res.status(200).send({
-            usuarios: users,
-            totalusuarios: total,
-            paginas: Math.ceil(total / userPerPage)
+        followUserIds(userLogeado).then((value) => {
+            return res.status(200).send({
+                usuarios: users,
+                usuariosSeguidos: value.siguiendo,
+                usuarioMeSiguen: value.seguido,
+                totalusuarios: total,
+                paginas: Math.ceil(total / userPerPage)
+            })
         })
     })
+}
+
+async function followUserIds(user_id) {
+    try {
+        var siguiendo = await Follow.find({ 'userSeguidor': user_id }).select({ '_id': 0, '_v': 0, 'userSeguidor': 0 }).exec().then((follows) => {
+                var seguidores = [];
+                follows.forEach((follow) => {
+                    console.log("follow primer:", follow)
+                    seguidores.push(follow.userSeguido)
+                })
+                return seguidores;
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
+        var seguido = await Follow.find({ 'userSeguido': user_id }).select({ '_id': 0, '_v': 0, 'userSeguido': 0 }).exec().then((follows) => {
+                var seguidores = [];
+                follows.forEach((follow) => {
+                    console.log("follow segundo:", follow)
+                    seguidores.push(follow.userSeguidor)
+                })
+                console.log(seguidores)
+                return seguidores;
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
+        return {
+            siguiendo: siguiendo,
+            seguido: seguido
+        }
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function updateUser(req, res) {
