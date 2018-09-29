@@ -264,7 +264,13 @@ function getImageFile(req, res) {
 }
 
 function getCounters(req, res) {
-
+    let userLogeado = req.user.sub;
+    if (req.params.id) {
+        userLogeado = req.params.id;
+    }
+    getCounterFollow(userLogeado).then((value) => {
+        res.status(200).send(value);
+    })
 }
 
 async function getCounterFollow(user_id) {
@@ -287,6 +293,7 @@ module.exports = {
     loginUser,
     getUser,
     getUsers,
+    getCounters,
     updateUser,
     uploadImage,
     getImageFile
