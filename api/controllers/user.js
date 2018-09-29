@@ -274,17 +274,25 @@ function getCounters(req, res) {
 }
 
 async function getCounterFollow(user_id) {
-    var numeroSeguidos = await Follow.count({ 'userSeguidor': user_id }).exec((err, count) => {
-        if (err) return handleError(err)
-        return count;
-    })
-    var numeroSeguidores = await Follow.count({ 'userSeguido': user_id }).exec((err, count) => {
-        if (err) return handleError(err)
-        return count;
-    })
-    return {
-        numeroSeguidos,
-        numeroSeguidores
+    try {
+        var numeroSeguidos = await Follow.count({ 'userSeguidor': user_id }).exec().then((count) => {
+                return count;
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
+        var numeroSeguidores = await Follow.count({ 'userSeguido': user_id }).exec().then((count) => {
+                return count;
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
+        return {
+            numeroSeguidos,
+            numeroSeguidores
+        }
+    } catch (e) {
+        console.log(e);
     }
 }
 module.exports = {
