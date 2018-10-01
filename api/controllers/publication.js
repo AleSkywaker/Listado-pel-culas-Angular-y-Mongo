@@ -9,10 +9,6 @@ const Publication = require('../models/publication');
 const User = require('../models/user');
 const Follow = require('../models/follow');
 
-function probando(req, res) {
-    res.status(200).send({ messge: "Hola desde controlador de publicaciones" })
-}
-
 function savePublication(req, res) {
     let params = req.body;
 
@@ -33,7 +29,11 @@ function savePublication(req, res) {
     })
 }
 
+function getPublications(req, res) {
+
+}
+
 module.exports = {
-    probando,
-    savePublication
+    savePublication,
+    getPublications
 }
