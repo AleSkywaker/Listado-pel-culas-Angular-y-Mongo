@@ -30,6 +30,25 @@ function savePublication(req, res) {
 }
 
 function getPublications(req, res) {
+    let page = 1;
+
+    if (req.params.page) {
+        page = req.params.page;
+    }
+    let itemsPerPage = 4;
+    let userLogeado = req.user.sub;
+
+    Follow.find({ userSeguidor: userLogeado }).populate('userSeguido').exec((err, follows) => {
+        if (err) return res.status(500).send({ message: 'Error al devolver seguimiento' });
+
+        let follows_clean = [];
+
+        follows.forEach((follow) => {
+            follows_clean.push(follow.userSeguido)
+        })
+
+        console.log(follows_clean)
+    })
 
 }
 
