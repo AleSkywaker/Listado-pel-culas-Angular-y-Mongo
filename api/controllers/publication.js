@@ -58,10 +58,7 @@ function getPublications(req, res) {
                 publications
             })
         })
-
-        console.log(follows_clean)
     })
-
 }
 
 module.exports = {
