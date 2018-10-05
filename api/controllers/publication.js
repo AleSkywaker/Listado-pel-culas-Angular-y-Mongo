@@ -72,6 +72,10 @@ function getPublication(req, res) {
     })
 }
 
+function deletePublication(req, res){
+
+}
+
 module.exports = {
     savePublication,
     getPublications,
