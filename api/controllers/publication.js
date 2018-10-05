@@ -76,7 +76,7 @@ function deletePublication(req, res) {
     let publicationId = req.params.id;
 
 
-    Publication.find.length({ 'user': req.user.sub, '_id': publicationId }).remove((err, publicationRemoved) => {
+    Publication.find({ 'user': req.user.sub, '_id': publicationId }).remove((err, publicationRemoved) => {
         if (err) return res.status(500).send({ message: "Error al borrar publication" })
         if (!publicationRemoved) return res.status(500).send({ message: "No se ha podido eliminar la publicacion" })
 
