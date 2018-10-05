@@ -72,7 +72,17 @@ function getPublication(req, res) {
     })
 }
 
-function deletePublication(req, res){
+function deletePublication(req, res) {
+    let publicationId = req.params.id;
+
+    Publication.findByIdAndRemove(publicationId, (err, publicationRemoved) => {
+        if (err) return res.status(500).send({ message: "Error al borrar publication" })
+        if (!publicationRemoved) return res.status(500).send({ message: "No se ha podido eliminar la publicacion" })
+
+        return res.status(200).send({ publicationRemoved })
+
+    })
+
 
 }
 
