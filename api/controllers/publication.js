@@ -79,5 +79,6 @@ function deletePublication(req, res){
 module.exports = {
     savePublication,
     getPublications,
-    getPublication
+    getPublication,
+    deletePublication
 }
