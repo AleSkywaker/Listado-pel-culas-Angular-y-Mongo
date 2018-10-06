@@ -83,7 +83,7 @@ function deletePublication(req, res) {
 }
 
 function uploadImage(req, res) {
-    var userId = req.params.id;
+    var publicationId = req.params.id;
 
     if (req.files) {
         var file_path = req.files.image.path;
@@ -92,16 +92,16 @@ function uploadImage(req, res) {
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
 
-        if (userId != req.user.sub) {
-            return removeFilesOfUploads(res, file_path, "No tienes permisos para subir una imagen a este avatar")
-        }
+        // if (userId != req.user.sub) {
+        //     return removeFilesOfUploads(res, file_path, "No tienes permisos para subir una imagen a este avatar")
+        // }
 
         if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
-            //Actualizar documento de usuario logeado
-            User.findByIdAndUpdate(userId, { image: file_name }, { new: true }, (err, userUpdated) => {
+            //Actualizar documento de la publicacion
+            Publication.findByIdAndUpdate(publicationId, { file: file_name }, { new: true }, (err, publicationUpdated) => {
                 if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
-                if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
-                return res.status(200).send({ user: userUpdated })
+                if (!publicationUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
+                return res.status(200).send({ publication: publicationUpdated })
             })
         } else {
             return removeFilesOfUploads(res, file_path, "Extension no valida")
@@ -119,7 +119,7 @@ function removeFilesOfUploads(res, file, message) {
 
 function getImageFile(req, res) {
     var image_file = req.params.imageFile;
-    var path_file = './uploads/users/' + image_file;
+    var path_file = './uploads/publications/' + image_file;
 
     fs.exists(path_file, (exist) => {
         if (exist) {
