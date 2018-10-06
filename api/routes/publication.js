@@ -12,5 +12,6 @@ api.post('/guardar-publi', md_auth.ensureAuth, PublicationController.savePublica
 api.get('/publications/:page?', md_auth.ensureAuth, PublicationController.getPublications);
 api.get('/publication/:id', md_auth.ensureAuth, PublicationController.getPublication);
 api.delete('/publication/:id', md_auth.ensureAuth, PublicationController.deletePublication);
+api.post('/subir-imagen-pub/:id', md_auth.ensureAuth, PublicationController.uploadImage)
 
 module.exports = api;
