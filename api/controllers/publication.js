@@ -134,5 +134,7 @@ module.exports = {
     savePublication,
     getPublications,
     getPublication,
-    deletePublication
+    deletePublication,
+    uploadImage,
+    getImageFile
 }
