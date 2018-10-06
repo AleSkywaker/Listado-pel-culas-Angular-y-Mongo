@@ -82,6 +82,41 @@ function deletePublication(req, res) {
     })
 }
 
+function uploadImage(req, res) {
+    var userId = req.params.id;
+
+    if (req.files) {
+        var file_path = req.files.image.path;
+        var file_split = file_path.split('\\')
+        var file_name = file_split[2];
+        var ext_split = file_name.split('\.');
+        var file_ext = ext_split[1];
+
+        if (userId != req.user.sub) {
+            return removeFilesOfUploads(res, file_path, "No tienes permisos para subir una imagen a este avatar")
+        }
+
+        if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
+            //Actualizar documento de usuario logeado
+            User.findByIdAndUpdate(userId, { image: file_name }, { new: true }, (err, userUpdated) => {
+                if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
+                if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
+                return res.status(200).send({ user: userUpdated })
+            })
+        } else {
+            return removeFilesOfUploads(res, file_path, "Extension no valida")
+        }
+    } else {
+        return res.status(200).send({ message: 'No se han subido imagenes' })
+    }
+}
+
+function removeFilesOfUploads(res, file, message) {
+    fs.unlink(file, (err) => {
+        return res.status(200).send({ message: message })
+    })
+}
+
 module.exports = {
     savePublication,
     getPublications,
