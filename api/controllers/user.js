@@ -3,6 +3,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
 const Follow = require('../models/follow');
+const Publication = require('../models/publication');
 const jwtService = require('../services/jwt');
 const mongoosePaginate = require('mongoose-pagination');
 const fs = require('fs');
@@ -287,9 +288,16 @@ async function getCounterFollow(user_id) {
             .catch((err) => {
                 return handleError(err)
             })
+        var publications = await Publication.count({ 'user': user_id }).exec().then((count) => {
+                return count;
+            })
+            .catch((err) => {
+                return handleError(err)
+            })
         return {
             numeroSeguidos,
-            numeroSeguidores
+            numeroSeguidores,
+            publications
         }
     } catch (e) {
         console.log(e);
