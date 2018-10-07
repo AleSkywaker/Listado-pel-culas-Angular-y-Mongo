@@ -97,12 +97,20 @@ function uploadImage(req, res) {
         // }
 
         if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif') {
-            //Actualizar documento de la publicacion
-            Publication.findByIdAndUpdate(publicationId, { file: file_name }, { new: true }, (err, publicationUpdated) => {
-                if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
-                if (!publicationUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
-                return res.status(200).send({ publication: publicationUpdated })
+
+            Publication.findOne({ 'user': req.user.sub, '_id': publicationId }).exec((err, publication) => {
+                if (publication) {
+                    //Actualizar documento de la publicacion
+                    Publication.findByIdAndUpdate(publicationId, { file: file_name }, { new: true }, (err, publicationUpdated) => {
+                        if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
+                        if (!publicationUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
+                        return res.status(200).send({ publication: publicationUpdated })
+                    })
+                } else {
+                    return removeFilesOfUploads(res, file_path, "No tienes permisos para actualizar esta publicacion")
+                }
             })
+
         } else {
             return removeFilesOfUploads(res, file_path, "Extension no valida")
         }
