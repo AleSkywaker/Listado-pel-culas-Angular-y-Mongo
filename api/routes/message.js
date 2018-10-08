@@ -2,7 +2,7 @@
 
 const express = require('express');
 const md_auth = require('../middlewares/authenticated');
-const MessageController = requrie('../controllers//message.js');
+const MessageController = require('../controllers//message.js');
 
 const api = express.Router();
 
