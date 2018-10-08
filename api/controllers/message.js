@@ -1,5 +1,4 @@
 'use strict'
-import * as module from 'module';
 
 const moment = require('moment');
 const mongoosePaginate = require('mongoose-pagination');
