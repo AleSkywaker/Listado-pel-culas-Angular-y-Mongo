@@ -2,4 +2,10 @@
 
 const express = require('express');
 const md_auth = require('../middlewares/authenticated');
-const MessageController = requrie('../controllers//message.js')
+const MessageController = requrie('../controllers//message.js');
+
+const api = express.Router();
+
+api.get('/probandocontroller', MessageController.prueba)
+
+module.exports = api;
