@@ -19,5 +19,6 @@ function saveMessage(req, res) {
 
 }
 module.exports = {
-    prueba
+    prueba,
+    saveMessage
 }
