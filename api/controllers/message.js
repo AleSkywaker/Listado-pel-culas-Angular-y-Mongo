@@ -15,9 +15,7 @@ function prueba(req, res) {
 function saveMessage(req, res) {
     let params = req.body;
 
-    if (params.text) {
-
-    }
+    if (!params.text || !params.receiver) return res.status(200).send({ message: "Debe rellenar todos los campos" })
 
 }
 module.exports = {
