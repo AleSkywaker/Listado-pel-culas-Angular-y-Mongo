@@ -13,6 +13,11 @@ function prueba(req, res) {
 }
 
 function saveMessage(req, res) {
+    let params = req.body;
+
+    if (params.text) {
+
+    }
 
 }
 module.exports = {
