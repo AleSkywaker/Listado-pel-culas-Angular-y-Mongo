@@ -17,6 +17,19 @@ function saveMessage(req, res) {
 
     if (!params.text || !params.receiver) return res.status(200).send({ message: "Debe rellenar todos los campos" })
 
+    let message = new Message();
+    message.emitter = req.user.sub;
+    message.text = params.text;
+    message.receiver = params.receiver;
+    message.created_at = moment().unix();
+
+    message.save((err, messageStored) => {
+        if (err) return res.status(500).send({ message: "Error en la petición" })
+        if (!messageStored) return res.status(500).send({ message: "Error al enviar el mensaje" })
+
+        res.status(200).send({ message: messageStored })
+    })
+
 }
 module.exports = {
     prueba,
