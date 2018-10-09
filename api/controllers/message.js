@@ -12,6 +12,9 @@ function prueba(req, res) {
     return res.status(200).send({ message: "probando" })
 }
 
+function saveMessage(req, res) {
+
+}
 module.exports = {
     prueba
 }
