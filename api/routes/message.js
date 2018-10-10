@@ -8,6 +8,6 @@ const api = express.Router();
 
 api.get('/probandocontroller', MessageController.prueba);
 api.post('/save-message', md_auth.ensureAuth, MessageController.saveMessage)
-api.get('/messages', md_auth.ensureAuth, MessageController.getReceiverMessages)
+api.get('/messages/:page?', md_auth.ensureAuth, MessageController.getReceiverMessages)
 
 module.exports = api;
