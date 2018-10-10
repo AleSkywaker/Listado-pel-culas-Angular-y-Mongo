@@ -56,7 +56,6 @@ function getReceiverMessages(req, res) {
 }
 
 module.exports = {
-    prueba,
     saveMessage,
     getReceiverMessages
 }
