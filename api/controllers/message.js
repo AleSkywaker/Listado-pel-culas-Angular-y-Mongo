@@ -8,24 +8,24 @@ const Follow = require('../models/follow');
 const Message = require('../models/message');
 
 
-function saveMessage(req, res) {
-    let params = req.body;
+// function saveMessage(req, res) {
+//     let params = req.body;
 
-    if (!params.text || !params.receiver) return res.status(200).send({ message: "Debe rellenar todos los campos" })
+//     if (!params.text || !params.receiver) return res.status(200).send({ message: "Debe rellenar todos los campos" })
 
-    let message = new Message();
-    message.emitter = req.user.sub;
-    message.text = params.text;
-    message.receiver = params.receiver;
-    message.created_at = moment().unix();
+//     let message = new Message();
+//     message.emitter = req.user.sub;
+//     message.text = params.text;
+//     message.receiver = params.receiver;
+//     message.created_at = moment().unix();
 
-    message.save((err, messageStored) => {
-        if (err) return res.status(500).send({ message: "Error en la petición" })
-        if (!messageStored) return res.status(500).send({ message: "Error al enviar el mensaje" })
+//     message.save((err, messageStored) => {
+//         if (err) return res.status(500).send({ message: "Error en la petición" })
+//         if (!messageStored) return res.status(500).send({ message: "Error al enviar el mensaje" })
 
-        res.status(200).send({ message: messageStored })
-    })
-}
+//         res.status(200).send({ message: messageStored })
+//     })
+// }
 
 function getReceiverMessages(req, res) {
     let userId = req.user.sub;
@@ -51,7 +51,7 @@ function getReceiverMessages(req, res) {
     })
 }
 
+
 module.exports = {
-    saveMessage,
     getReceiverMessages
 }
