@@ -47,7 +47,27 @@ function getReceiverMessages(req, res) {
     })
 }
 
+function getEmitMessages(req, res) {
+    let userId = req.user.sub;
+    let page = 1;
+    let itemsPerPage = 4;
+
+    if (req.params.page) {
+        page = req.params.page;
+    }
+
+    Message.find({ receiver: userId }).populate('emitter', 'name surname image nick _id').paginate(page, itemsPerPage, (err, messages, total) => {
+        if (err) return res.status(500).send({ message: "Error en la petición de mensajes recibidos" })
+        if (!messages) return res.status(500).send({ message: "Error al recuperar mensajes" })
+        return res.status(200).send({
+            total: total,
+            pages: Math.ceil(total / itemsPerPage),
+            messages
+        })
+    })
+}
 module.exports = {
     getReceiverMessages,
-    saveMessage
+    saveMessage,
+    getEmitMessages
 }
