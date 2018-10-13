@@ -56,7 +56,7 @@ function getEmitMessages(req, res) {
         page = req.params.page;
     }
 
-    Message.find({ receiver: userId }).populate('emitter', 'name surname image nick _id').paginate(page, itemsPerPage, (err, messages, total) => {
+    Message.find({ emitter: userId }).populate('emitter receiver', 'name surname image nick _id').paginate(page, itemsPerPage, (err, messages, total) => {
         if (err) return res.status(500).send({ message: "Error en la petición de mensajes recibidos" })
         if (!messages) return res.status(500).send({ message: "Error al recuperar mensajes" })
         return res.status(200).send({
