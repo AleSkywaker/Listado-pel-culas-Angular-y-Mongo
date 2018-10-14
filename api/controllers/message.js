@@ -67,8 +67,13 @@ function getEmitMessages(req, res) {
         })
     })
 }
+
+function getMessagesNoLeidos(req, res) {
+
+}
 module.exports = {
     getReceiverMessages,
     saveMessage,
-    getEmitMessages
+    getEmitMessages,
+    getMessagesNoLeidos
 }
