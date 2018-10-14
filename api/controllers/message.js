@@ -18,6 +18,7 @@ function saveMessage(req, res) {
     message.text = params.text;
     message.receiver = params.receiver;
     message.created_at = moment().unix();
+    message.viewed = 'false'
 
     message.save((err, messageStored) => {
         if (err) return res.status(500).send({ message: "Error en la petición" })
