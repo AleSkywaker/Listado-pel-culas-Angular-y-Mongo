@@ -69,6 +69,11 @@ function getEmitMessages(req, res) {
 }
 
 function getMessagesNoLeidos(req, res) {
+    let userLogeado = req.user.sub;
+
+    Message.find({ receiver: userLogeado, viewed: 'false' }).exec((err, messages) => {
+        if (err) return res.status(500).send({ message: "Error al mostrar mensajes no leidos" })
+    })
 
 }
 module.exports = {
