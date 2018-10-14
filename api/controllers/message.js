@@ -71,8 +71,12 @@ function getEmitMessages(req, res) {
 function getMessagesNoLeidos(req, res) {
     let userLogeado = req.user.sub;
 
-    Message.find({ receiver: userLogeado, viewed: 'false' }).exec((err, messages) => {
-        if (err) return res.status(500).send({ message: "Error al mostrar mensajes no leidos" })
+    Message.count({ receiver: userLogeado, viewed: 'false' }).exec((err, count) => {
+        if (err) return res.status(500).send({ message: "Error al mostrar mensajes no leidos" });
+
+        return res.status(200).send({
+            'no_leidos': count
+        })
     })
 
 }
