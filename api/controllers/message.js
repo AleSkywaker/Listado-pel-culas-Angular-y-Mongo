@@ -78,11 +78,22 @@ function getMessagesNoLeidos(req, res) {
             'no_leidos': count
         })
     })
+}
 
+function setViewedMessages(req, res) {
+    let userLogeado = req.user.sub;
+
+    Message.update({ receiver: userLogeado, viewed: 'false' }, { viewed: 'true' }, { "multi": true }, (err, messageUpdate) => {
+        if (err) return res.status(500).send({ message: "Error al marca mensaje como leido" });
+        if (!messageUpdate) return res.status(404).send({ message: "No se ha podido actualizar estado de mensaje" });
+
+        return res.status(200).send({ messages: messageUpdate })
+    })
 }
 module.exports = {
     getReceiverMessages,
     saveMessage,
     getEmitMessages,
-    getMessagesNoLeidos
+    getMessagesNoLeidos,
+    setViewedMessages
 }
