@@ -112,11 +112,23 @@ function getMyMovie(req, res) {
             pelicula: movie
         })
     })
-
 }
+
+function getMoviesSeguido(req, res) {
+    var userSeguido = req.params.id;
+    Pelicula.find({ user: userSeguido }).exec((err, peliculas) => {
+        if (err) return res.status(500).send({ message: 'Error al devolver peliculas de usuario' });
+
+        return res.status(200).send({
+            peliculasUsuario: peliculas
+        })
+    })
+}
+
 module.exports = {
     grabarPeli,
     getMovies,
     deleteMovie,
-    getMyMovie
+    getMyMovie,
+    getMoviesSeguido
 }
