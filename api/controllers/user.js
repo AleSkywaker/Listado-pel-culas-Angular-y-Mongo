@@ -303,6 +303,14 @@ async function getCounterFollow(user_id) {
         console.log(e);
     }
 }
+
+function esCompatible(req, res) {
+    let userId = req.params.id;
+    let userLogeado = req.user.sub;
+
+
+
+}
 module.exports = {
     pruebas,
     saveUser,
