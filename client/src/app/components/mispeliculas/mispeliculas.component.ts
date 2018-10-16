@@ -40,7 +40,8 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
     console.log("Balssss", this.identity)
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
+      pageLength: 10,
+      order: [[5, "desc"]]
     }
     this._peliculaService.getMisPeliculas(this.token).subscribe(data => {
       if (data) {
