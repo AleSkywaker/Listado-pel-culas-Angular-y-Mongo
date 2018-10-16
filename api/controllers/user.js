@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
 const Follow = require('../models/follow');
 const Publication = require('../models/publication');
+const Pelicula = require('../models/pelicula');
 const jwtService = require('../services/jwt');
 const mongoosePaginate = require('mongoose-pagination');
 const fs = require('fs');
@@ -308,7 +309,26 @@ function esCompatible(req, res) {
     let userId = req.params.id;
     let userLogeado = req.user.sub;
 
+    compatibilidad(userId, userLogeado).then(v => {
+        return res.status(200).send(v)
+    })
+}
 
+async function compatibilidad(user_logeado, user_seguido) {
+
+    let pelisUserLogeado = await Pelicula.find({ user: user_logeado }).limit(5).sort('-points').exec().then((peliculas) => {
+        return peliculas
+    })
+    let pelisUserSeguido = await Pelicula.find({ user: user_seguido }).limit(5).sort('-points').exec().then((peliculas) => {
+        return peliculas
+    })
+
+    console.log('peliculas user logeado', pelisUserLogeado)
+    console.log('peliculas user seguido', pelisUserSeguido)
+    return {
+        pelisuser: pelisUserLogeado,
+        pelisuser2: pelisUserSeguido
+    }
 
 }
 module.exports = {
@@ -320,5 +340,6 @@ module.exports = {
     getCounters,
     updateUser,
     uploadImage,
-    getImageFile
+    getImageFile,
+    esCompatible
 }
