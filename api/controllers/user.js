@@ -310,24 +310,37 @@ function esCompatible(req, res) {
     let userLogeado = req.user.sub;
 
     compatibilidad(userId, userLogeado).then(v => {
-        return res.status(200).send(v)
+        if (v.pelisuser.length < 10) {
+            return res.status(200).send({ message: "elige por lo menos 10 pelis para saber compatibilidad" })
+        }
+        return res.status(200).send({ "compatibilidad": v })
     })
 }
 
 async function compatibilidad(user_logeado, user_seguido) {
 
-    let pelisUserLogeado = await Pelicula.find({ user: user_logeado }).limit(5).sort('-points').exec().then((peliculas) => {
-        return peliculas
+    let pelisUserLogeado = await Pelicula.find({ user: user_logeado }).limit(10).sort('-points').exec().then((peliculas) => {
+        let arraysDeIds = [];
+        peliculas.forEach((peli) => {
+            arraysDeIds.push(peli.imdbID)
+        })
+        return arraysDeIds
     })
-    let pelisUserSeguido = await Pelicula.find({ user: user_seguido }).limit(5).sort('-points').exec().then((peliculas) => {
-        return peliculas
+    let pelisUserSeguido = await Pelicula.find({ user: user_seguido }).limit(10).sort('-points').exec().then((peliculas) => {
+        let arraysDeIds = [];
+        peliculas.forEach((peli) => {
+            arraysDeIds.push(peli.imdbID)
+        })
+        return arraysDeIds
+    })
+    let contador = await Pelicula.countDocuments({ user: user_seguido, imdbID: { '$in': pelisUserLogeado } }).exec().then((count) => {
+        return count;
     })
 
-    console.log('peliculas user logeado', pelisUserLogeado)
-    console.log('peliculas user seguido', pelisUserSeguido)
     return {
         pelisuser: pelisUserLogeado,
-        pelisuser2: pelisUserSeguido
+        pelisuser2: pelisUserSeguido,
+        compatibilidad: contador
     }
 
 }
