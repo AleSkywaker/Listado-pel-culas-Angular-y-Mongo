@@ -8,6 +8,7 @@ import { MiPeliculaComponent } from './components/mi-pelicula/mi-pelicula.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   {
@@ -15,8 +16,8 @@ const routes: Routes = [
       { path: 'pelicula/:id', component: PeliculaComponent },
       { path: 'mipelicula/:id', component: MiPeliculaComponent },
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
-      { path: 'mispeliculas', component: MispeliculasComponent }
-
+      { path: 'mispeliculas', component: MispeliculasComponent },
+      { path: 'usuarios', component: UsersComponent }
     ]
   },
   { path: '', component: LoginComponent },
