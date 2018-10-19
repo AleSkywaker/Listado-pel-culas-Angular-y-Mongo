@@ -21,7 +21,7 @@ function saveUser(req, res) {
     if (params.password != params.password2) {
         return res.status(200).send({ message: "Las contraseñas NO son iguales" })
     }
-    if (params.name && params.surname && params.nick && params.email && params.password) {
+    if (params.name && params.email && params.password) {
 
         user.name = params.name;
         user.surname = params.surname;
@@ -33,12 +33,13 @@ function saveUser(req, res) {
         user.created_at = Date.now();
 
         User.find({
-            $or: [{ email: user.email.toLowerCase() },
-                { nick: user.nick.toLowerCase() }
-            ]
+            // $or: [{ email: user.email.toLowerCase() },
+            //     { nick: user.nick.toLowerCase() }
+            // ]
+            email: user.email.toLowerCase()
         }).exec((err, users) => {
             if (err) { return res.status(500).send({ message: "Error al guardar el usuario" }) }
-            if (users && users.length >= 1) { return res.status(200).send({ message: "El email o nick ya existe en la base de datos" }) } else {
+            if (users && users.length >= 1) { return res.status(200).send({ message: "Esta email ya existe" }) } else {
 
                 bcrypt.hash(params.password, null, null, (err, hash) => {
                     user.password = hash;
