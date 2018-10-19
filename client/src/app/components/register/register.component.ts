@@ -28,13 +28,11 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("registro cargado");
   }
 
   onSubmit(form) {
     this._userService.register(this.user).subscribe(response => {
       if (response.user && response.user._id) {
-        console.log("data", response.user)
         this.status = 'success';
         this.message = response.message;
         form.reset();
@@ -50,6 +48,7 @@ export class RegisterComponent implements OnInit {
   registrate() {
     console.log(this.inputEl)
     console.log("Usuario a registrar", this.user)
+
   }
 
 
