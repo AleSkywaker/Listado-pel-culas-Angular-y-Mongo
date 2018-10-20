@@ -53,6 +53,7 @@ export class RegisterComponent implements OnInit {
         this.status = 'success';
         this.texto = response.message;
         this.message = response.message;
+        this._router.navigate(['/login'])
       } else {
         this.status = 'error';
         this.texto = response.message;
