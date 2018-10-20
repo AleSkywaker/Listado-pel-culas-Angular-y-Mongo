@@ -24,6 +24,7 @@ import { MiPeliculaComponent } from './components/mi-pelicula/mi-pelicula.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
+import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 
 
 
@@ -37,7 +38,8 @@ import { UsersComponent } from './components/users/users.component';
     MiPeliculaComponent,
     LoginComponent,
     RegisterComponent,
-    UsersComponent
+    UsersComponent,
+    EditarperfilComponent
   ],
   imports: [
     BrowserModule,
