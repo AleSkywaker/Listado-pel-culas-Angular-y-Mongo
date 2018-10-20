@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
     this._userService.singUp(this.user).subscribe(response => {
       this.identity = response.user;
       if (!this.identity || !this.identity._id) {
-        this.status = "error";
         this.message = "Usuario no existe o contraseña invalida"
       } else {
         this.status = "success";
@@ -90,12 +89,12 @@ export class LoginComponent implements OnInit {
       if (this.token.length <= 0) {
         this.status = "error";
       } else {
-        this.status = "success";
         //TODO: Persistir token del usuario
         localStorage.setItem('token', JSON.stringify(this.token))
         //TODO: Conseguir las estadisticas del usuario
         this.message = response.message;
-        this._router.navigate(['inicio'])
+        //TODO: redireccionar a completar registro
+        this.getCounters()
       }
     },
       error => {
@@ -106,7 +105,16 @@ export class LoginComponent implements OnInit {
           this.message = error.error.message;
         }
       })
+  }
 
+  getCounters() {
+    this._userService.getCounters().subscribe((response) => {
+      localStorage.setItem('stats', JSON.stringify(response))
+      this.status = "success";
+      this._router.navigate(['inicio'])
+    }, (error) => {
+      console.log(<any>error)
+    })
   }
 
 }
