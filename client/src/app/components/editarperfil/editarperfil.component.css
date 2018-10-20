@@ -1,0 +1,17 @@
+input[type=radio] {
+    display: none;
+}
+
+.check {
+    opacity: 0.5;
+    color: #996;
+}
+
+.box {
+    margin-bottom: 1px;
+    width: 60px;
+}
+
+.user-images {
+    display: flex;
+}
