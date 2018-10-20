@@ -12,6 +12,7 @@ export class User {
     public genero: String,
     public dateOfBirth: String,
     public role: String,
-    public gettoken: any
+    public gettoken: any,
+    public image: any
   ) { }
 }
