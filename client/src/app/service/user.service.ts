@@ -10,8 +10,9 @@ import { User } from '../models/users';
 export class UserService implements OnInit {
 
   public url: String;
-  public identity: String;
-  public token: String;
+  public identity: any;
+  public token: any;
+  public stats: String;
 
   constructor(private _http: HttpClient) {
     this.url = GLOBAL.url;
@@ -57,6 +58,29 @@ export class UserService implements OnInit {
       this.token = null;
     }
     return token;
+  }
+
+  getStats() {
+    let stats = JSON.parse(localStorage.getItem('stats'));
+
+    if (stats != undefined) {
+      this.stats = stats;
+    } else {
+      this.stats = null;
+    }
+    return this.stats;
+  }
+
+  getCounters(userId = null) {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', this.getToken())
+
+    if (userId != null) {
+      return this._http.get(this.url + '/counters/' + userId, { headers: headers })
+    } else {
+      return this._http.get(this.url + '/counters/', { headers: headers })
+    }
   }
 
 }
