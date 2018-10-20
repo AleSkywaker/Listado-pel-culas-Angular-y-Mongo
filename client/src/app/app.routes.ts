@@ -9,11 +9,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { UsersComponent } from './components/users/users.component';
+import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 
 const routes: Routes = [
   {
     path: 'inicio', component: InicioComponent, children: [
+      { path: '', component: MispeliculasComponent },
       { path: 'pelicula/:id', component: PeliculaComponent },
+      { path: 'editar-perfil', component: EditarperfilComponent },
       { path: 'mipelicula/:id', component: MiPeliculaComponent },
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
       { path: 'mispeliculas', component: MispeliculasComponent },
