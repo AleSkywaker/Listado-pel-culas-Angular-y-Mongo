@@ -1,17 +1,35 @@
+h3,
+form {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Lobster', cursive;
+    background: #fafafa;
+}
+
 input[type=radio] {
     display: none;
 }
 
 .check {
     opacity: 0.5;
-    color: #996;
+    color: rgb(255, 255, 8);
+    border: solid 2px black;
+}
+
+.checked {
+    opacity: 0.5;
+    color: rgb(255, 255, 8);
 }
 
 .box {
     margin-bottom: 1px;
-    width: 60px;
+    background: white;
 }
 
 .user-images {
-    display: flex;
+    /* display: flex; */
+}
+
+.imagecustom>img {
+    max-width: 100px;
+    max-height: 100px;
 }
