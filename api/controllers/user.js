@@ -206,15 +206,37 @@ async function followUserIds(user_id) {
 function updateUser(req, res) {
     var userId = req.params.id;
     var update = req.body;
-    //borrar propiedad password
+    //borrar propiedad
+
+
     delete update.password;
     if (userId != req.user.sub) {
         return res.status(500).send({ message: "No tienes permisos para actualizar los datos del usuario" })
     }
-    User.findByIdAndUpdate(userId, update, { new: true }, (err, userUpdated) => {
-        if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
-        if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
-        return res.status(200).send({ user: userUpdated })
+    if (update.image == "" || update.image == null || update.image == undefined) {
+        return res.status(200).send({ message: "Debe Seleccionar una imagen o subir la tuya propia" })
+    }
+    console.log(update)
+    User.find({
+        $or: [
+            { email: update.email },
+            { nick: update.nick }
+        ]
+    }).exec((err, users) => {
+        console.log(users)
+        var user_isset = false;
+        users.forEach((user) => {
+            if (user && user._id != userId) user_isset = true;
+        })
+       if(user_isset) return res.status(200).send({ message: "Los datos ya estan en uso" })
+        User.findByIdAndUpdate(userId, update, { new: true }, (err, userUpdated) => {
+            if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
+            if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
+            return res.status(200).send({
+                user: userUpdated,
+                message: "Se han actualizado tus datos correctamente"
+            })
+        })
     })
 }
 
