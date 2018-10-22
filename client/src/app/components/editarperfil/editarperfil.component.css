@@ -38,3 +38,7 @@ input[type=file] {
     max-width: 100px;
     max-height: 100px;
 }
+
+.imagendefault>img {
+    max-width: 50%;
+}
