@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/users';
 import { UserService } from './../../service/user.service';
-
+import { UploadService } from './../../service/upload.service';
+import { GLOBAL } from './../../service/global';
 @Component({
   selector: 'app-editarperfil',
   templateUrl: './editarperfil.component.html',
-  styleUrls: ['./editarperfil.component.css']
+  styleUrls: ['./editarperfil.component.css'],
+  providers: [UploadService]
 })
 export class EditarperfilComponent implements OnInit {
 
@@ -17,20 +19,23 @@ export class EditarperfilComponent implements OnInit {
   public identity: any;
   public urlsImagesDefault: Array<any>;
   public message: String;
+  public url: string;
 
   public chicoFormal: String;
   public monoLunatico: String;
   constructor(
     private _userSerivice: UserService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _uploadService: UploadService
   ) {
     this.titulo = "Editar perfil";
     this.token = this._userSerivice.getToken();
     this.user = this._userSerivice.getIdentity();
     this.identity = this.user;
-    this.chicoFormal = "../../../assets/userdefaultimage/chico2.png";
-    this.monoLunatico = "../../../assets/userdefaultimage/astronautmonkey.jpg";
+    this.url = GLOBAL.url;
+    this.chicoFormal = "paparazzi.jpg";
+    this.monoLunatico = "pelovioleta.jpg";
     this.urlsImagesDefault = [
       { 'urlImage': '../../../assets/userdefaultimage/chico2.png', 'value': 1 },
       { 'urlImage': '../../../assets/userdefaultimage/chico1.jpg', 'value': 2 },
@@ -86,7 +91,13 @@ export class EditarperfilComponent implements OnInit {
           localStorage.setItem('identity', JSON.stringify(this.user))
           this.identity = this.user;
           this.message = response.message;
+          console.log("pasa por aqui", response)
+          this.user.image = response.user.image;
+          localStorage.setItem('identity', JSON.stringify(this.user));
           //Subida imagen de usuario
+
+
+
         }
       },
       error => {
@@ -102,9 +113,26 @@ export class EditarperfilComponent implements OnInit {
   }
   clak(v) {
     console.log("clak", v)
-    // console.log("evento", e)
-
     this.user.image = v;
+  }
+
+  public filesToUpload: Array<File>;
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    console.log("this file", this.filesToUpload)
+
+
+
+    this._uploadService.makeFileRequest(this.url + '/upload-image-user/' + this.user._id, [], this.filesToUpload, this.token, 'image')
+      .then((result: any) => {
+        console.log("resultado", result);
+        this.user.image = result.user.image;
+        localStorage.setItem('identity', JSON.stringify(this.user));
+        // location.reload();
+      })
+
+
   }
 
 }
