@@ -12,10 +12,10 @@
 
         <div class="form-group user-images">
             <div class="row">
-                <div class="col-md-2 box"><label class="imagecustom"><img src="{{chicoFormal}}" alt="..." class="img-thumbnail img-check">
-                <input (click)="clak(chicoFormal)" type="radio" name="image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
+                <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/paparazzi.jpg' }}" alt="..." class="img-thumbnail img-check">
+                <input (click)="clak(chicoFormal)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
 
-                <div class="col-md-2 box"><label class="imagecustom"><img src="{{monoLunatico}}" alt="..." class="img-thumbnail img-check">
+                <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/pelovioleta.jpg' }}" alt="..." class="img-thumbnail img-check">
                 <input (click)="clak(monoLunatico)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
 
                 <div class="col-md-2 box"><label class="imagecustom"><img src="../../../assets/userdefaultimage/leon3.jpg" alt="..." class="img-thumbnail img-check">
@@ -67,7 +67,7 @@
                   <input type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val4" class="hidden" autocomplete="off"></label></div>
 
                 <div class="col-md-2 box"><label class="imagecustom"><img src="../../../assets/userdefaultimage/japo.jpg" alt="..." class="img-thumbnail img-check">
-                  <input type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val5" class="hidden" autocomplete="off"></label></div>
+                  <input type="file" (change)="fileChangeEvent($event)"></label></div>
             </div>
         </div>
 
@@ -125,5 +125,9 @@
 
         <input type="submit" value="Guardar cambios" class="btn btn-warning" [disabled]="!userEditForm.form.valid" />
     </form>
+
+    <div *ngIf="user.image">
+        <img src="{{url + '/get-image-user/' + user.image }}" alt="">
+    </div>
 
 </div>
