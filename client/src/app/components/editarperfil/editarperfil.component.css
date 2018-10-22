@@ -9,6 +9,10 @@ input[type=radio] {
     display: none;
 }
 
+input[type=file] {
+    display: none;
+}
+
 .check {
     opacity: 0.5;
     color: rgb(255, 255, 8);
@@ -25,9 +29,10 @@ input[type=radio] {
     background: white;
 }
 
-.user-images {
-    /* display: flex; */
-}
+
+/* .user-images {
+    display: flex;
+} */
 
 .imagecustom>img {
     max-width: 100px;
