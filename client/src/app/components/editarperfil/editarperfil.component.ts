@@ -21,8 +21,8 @@ export class EditarperfilComponent implements OnInit {
   public message: String;
   public url: string;
 
-  public chicoFormal: String;
-  public monoLunatico: String;
+  public virtualgirl: String;
+  public morena: String;
   constructor(
     private _userSerivice: UserService,
     private _route: ActivatedRoute,
@@ -34,8 +34,8 @@ export class EditarperfilComponent implements OnInit {
     this.user = this._userSerivice.getIdentity();
     this.identity = this.user;
     this.url = GLOBAL.url;
-    this.chicoFormal = "paparazzi.jpg";
-    this.monoLunatico = "pelovioleta.jpg";
+    this.virtualgirl = "virtualgirl.jpg";
+    this.morena = "morena.jpg";
     this.urlsImagesDefault = [
       { 'urlImage': '../../../assets/userdefaultimage/chico2.png', 'value': 1 },
       { 'urlImage': '../../../assets/userdefaultimage/chico1.jpg', 'value': 2 },
