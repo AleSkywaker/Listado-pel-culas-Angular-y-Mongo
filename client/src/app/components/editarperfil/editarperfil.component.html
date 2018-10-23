@@ -68,7 +68,7 @@
                     <div class="col-md-2 box"><label class="imagecustom"><img src="../../../assets/userdefaultimage/chico2.png" alt="..." class="img-thumbnail img-check">
                     <input type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val4" class="hidden" autocomplete="off"></label></div>
 
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="../../../assets/userdefaultimage/japo.jpg" alt="..." class="img-thumbnail img-check">
+                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/snapshots.jpg' }}" alt="..." class="img-thumbnail img-check">
                     <input type="file" (change)="fileChangeEvent($event)"></label></div>
                 </div>
             </div>
