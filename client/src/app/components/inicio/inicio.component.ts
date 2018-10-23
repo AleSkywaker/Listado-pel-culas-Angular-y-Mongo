@@ -1,6 +1,7 @@
 import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { GLOBAL } from '../../service/global'
 import * as $ from 'jquery';
 
 @Component({
@@ -13,13 +14,15 @@ export class InicioComponent implements OnInit {
   public tooltip: boolean;
   public tooltipName;
   public identity;
+  public url: String;
 
   constructor(
     private _router: Router,
     private _userService: UserService
   ) {
     this.tooltip = true;
-    this.tooltipName = "cerrar"
+    this.tooltipName = "cerrar";
+    this.url = GLOBAL.url;
   }
 
   ngOnInit() {
