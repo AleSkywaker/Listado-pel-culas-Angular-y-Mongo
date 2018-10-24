@@ -20,7 +20,8 @@ const routes: Routes = [
       { path: 'mipelicula/:id', component: MiPeliculaComponent },
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
       { path: 'mispeliculas', component: MispeliculasComponent },
-      { path: 'usuarios', component: UsersComponent }
+      { path: 'usuarios/:page', component: UsersComponent },
+      { path: '**', component: MispeliculasComponent },
     ]
   },
   { path: '', component: LoginComponent },
