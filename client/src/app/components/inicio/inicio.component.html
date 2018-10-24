@@ -25,7 +25,7 @@
         </div>
 
         <div class="avatar text-center ml-4">
-            <img src="{{url + '/get-image-user/' +  identity.image}}" alt="" />
+            <img src="{{url + '/get-image-user/' +  identity.image}}" alt="" *ngIf="identity && identity.image" />
         </div>
 
         <ul class="list-unstyled components">
