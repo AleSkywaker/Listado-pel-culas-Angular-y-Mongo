@@ -16,6 +16,9 @@ export class UsersComponent implements OnInit {
   public title: string;
   public identity;
   public token;
+  public page;
+  public next_page;
+  public prev_page;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,6 +31,28 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  actualPage() {
+    this._route.params.subscribe(params => {
+      let page = +params['page'];
+      this.page = page;
+
+      if (!page) {
+        page = 1;
+      } else {
+         this.next_page = page +1;
+         this.prev_page = page-1;
+
+         if(this.prev_page <= 0){
+           this.prev_page =1;
+         }
+      }
+
+
+      //Devolver listado usuarios
+    })
   }
 
 }
