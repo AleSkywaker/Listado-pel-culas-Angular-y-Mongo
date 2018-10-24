@@ -20,6 +20,24 @@ export class EditarperfilComponent implements OnInit {
   public urlsImagesDefault: Array<any>;
   public message: String;
   public url: string;
+  public astronautmonkey: string;
+  public astronauta3: string;
+
+
+  public budista: string;
+  public japo: string;
+
+  public chico1: string;
+  public chico2: string;
+  public chica10: string;
+  public chica8: string;
+  public chica41: string;
+  public chica22: string;
+  public chica15: string;
+  public unicorn: string;
+  public mono: string;
+  public chica19: string;
+  public chica45: string;
 
   public virtualgirl: String;
   public morena: String;
@@ -36,6 +54,30 @@ export class EditarperfilComponent implements OnInit {
     this.url = GLOBAL.url;
     this.virtualgirl = "virtualgirl.jpg";
     this.morena = "morena.jpg";
+    this.astronautmonkey = "astronautmonkey.jpg";
+    this.astronauta3 = "astronauta3.jpg";
+    this.budista = "budista.png";
+    this.japo = "japo.jpg";
+
+    this.chico1 = "chico1.jpg";
+    this.chico2 = "chico2.png";
+    this.chica10 = "chica10.jpg";
+    this.chica8 = "chica8.jpg";
+    this.chica41 = "chica41.png";
+    this.chica22 = "chica22.jpg";
+    this.chica15 = "chica15.jpg";
+    this.unicorn = "unicorn.jpg";
+    this.mono = "mono.jpg";
+    this.chica19 = "chica19.png";
+    this.chica45 = "chica45.jpg";
+
+
+
+
+
+
+
+
     this.urlsImagesDefault = [
       { 'urlImage': '../../../assets/userdefaultimage/chico2.png', 'value': 1 },
       { 'urlImage': '../../../assets/userdefaultimage/chico1.jpg', 'value': 2 },
@@ -43,34 +85,10 @@ export class EditarperfilComponent implements OnInit {
       { 'urlImage': '../../../assets/userdefaultimage/atronauta3.jpg', 'value': 4 },
       { 'urlImage': '../../../assets/userdefaultimage/budista.png', 'value': 5 },
       { 'urlImage': '../../../assets/userdefaultimage/chica42.png', 'value': 6 },
-
-      { 'urlImage': '../../../assets/userdefaultimage/chica15.jpg', 'value': 7 },
-      { 'urlImage': '../../../assets/userdefaultimage/chica11.jpg', 'value': 8 },
-      { 'urlImage': '../../../assets/userdefaultimage/japo.jpg', 'value': 9 },
-      { 'urlImage': '../../../assets/userdefaultimage/chica22.jpg', 'value': 10 },
-      { 'urlImage': '../../../assets/userdefaultimage/chica18.jpg', 'value': 11 },
-      { 'urlImage': '../../../assets/userdefaultimage/chica45.jpg', 'value': 12 },
-
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-      // { 'urlImage': '../../../assets/userdefaultimage/mono.jpg', 'value': 2 },
-
     ]
   }
 
   ngOnInit() {
-    // console.log("this user", this.user)
-
     $('.img-check').click(function (e) {
       $('.img-check').not(this).removeClass('check')
         .siblings('input').prop('checked', false);
