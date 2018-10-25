@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit {
   public page;
   public next_page;
   public prev_page;
+  public status;
 
   constructor(
     private _route: ActivatedRoute,
@@ -31,7 +32,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.actualPage()
   }
 
   actualPage() {
@@ -42,17 +43,36 @@ export class UsersComponent implements OnInit {
       if (!page) {
         page = 1;
       } else {
-         this.next_page = page +1;
-         this.prev_page = page-1;
+        this.next_page = page + 1;
+        this.prev_page = page - 1;
 
-         if(this.prev_page <= 0){
-           this.prev_page =1;
-         }
+        if (this.prev_page <= 0) {
+          this.prev_page = 1;
+        }
       }
-
-
       //Devolver listado usuarios
+      this.getUsers(page)
     })
+  }
+
+  getUsers(page) {
+    this._userService.getUsers(page).subscribe(
+      response => {
+        if (!response.usuarios) {
+          this.status = "error"
+        } else {
+          console.log(response.usuarios)
+        }
+
+      }, error => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+          this.status = "error"
+        }
+      }
+    )
   }
 
 }
