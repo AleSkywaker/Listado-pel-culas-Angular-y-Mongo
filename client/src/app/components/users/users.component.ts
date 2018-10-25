@@ -68,6 +68,10 @@ export class UsersComponent implements OnInit {
           this.users = response.usuarios;
           this.page = response.paginas;
 
+          if (page > this.pages) {
+            this._router.navigate(['/'])
+          }
+
           // response.usuarioMeSiguen
           // response.usuariosSeguidos
         }
