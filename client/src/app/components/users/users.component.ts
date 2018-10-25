@@ -20,6 +20,9 @@ export class UsersComponent implements OnInit {
   public next_page;
   public prev_page;
   public status;
+  public total;
+  public pages;
+  public users: User[];
 
   constructor(
     private _route: ActivatedRoute,
@@ -61,7 +64,12 @@ export class UsersComponent implements OnInit {
         if (!response.usuarios) {
           this.status = "error"
         } else {
-          console.log(response.usuarios)
+          this.total = response.totalusuarios;
+          this.users = response.usuarios;
+          this.page = response.paginas;
+
+          // response.usuarioMeSiguen
+          // response.usuariosSeguidos
         }
 
       }, error => {
