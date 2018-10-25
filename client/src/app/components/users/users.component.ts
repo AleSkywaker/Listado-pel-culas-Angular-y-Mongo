@@ -66,10 +66,10 @@ export class UsersComponent implements OnInit {
         } else {
           this.total = response.totalusuarios;
           this.users = response.usuarios;
-          this.page = response.paginas;
+          this.pages = response.paginas;
 
           if (page > this.pages) {
-            this._router.navigate(['/'])
+            this._router.navigate(['/inicio/usuarios', 1])
           }
 
           // response.usuarioMeSiguen
