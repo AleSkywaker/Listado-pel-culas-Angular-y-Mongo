@@ -151,7 +151,7 @@ function getUsers(req, res) {
         page = req.params.page;
     }
 
-    let userPerPage = 5;
+    let userPerPage = 4;
 
     User.find().sort('_id').paginate(page, userPerPage, (err, users, total) => {
         if (err) return res.status(403).send({ message: "error al devolver los usuarios" })
@@ -228,7 +228,7 @@ function updateUser(req, res) {
         users.forEach((user) => {
             if (user && user._id != userId) user_isset = true;
         })
-       if(user_isset) return res.status(200).send({ message: "Los datos ya estan en uso" })
+        if (user_isset) return res.status(200).send({ message: "Los datos ya estan en uso" })
         User.findByIdAndUpdate(userId, update, { new: true }, (err, userUpdated) => {
             if (err) return res.status(403).send({ message: "error al actualizar los datos del usuario" })
             if (!userUpdated) return res.status(404).send({ message: "No se ha podido actualizar los datos del usuario" })
