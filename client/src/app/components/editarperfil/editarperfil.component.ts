@@ -97,8 +97,6 @@ export class EditarperfilComponent implements OnInit {
     });
   }
   onSubmit(form) {
-    console.log("usir", this.user);
-    console.log("formis", form);
     this._userSerivice.updateUser(this.user).subscribe(
       response => {
         if (!response.user) {
@@ -109,8 +107,6 @@ export class EditarperfilComponent implements OnInit {
           localStorage.setItem('identity', JSON.stringify(this.user))
           this.identity = this.user;
           this.message = response.message;
-          console.log("pasa por aqui", response)
-          this.user.image = response.user.image;
           localStorage.setItem('identity', JSON.stringify(this.user));
           //Subida imagen de usuario
 
