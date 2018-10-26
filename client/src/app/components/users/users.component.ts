@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
   public total;
   public pages;
   public users: User[];
+  public url;
 
   constructor(
     private _route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class UsersComponent implements OnInit {
     this.title = 'Gente';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.url = GLOBAL.url;
   }
 
   ngOnInit() {
@@ -66,6 +68,7 @@ export class UsersComponent implements OnInit {
         } else {
           this.total = response.totalusuarios;
           this.users = response.usuarios;
+          console.log("usuarios", this.users)
           this.pages = response.paginas;
 
           if (page > this.pages) {
