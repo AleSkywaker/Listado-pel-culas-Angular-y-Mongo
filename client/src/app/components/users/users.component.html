@@ -1,6 +1,19 @@
 <div class="wrapper">
 
-    <div class="flip-card">
+    <div class="flip-card" *ngFor="let user of users">
+        <div class="flip-card-inner">
+            <div class="flip-card-front imagenavatar">
+                <img src="{{url + '/get-image-user/' + user.image}}" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+                <h1>{{user.name}}</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
                 <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
@@ -51,7 +64,6 @@
             </div>
         </div>
     </div>
-
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -75,18 +87,6 @@
                 <p>We love that guy</p>
             </div>
         </div>
-    </div>
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div>
+    </div> -->
 
 </div>
