@@ -48,3 +48,18 @@
             color: white;
             transform: rotateY(180deg);
         }
+        
+        .imagenavatar {
+            width: 100%;
+            /* height: 135px; */
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        
+        .imagenavatar>img {
+            width: 90%;
+            height: 90%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
