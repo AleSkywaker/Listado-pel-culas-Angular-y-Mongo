@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GLOBAL } from './global';
 import { User } from '../models/users';
-
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class UserService implements OnInit {
@@ -13,9 +13,14 @@ export class UserService implements OnInit {
   public identity: any;
   public token: any;
   public stats: String;
+  private image = new BehaviorSubject<any>('');
+  cost = this.image.asObservable()
 
   constructor(private _http: HttpClient) {
     this.url = GLOBAL.url;
+  }
+  changeNav(image) {
+    this.image.next(image);
   }
 
   ngOnInit() {
