@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GLOBAL } from '../../service/global'
 import * as $ from 'jquery';
 
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -27,6 +28,9 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
     this.identity = this._userService.getIdentity();
+    this._userService.cost.subscribe(image => {
+      this.identity = this._userService.getIdentity();
+    })
   }
 
   abrirSidebar() {
