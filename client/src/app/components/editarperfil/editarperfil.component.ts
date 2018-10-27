@@ -107,6 +107,7 @@ export class EditarperfilComponent implements OnInit {
           localStorage.setItem('identity', JSON.stringify(this.user))
           this.identity = this.user;
           this.message = response.message;
+          this._userSerivice.changeNav(response.user.image)
           localStorage.setItem('identity', JSON.stringify(this.user));
           //Subida imagen de usuario
 
