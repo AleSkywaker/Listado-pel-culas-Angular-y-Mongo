@@ -4,11 +4,23 @@
         <div class="flip-card-inner">
             <div class="flip-card-front imagenavatar">
                 <img src="{{url + '/get-image-user/' + user.image}}" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
                 <h1>{{user.name}}</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
+            </div>
+
+            <div class="flip-card-back">
+                <div class="mt-4 inside-back">
+
+                    <p>Architect & Engineer</p>
+                    <p>We love that guy</p>
+
+                    <!-- SEGUIR/DEJAR DE SEGUIR -->
+                    <!-- CHECK COMPATIBILITY -->
+                    <button type="button" class="btn btn-success">Seguir</button>
+                    <button type="button" class="btn btn-warning ml-1">Dejar de seguir</button>
+                    <br>
+                    <button type="button" class="btn btn-info btn-lg mt-2">Ver compatibilidad</button>
+                </div>
+
             </div>
         </div>
     </div>
