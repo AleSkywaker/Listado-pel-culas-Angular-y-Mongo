@@ -4,6 +4,7 @@
         <div class="flip-card-inner">
             <div class="flip-card-front imagenavatar" *ngIf="user.image">
                 <img src="{{url + '/get-image-user/' + user.image}}" alt="Avatar" style="width:300px;height:300px;">
+
                 <h1>{{user.name}}</h1>
             </div>
             <div class="flip-card-front avatar-default" *ngIf="!user.image">
