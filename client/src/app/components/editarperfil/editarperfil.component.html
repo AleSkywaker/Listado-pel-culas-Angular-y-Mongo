@@ -117,7 +117,7 @@
 
             <p>
                 <label>Descripción acerca de ti</label>
-                <textarea name="description" #description="ngModel" [(ngModel)]="user.description" class="form-control" placeholder="¿Donde vives?, ¿Cual es tu ciudad o lugar favorito?, ¿cual es tu serie o pelicula favorita?, ¿Que música escuchas?, ¿Que te gusta hacer?, Indica algún hobbie......."
+                <textarea maxlength="280" name="description" #description="ngModel" [(ngModel)]="user.description" class="form-control" placeholder="¿Donde vives?, ¿Cual es tu ciudad o lugar favorito?, ¿cual es tu serie o pelicula favorita?, ¿Que música escuchas?, ¿Que te gusta hacer?, Indica algún hobbie......."
                     required></textarea>
                 <span *ngIf="!description.value && description.touched">
              El nombre es obligatorio
