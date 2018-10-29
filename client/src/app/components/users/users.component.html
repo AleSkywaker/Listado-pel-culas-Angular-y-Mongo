@@ -4,106 +4,48 @@
         <div class="flip-card-inner">
             <div class="flip-card-front imagenavatar" *ngIf="user.image">
                 <img src="{{url + '/get-image-user/' + user.image}}" alt="Avatar" style="width:300px;height:300px;">
-
                 <h1>{{user.name}}</h1>
+                <p>{{user.nick}}</p>
             </div>
             <div class="flip-card-front avatar-default" *ngIf="!user.image">
                 <img src="assets/avatar.png" alt="Avatar">
                 <h1>{{user.name}}</h1>
+                <p>{{user.nick}}</p>
             </div>
 
             <div class="flip-card-back">
-                <div class="mt-4 inside-back">
+                <div class="mt-4 inside-back pr-3 pl-3">
+                    <h3>Acerca de {{user.name}}</h3>
+                    <!-- <img src="assets/separador/separador.gif"> -->
+                    <img src="assets/separador/separador4.png">
+                    <p class="mt-2">{{user.description}}</p>
 
-                    <p>Architect & Engineer</p>
-                    <p>We love that guy</p>
+                    <div class="botones pr-3 pl-3">
+                        <!-- SEGUIR/DEJAR DE SEGUIR -->
 
-                    <!-- SEGUIR/DEJAR DE SEGUIR -->
-                    <!-- CHECK COMPATIBILITY -->
-                    <button type="button" class="btn btn-success">Seguir</button>
-                    <button type="button" class="btn btn-warning ml-1">Dejar de seguir</button>
-                    <br>
-                    <button type="button" class="btn btn-info btn-lg mt-2">Ver compatibilidad</button>
+                        <button type="button" class="btn btn-outline-warning btn-sm boton-perfil"><i class="far fa-thumbs-up"></i> Seguir</button>
+                        <button type="button" class="btn btn-outline-warning ml-2 btn-sm  boton-perfil">Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i></button>
+
+                        <br>
+                        <!-- CHECK COMPATIBILITY -->
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil">Ver compatibilidad</button>
+                        <!-- Ver perfil -->
+
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil">Ver perfil</button>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div>
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div>
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img src="../../../assets/avatar.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-                <h1>John Doe</h1>
-                <p>Architect & Engineer</p>
-                <p>We love that guy</p>
-            </div>
-        </div>
-    </div> -->
+    <!-- PAGINACION -->
+    <ul class="pagination pull right">
+        <li *ngIf="page > 1">
+            <a [routerLink]="['/inicio/usuarios', prev_page]">Anterior</a>
+        </li>
+        <li *ngIf="pages != page">
+            <a [routerLink]="['/inicio/usuarios', next_page]">Siguiente</a>
+        </li>
+    </ul>
 
 </div>
