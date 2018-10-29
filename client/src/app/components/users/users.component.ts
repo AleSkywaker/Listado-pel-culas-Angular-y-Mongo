@@ -24,6 +24,7 @@ export class UsersComponent implements OnInit {
   public pages;
   public users: User[];
   public url;
+  public follows;
 
   constructor(
     private _route: ActivatedRoute,
@@ -44,6 +45,10 @@ export class UsersComponent implements OnInit {
     this._route.params.subscribe(params => {
       let page = +params['page'];
       this.page = page;
+
+      if (!page) {
+        page = 1;
+      }
 
       if (!page) {
         page = 1;
@@ -68,8 +73,8 @@ export class UsersComponent implements OnInit {
         } else {
           this.total = response.totalusuarios;
           this.users = response.usuarios;
-          console.log("usuarios", this.users)
           this.pages = response.paginas;
+          this.follows = response.users_following;
 
           if (page > this.pages) {
             this._router.navigate(['/inicio/usuarios', 1])
