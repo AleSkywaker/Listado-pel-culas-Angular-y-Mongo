@@ -40,7 +40,8 @@
         }
         
         .flip-card-front {
-            background-color: #e4a586;
+            /* background-color: #e4a586; */
+            background-color: #b8ffc2;
             color: black;
         }
         
@@ -73,4 +74,18 @@
             background-position: 50% 50%;
             border-radius: 40px 40px 8px 8px;
             /* border-radius: 50%; */
+        }
+        
+        .botones {
+            /* margin-top: 290px; */
+        }
+        
+        .inside-back>img {
+            max-width: 90%;
+        }
+        
+        .boton-perfil {
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
         }
