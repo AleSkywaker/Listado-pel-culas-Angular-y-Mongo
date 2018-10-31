@@ -74,8 +74,8 @@ export class UsersComponent implements OnInit {
           this.total = response.totalusuarios;
           this.users = response.usuarios;
           this.pages = response.paginas;
-          this.follows = response.users_following;
-
+          this.follows = response.usuariosSeguidos;
+          console.log(this.follows)
           if (page > this.pages) {
             this._router.navigate(['/inicio/usuarios', 1])
           }
@@ -93,6 +93,15 @@ export class UsersComponent implements OnInit {
         }
       }
     )
+  }
+
+  public followUserOver;
+
+  mouseEnter(user) {
+    this.followUserOver = user;
+  }
+  mouseLeave(user) {
+    this.followUserOver = 0;
   }
 
 }
