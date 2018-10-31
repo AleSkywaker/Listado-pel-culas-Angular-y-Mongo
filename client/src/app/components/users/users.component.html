@@ -23,14 +23,22 @@
                     <div class="botones pr-3 pl-3">
                         <!-- SEGUIR/DEJAR DE SEGUIR -->
 
-                        <button type="button" class="btn btn-outline-warning btn-sm boton-perfil"><i class="far fa-thumbs-up"></i> Seguir</button>
-                        <button type="button" class="btn btn-outline-warning ml-2 btn-sm  boton-perfil">Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i></button>
-
-                        <br>
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) < 0"><span>
+                                <i class="far fa-thumbs-up"></i> Seguir
+                        </span></button>
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)" (mouseleave)="mouseLeave(user._id)">
+                            <span *ngIf="user._id == followUserOver; else following">
+                                Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i>
+                            </span>
+                            <ng-template #following>
+                                <span>
+                                    Siguiendo &nbsp;<i class="fas fa-user-check"></i>
+                                </span>
+                            </ng-template>
+                        </button>
                         <!-- CHECK COMPATIBILITY -->
                         <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil">Ver compatibilidad</button>
                         <!-- Ver perfil -->
-
                         <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil">Ver perfil</button>
                     </div>
                 </div>
