@@ -26,7 +26,7 @@
                         <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) < 0"><span>
                                 <i class="far fa-thumbs-up"></i> Seguir
                         </span></button>
-                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)" (mouseleave)="mouseLeave(user._id)">
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)" (mouseleave)="mouseLeave(user._id)" [class.btn-outline-danger]="user._id == followUserOver">
                             <span *ngIf="user._id == followUserOver; else following">
                                 Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i>
                             </span>
