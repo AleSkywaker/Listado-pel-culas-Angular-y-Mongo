@@ -19,4 +19,11 @@ export class FollowService implements OnInit {
     console.log("follow component load");
     // throw new Error("Method not implemented.");
   }
+  addFollow(token, follow): Observable<any> {
+    let params = JSON.stringify(follow);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Authorization', token)
+
+    return this._http.post(this.url + '/seguir-usuario', params, { headers: headers });
+  }
 }
