@@ -9,6 +9,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class FollowService implements OnInit {
+
+  public url: string;
+
+  constructor(private _http: HttpClient) {
+
+  }
   ngOnInit(): void {
     throw new Error("Method not implemented.");
   }
