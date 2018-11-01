@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environmentt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,14 +8,12 @@ import { Follow } from '../models/follow';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class FollowService implements OnInit {
+export class FollowService {
 
   public url: string;
 
   constructor(private _http: HttpClient) {
 
   }
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
+
 }
