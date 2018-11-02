@@ -28,9 +28,10 @@ export class FollowService implements OnInit {
   }
 
   deleteFollow(token, id) {
-    let params = JSON.stringify(id);
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token)
+
+    return this._http.delete(this.url + '/dejardeseguir/' + id, { headers })
 
   }
 }
