@@ -27,7 +27,7 @@ export class FollowService implements OnInit {
     return this._http.post(this.url + '/seguir-usuario', params, { headers: headers });
   }
 
-  deleteFollow(token, id) {
+  deleteFollow(token, id): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token)
 
