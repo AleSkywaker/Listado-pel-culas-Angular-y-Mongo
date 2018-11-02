@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../service/user.service';
+import { FollowService } from './../../service/follow.service';
 import { User } from '../../models/users';
 import { GLOBAL } from './../../service/global';
 
@@ -9,7 +10,7 @@ import { GLOBAL } from './../../service/global';
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
-  providers: [UserService]
+  providers: [UserService, FollowService]
 })
 export class UsersComponent implements OnInit {
 
@@ -29,7 +30,8 @@ export class UsersComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private _followService: FollowService
   ) {
     this.title = 'Gente';
     this.identity = this._userService.getIdentity();
