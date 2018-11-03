@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GLOBAL } from './global';
 import { User } from '../models/users';
-import { Follow } from '../models/follow';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -108,9 +107,6 @@ export class UserService implements OnInit {
       .set('Content-Type', 'application/json')
       .set('Authorization', this.getToken())
     return this._http.get(this.url + '/get-user/' + id, { headers: headers })
-  }
-  followUser(userSeguido) {
-    let follow = new Follow('', this.identity._id, userSeguido)
   }
 
 }
