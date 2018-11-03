@@ -6,10 +6,14 @@ var User = require('../models/user');
 var Follow = require('../models/follow');
 
 function seguirUsuario(req, res) {
+
+
     var params = req.body;
+
     var follow = new Follow();
     follow.userSeguidor = req.user.sub;
-    follow.userSeguido = params.seguido;
+    follow.userSeguido = params.userSeguido;
+
 
     follow.save((err, followed) => {
         if (err) return res.status(500).send({ message: 'Error al guardar el seguimiento' })
