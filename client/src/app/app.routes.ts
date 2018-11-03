@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { UsersComponent } from './components/users/users.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
+import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
       { path: 'mispeliculas', component: MispeliculasComponent },
       { path: 'usuarios', component: UsersComponent },
+      { path: 'publicaciones', component: PublicacionesComponent },
       { path: 'usuarios/:page', component: UsersComponent }
     ]
   },
