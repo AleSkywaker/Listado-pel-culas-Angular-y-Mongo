@@ -3,8 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { FollowService } from './../../service/follow.service';
 import { User } from '../../models/users';
+import { Follow } from '../../models/follow';
 import { GLOBAL } from './../../service/global';
-
 
 @Component({
   selector: 'app-users',
@@ -104,6 +104,50 @@ export class UsersComponent implements OnInit {
   }
   mouseLeave(user) {
     this.followUserOver = 0;
+  }
+
+  followUser(userSeguido) {
+    let follow = new Follow('', this.identity._id, userSeguido)
+    console.log("usuario logeado ", follow)
+
+
+    this._followService.addFollow(this.token, follow).subscribe(
+      response => {
+        if (!response.follow) {
+          this.status = 'error'
+        } else {
+          this.status = 'success'
+          this.follows.push(userSeguido)
+          console.log("seguir =>", response.follow)
+        }
+      }, error => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+          this.status = "error"
+        }
+      }
+    )
+  }
+
+  unFollowUser(userSeguido) {
+    this._followService.deleteFollow(this.token, userSeguido).subscribe(
+      response => {
+        console.log("ere", response)
+        let search = this.follows.indexOf(userSeguido)
+        if (search != -1) {
+          this.follows.splice(search, 1)
+        }
+      }, error => {
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+          this.status = "error"
+        }
+      }
+    )
   }
 
 }
