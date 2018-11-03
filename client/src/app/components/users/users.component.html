@@ -20,13 +20,13 @@
                     <img src="assets/separador/separador4.png">
                     <p class="mt-2">{{user.description}}</p>
 
-                    <div class="botones pr-3 pl-3">
+                    <div class="botones pr-3 pl-3" *ngIf="user._id != identity._id">
                         <!-- SEGUIR/DEJAR DE SEGUIR -->
 
-                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) < 0"><span>
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) < 0" (click)="followUser(user._id)"><span>
                                 <i class="far fa-thumbs-up"></i> Seguir
                         </span></button>
-                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)" (mouseleave)="mouseLeave(user._id)" [class.btn-outline-danger]="user._id == followUserOver">
+                        <button type="button" class="btn btn-outline-warning btn-sm btn-block mt-2 boton-perfil" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)" (mouseleave)="mouseLeave(user._id)" (click)="unFollowUser(user._id)" [class.btn-outline-danger]="user._id == followUserOver">
                             <span *ngIf="user._id == followUserOver; else following">
                                 Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i>
                             </span>
