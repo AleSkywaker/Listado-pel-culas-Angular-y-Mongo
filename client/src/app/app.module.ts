@@ -25,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
+import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 
 
 
@@ -39,7 +40,8 @@ import { EditarperfilComponent } from './components/editarperfil/editarperfil.co
     LoginComponent,
     RegisterComponent,
     UsersComponent,
-    EditarperfilComponent
+    EditarperfilComponent,
+    PublicacionesComponent
   ],
   imports: [
     BrowserModule,
