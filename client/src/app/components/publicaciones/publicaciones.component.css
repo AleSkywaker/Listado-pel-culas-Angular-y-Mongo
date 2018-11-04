@@ -1,0 +1,7 @@
+.sombreado {
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid rgb(70, 68, 68);
+    -webkit-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+}
