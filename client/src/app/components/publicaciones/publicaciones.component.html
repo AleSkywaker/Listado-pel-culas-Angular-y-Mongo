@@ -1,6 +1,21 @@
 <div class="row justify-content-md-center">
     <div id="user-card" class="col-lg-10 card pull-left sombreado text-center">
         <h2>Publicaciones de {{identity.name}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div id="user-card" class="col-lg-6 card pull-left sombreado text-center" *ngIf="stats">
+        <h2>Publicaciones de {{identity.name}}</h2>
+        <div class="stats">
+            <div class="following-data">
+                <div class="label-stats">
+                    aqui va el stats
+                </div>
+            </div>
 
+            <a href="">
+                 enlace
+            </a>
+        </div>
     </div>
 </div>
