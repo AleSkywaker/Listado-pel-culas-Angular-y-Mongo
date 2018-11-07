@@ -83,17 +83,18 @@ function getMovies(req, res) {
 }
 
 function getTheBestMovie(req, res) {
-    let userLogeado = req.user.sub;
-    Pelicula.find({ user: userLogeado }).sort('-points').limit(1).exec(
-        (err, movies) => {
-            if (err) {
-                res.status(400).send({ message: "Error en la peticion" })
-            } else {
-                res.status(200).send({
-                    pelisbuenas: movies
-                })
-            }
-        })
+    console.log(req.user)
+        // let userLogeado = req.user.sub;
+        // Pelicula.find({ user: userLogeado }).sort('-points').limit(1).exec(
+        //     (err, movies) => {
+        //         if (err) {
+        //             res.status(400).send({ message: "Error en la peticion" })
+        //         } else {
+        //             res.status(200).send({
+        //                 pelisbuenas: movies
+        //             })
+        //         }
+        //     })
 }
 
 function deleteMovie(req, res) {
