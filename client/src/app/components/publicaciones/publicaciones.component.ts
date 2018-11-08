@@ -1,3 +1,4 @@
+import { PeliculaService } from './../../service/pelicula.service';
 import { Component, OnInit } from '@angular/core';
 import { GLOBAL } from './../../service/global';
 import { UserService } from '../../service/user.service';
@@ -14,7 +15,8 @@ export class PublicacionesComponent implements OnInit {
   public url;
   public status;
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _peliculaService: PeliculaService
   ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -25,6 +27,14 @@ export class PublicacionesComponent implements OnInit {
   ngOnInit() {
     console.log("Componente publicaciones cargado", this.identity)
     console.log("Stats", this.stats)
+    this.getMiMejorPelicula()
+  }
+  getMiMejorPelicula() {
+    this._peliculaService.miMejorPelicula(this.token).subscribe(
+      response => {
+        console.log("desde controller", response);
+      }
+    )
   }
 
 }
