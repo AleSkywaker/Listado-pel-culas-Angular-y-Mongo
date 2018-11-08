@@ -83,7 +83,7 @@ function getMovies(req, res) {
 }
 
 function getTheBestMovie(req, res) {
-    console.log(req.user)
+    // console.log(req.user)
     let userLogeado = req.user.sub;
     Pelicula.find({ user: userLogeado }).sort('-points').limit(1).exec(
         (err, movies) => {
