@@ -86,12 +86,12 @@ function getTheBestMovie(req, res) {
     // console.log(req.user)
     let userLogeado = req.user.sub;
     Pelicula.find({ user: userLogeado }).sort('-points').limit(1).exec(
-        (err, movies) => {
+        (err, movie) => {
             if (err) {
                 res.status(400).send({ message: "Error en la peticion" })
             } else {
                 res.status(200).send({
-                    pelisbuenas: movies
+                    mipelifavorita: movie
                 })
             }
         })
