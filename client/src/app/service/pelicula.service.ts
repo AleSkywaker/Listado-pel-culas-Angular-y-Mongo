@@ -34,6 +34,13 @@ export class PeliculaService implements OnInit {
 
     return this._http.post('http://localhost:3600/api/grabarpeli', params, { headers: headers });
   }
+  miMejorPelicula(token): Observable<any> {
+
+    let headers = new HttpHeaders().set("Content-type", "application/json")
+      .set('authorization', token)
+
+    return this._http.get('http://localhost:3600/api/mejor-pelicula', { headers: headers });
+  }
 
   getMisPeliculas(token): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
