@@ -10,7 +10,7 @@ api.post('/grabarpeli', md_auth.ensureAuth, PeliculaController.grabarPeli);
 api.delete('/eliminarpeli/:id', PeliculaController.deleteMovie);
 api.get('/pelis', md_auth.ensureAuth, PeliculaController.getMovies);
 api.get('/pelicula/:id', PeliculaController.getMyMovie);
-api.get('/mejor-pelicula', PeliculaController.getTheBestMovie);
+api.get('/mejor-pelicula', md_auth.ensureAuth, PeliculaController.getTheBestMovie);
 api.get('/peliculas-seguidos/:id', md_auth.ensureAuth, PeliculaController.getMoviesSeguido);
 
 
