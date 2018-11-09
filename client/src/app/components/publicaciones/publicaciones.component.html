@@ -4,6 +4,8 @@
     </div>
 </div>
 <div class="row mt-4">
+
+
     <div id="user-card" class="col-lg-5 offset-lg-1 card pull-left sombreado text-center" *ngIf="stats">
         <h2>estadisticas</h2>
         <div class="stats">
@@ -27,4 +29,21 @@
             </div>
         </div>
     </div>
+
+
+    <div id="peli-card" class="col-lg-5 card pull-left sombreado text-center ml-1" *ngIf="peliFavorita">
+        <h2>Mi peli favorita</h2>
+        <div class="wrapper-peli">
+            <div class="row">
+                <div class="col-md-2 mipeli">
+                    <img src="{{peliFavorita.poster}}" alt="" class="pull-left">
+                </div>
+                <div class="col-md-10">
+                    <h5>{{peliFavorita.title}} ({{peliFavorita.year}})</h5>
+                    <p>{{peliFavorita.plot}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
