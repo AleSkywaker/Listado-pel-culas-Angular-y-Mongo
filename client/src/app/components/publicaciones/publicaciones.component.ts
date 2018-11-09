@@ -1,8 +1,8 @@
-import { PeliculaService } from './../../service/pelicula.service';
 import { Component, OnInit } from '@angular/core';
 import { GLOBAL } from './../../service/global';
+import { PeliculaService } from './../../service/pelicula.service';
 import { UserService } from '../../service/user.service';
-
+import { Publication } from '../../models/publication';
 @Component({
   selector: 'app-publicaciones',
   templateUrl: './publicaciones.component.html',
