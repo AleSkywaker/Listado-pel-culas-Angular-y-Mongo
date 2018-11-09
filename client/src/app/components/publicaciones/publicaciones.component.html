@@ -7,7 +7,7 @@
 
 
     <div id="user-card" class="col-lg-5 offset-lg-1 card pull-left sombreado text-center" *ngIf="stats">
-        <h2>estadisticas</h2>
+        <h2>Mis estadisticas</h2>
         <div class="stats">
             <div class="following-data">
                 <a href="">
@@ -45,5 +45,18 @@
             </div>
         </div>
     </div>
+</div>
 
+<!-- Formulario de publicaciones -->
+
+<div class="row justify-content-md-center mt-4" id="new-publication">
+    <div id="user-card" class="col-lg-10 card pull-left sombreado text-center">
+        <h2>Crear nueva publicación</h2>
+        <form #newPubForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-12">
+            <p>
+                <label>¿En que estas pensando?</label>
+                <textarea name="text" #text=ngModel [(ngModel)]="publication.text" class="form-control" id="" cols="30" rows="10" required></textarea>
+            </p>
+        </form>
+    </div>
 </div>
