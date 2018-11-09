@@ -1,7 +1,32 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    font-family: 'Lobster', cursive;
+}
+
 .sombreado {
     border-radius: 10px 10px 10px 10px;
     border: 1px solid rgb(70, 68, 68);
     -webkit-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+.wrapper-peli {
+    border: 1px rgb(48, 48, 48) solid;
+    padding: 2%;
+    margin-bottom: 2%;
+    border-radius: 8px;
+    background-color: #f1cdb1;
+}
+
+.mipeli>img {
+    /* margin: 0 auto; */
+    width: 100%;
+    border-radius: 5px;
 }
