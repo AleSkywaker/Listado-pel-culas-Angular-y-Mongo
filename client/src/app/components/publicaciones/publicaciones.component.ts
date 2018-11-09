@@ -14,6 +14,8 @@ export class PublicacionesComponent implements OnInit {
   public stats;
   public url;
   public status;
+  public peliFavorita;
+
   constructor(
     private _userService: UserService,
     private _peliculaService: PeliculaService
@@ -22,19 +24,20 @@ export class PublicacionesComponent implements OnInit {
     this.token = this._userService.getToken();
     this.stats = this._userService.getStats();
     this.url = GLOBAL.url;
+
   }
 
   ngOnInit() {
-    console.log("Componente publicaciones cargado", this.identity)
-    console.log("Stats", this.stats)
-    this.getMiMejorPelicula()
-  }
-  getMiMejorPelicula() {
+
+
     this._peliculaService.miMejorPelicula(this.token).subscribe(
       response => {
-        console.log("desde controller", response);
+        this.peliFavorita = response.mipelifavorita[0];
+        console.log("desde controller", this.peliFavorita);
       }
     )
   }
+
+
 
 }
