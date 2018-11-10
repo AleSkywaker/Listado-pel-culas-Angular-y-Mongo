@@ -26,6 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 
 
@@ -41,7 +42,8 @@ import { PublicacionesComponent } from './components/publicaciones/publicaciones
     RegisterComponent,
     UsersComponent,
     EditarperfilComponent,
-    PublicacionesComponent
+    PublicacionesComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
