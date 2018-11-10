@@ -108,8 +108,6 @@ export class UsersComponent implements OnInit {
 
   followUser(userSeguido) {
     let follow = new Follow('', this.identity._id, userSeguido)
-    console.log("usuario logeado ", follow)
-
 
     this._followService.addFollow(this.token, follow).subscribe(
       response => {
@@ -118,7 +116,7 @@ export class UsersComponent implements OnInit {
         } else {
           this.status = 'success'
           this.follows.push(userSeguido)
-          console.log("seguir =>", response.follow)
+          this.getCounters()
         }
       }, error => {
         var errorMessage = <any>error;
@@ -139,6 +137,7 @@ export class UsersComponent implements OnInit {
         if (search != -1) {
           this.follows.splice(search, 1)
         }
+        this.getCounters()
       }, error => {
         var errorMessage = <any>error;
         console.log(errorMessage);
@@ -148,6 +147,14 @@ export class UsersComponent implements OnInit {
         }
       }
     )
+  }
+
+  getCounters() {
+    this._userService.getCounters().subscribe((response) => {
+      localStorage.setItem('stats', JSON.stringify(response))
+    }, (error) => {
+      console.log(<any>error)
+    })
   }
 
 }
