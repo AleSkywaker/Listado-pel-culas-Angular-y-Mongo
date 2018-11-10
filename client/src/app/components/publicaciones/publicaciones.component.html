@@ -1,8 +1,19 @@
+<div class="row justify-content-md-center mb-2" *ngIf="status == 'success'">
+    <div id="user-card" class="col-lg-10 card text-center alert alert-success">
+        <h2>Publicacion creada correctamente</h2>
+    </div>
+</div>
+<div class="row justify-content-md-center mb-2" *ngIf="status == 'error'">
+    <div id="user-card" class="col-lg-10 card text-center alert alert-danger">
+        <h2>Publicacion no ha sido creada!!!!</h2>
+    </div>
+</div>
 <div class="row justify-content-md-center">
     <div id="user-card" class="col-lg-10 card pull-left sombreado text-center">
         <h2>Publicaciones de {{identity.name}}</h2>
     </div>
 </div>
+
 <div class="row mt-4">
 
 
@@ -11,13 +22,13 @@
         <div class="stats">
             <div class="following-data">
                 <a href="">
-                    <span>Siguiendo </span>
+                    <span>Seguidores </span>
                     <span>{{stats.numeroSeguidores}}</span>
                 </a>
             </div>
             <div class="following-data">
                 <a href="">
-                    <span>Seguidores </span>
+                    <span>Siguiendo </span>
                     <span>{{stats.numeroSeguidos}}</span>
                 </a>
             </div>
@@ -52,11 +63,18 @@
 <div class="row justify-content-md-center mt-4" id="new-publication">
     <div id="user-card" class="col-lg-10 card pull-left sombreado text-center">
         <h2>Crear nueva publicación</h2>
-        <form #newPubForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-12">
+        <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm)" class="col-md-12">
             <p>
                 <label>¿En que estas pensando?</label>
-                <textarea name="text" #text=ngModel [(ngModel)]="publication.text" class="form-control" id="" cols="30" rows="10" required></textarea>
+                <textarea name="text" #text=ngModel [(ngModel)]="publication.text" class="form-control" id="" cols="30" rows="4" required></textarea>
+                <span *ngIf="!text.valid && text.touched">El texto de la publicación es obligatorio</span>
             </p>
+            <p>
+                <label>Sube una imagen</label>
+                <br>
+                <input type="file">
+            </p>
+            <input type="submit" value="Enviar" class="btn btn-success mb-3" [disabled]="!newPubForm.form.valid">
         </form>
     </div>
 </div>
