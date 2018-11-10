@@ -298,3 +298,7 @@ a.download:hover {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.active {
+    /* color: red */
+}
