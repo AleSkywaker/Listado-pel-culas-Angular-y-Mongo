@@ -11,12 +11,14 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { UsersComponent } from './components/users/users.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 const routes: Routes = [
   {
     path: 'inicio', component: InicioComponent, children: [
       { path: '', component: MispeliculasComponent },
       { path: 'pelicula/:id', component: PeliculaComponent },
+      { path: 'timeline/:page?', component: TimelineComponent },
       { path: 'editar-perfil', component: EditarperfilComponent },
       { path: 'mipelicula/:id', component: MiPeliculaComponent },
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
