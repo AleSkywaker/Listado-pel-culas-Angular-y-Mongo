@@ -5,31 +5,38 @@
         <br>
         <br>
 
-        <div *ngFor="let publication of publications" class="item-publication mb-4">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="" *ngIf="publication.user.image">
-                        <img src="{{url + '/get-image-user/' + publication.user.image}}" alt="Avatar" style="width:50px;height:50px;">
+        <div *ngFor="let publication of publications" class="item-publication">
+
+            <div class="rolex">
+
+                <div class="uno">
+                    <div class="avatar-publi" *ngIf="publication.user.image">
+                        <img src="{{url + '/get-image-user/' + publication.user.image}}" alt="Avatar">
                     </div>
-                    <div class="" *ngIf="!publication.user.image">
+                    <div class="avatar-publi" *ngIf="!publication.user.image">
                         <img src="assets/avatar.png" alt="Avatar">
                     </div>
                 </div>
-                <div class="col-md-10">
+
+                <div class="dos">
                     <div class="">
-                        <div class="">
-                            <h4>{{publication.user.name}}</h4>
-                        </div>
-                        {{publication.text}}
-                        <br>
-                        <img src="../../../assets/separador/separador1.png" alt="">
+                        <h4>{{publication.user.name}}</h4>
                     </div>
+                    <p>{{publication.text}}</p>
+                    <br>
+                </div>
+                <div class="tres">
+
                 </div>
 
             </div>
+            <br>
+            <img src="../../../assets/separador/separador2.gif" alt="">
         </div>
-
-
-
     </div>
+</div>
+<div class="row justify-content-md-center mb-2">
+    <button class="btn btn-outline-dark btn-small" (click)="viewMore()" *ngIf="!noMore">
+        Ver mas publicaciones
+    </button>
 </div>
