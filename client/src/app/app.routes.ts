@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'inicio', component: InicioComponent, children: [
       { path: '', component: MispeliculasComponent },
       { path: 'pelicula/:id', component: PeliculaComponent },
-      { path: 'timeline/:page?', component: TimelineComponent },
+      { path: 'timeline', component: TimelineComponent },
       { path: 'editar-perfil', component: EditarperfilComponent },
       { path: 'mipelicula/:id', component: MiPeliculaComponent },
       { path: 'listado/:pelicula', component: ListadoPelisComponent },
