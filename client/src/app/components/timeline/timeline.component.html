@@ -25,6 +25,7 @@
                     <p>{{publication.text}}</p>
                     <br>
                 </div>
+                <span class="hora-publi">{{ (publication.create_at | amFromUnix) | amLocale: 'es' | amTimeAgo}}</span>
                 <div class="tres">
 
                 </div>
