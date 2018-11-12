@@ -4,6 +4,8 @@ import { PeliculaService } from './../../service/pelicula.service';
 import { UserService } from '../../service/user.service';
 import { Publication } from '../../models/publication';
 import { PublicationService } from '../../service/publication.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 @Component({
   selector: 'app-publicaciones',
   templateUrl: './publicaciones.component.html',
@@ -21,7 +23,9 @@ export class PublicacionesComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _peliculaService: PeliculaService,
-    private _publicationService: PublicationService
+    private _publicationService: PublicationService,
+    private _route: ActivatedRoute,
+    private _router: Router
   ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -48,6 +52,7 @@ export class PublicacionesComponent implements OnInit {
         if (response.publicacion) {
           this.publication = response.publicacion;
           form.reset();
+          this._router.navigate(['/inicio/timeline'])
         } else {
           this.status = 'error';
           setTimeout(() => {
