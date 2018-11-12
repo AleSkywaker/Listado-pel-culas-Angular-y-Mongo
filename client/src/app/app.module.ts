@@ -27,6 +27,7 @@ import { UsersComponent } from './components/users/users.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { MomentModule } from 'angular2-moment';
 
 
 
@@ -51,7 +52,8 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     FormsModule,
     APP_ROUITNG,
     DataTablesModule,
-    NgbModule
+    NgbModule,
+    MomentModule
   ],
   providers: [PeliculaService],
   bootstrap: [AppComponent]
