@@ -53,3 +53,9 @@ a {
     /* border: 1px solid black; */
     justify-self: center;
 }
+
+.hora-publi {
+    font-style: italic;
+    font-weight: bold;
+    color: gray;
+}
