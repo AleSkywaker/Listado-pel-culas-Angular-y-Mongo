@@ -63,6 +63,30 @@ function getPublications(req, res) {
     })
 }
 
+function getMyPublications(req, res) {
+    let page = 1;
+
+    if (req.params.page) {
+        page = req.params.page;
+    }
+    let itemsPerPage = 4;
+    let userLogeado = req.user.sub;
+
+    Publication.find({ user: userLogeado }).sort('-create_at').populate('user').paginate(page, itemsPerPage, (err, publications, total) => {
+        if (err) return res.status(500).send({ message: 'Error al devolver publicaciones' });
+        if (!publications) return res.status(500).send({ message: 'No hay publicaciones' });
+
+        return res.status(200).send({
+            total_items: total,
+            pages: Math.ceil(total / itemsPerPage),
+            page: page,
+            items_per_page: itemsPerPage,
+            publications
+        })
+    })
+
+}
+
 function getPublication(req, res) {
     var publicationId = req.params.id;
 
@@ -146,5 +170,6 @@ module.exports = {
     getPublication,
     deletePublication,
     uploadImage,
-    getImageFile
+    getImageFile,
+    getMyPublications
 }
