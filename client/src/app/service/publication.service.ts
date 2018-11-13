@@ -29,6 +29,11 @@ export class PublicationService implements OnInit {
       .set('Authorization', token)
     return this.http.get(this.url + '/publications/' + page, { headers: headers })
   }
+  getMyPublications(token, page = 1): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Authorization', token)
+    return this.http.get(this.url + '/mis-publications/' + page, { headers: headers })
+  }
   deletePublication(token, id): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
       .set('Authorization', token)
