@@ -11,6 +11,28 @@
 <div class="row justify-content-md-center">
     <div id="user-card" class="col-lg-10 card pull-left sombreado text-center">
         <h2>Publicaciones de {{identity.name}}</h2>
+
+
+        <div *ngFor="let publication of publications" class="item-publication mt-5">
+
+            <div class="rolex">
+                <div class="uno">
+                </div>
+                <div class="dos">
+                    <div class="inner-dos">
+                        <h5>Escrito por {{publication.user.name}}</h5>
+                    </div>
+                    <p>{{publication.text}}</p>
+                    <br>
+                </div>
+                <span class="hora-publi">{{ (publication.create_at | amFromUnix) | amLocale: 'es' | amTimeAgo}}</span>
+                <div class="tres">
+                </div>
+                <img src="../../../assets/separador/separador2.gif" alt="">
+            </div>
+        </div>
+
+
     </div>
 </div>
 
