@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { GLOBAL } from './../../service/global';
 import { PeliculaService } from './../../service/pelicula.service';
 import { UserService } from '../../service/user.service';
 import { Publication } from '../../models/publication';
 import { PublicationService } from '../../service/publication.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import * as d3 from "d3";
 
 @Component({
   selector: 'app-publicaciones',
@@ -12,7 +13,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./publicaciones.component.css'],
   providers: [PublicationService]
 })
-export class PublicacionesComponent implements OnInit {
+export class PublicacionesComponent implements OnInit, AfterContentInit {
   public identity;
   public token;
   public stats;
@@ -35,6 +36,9 @@ export class PublicacionesComponent implements OnInit {
     this.url = GLOBAL.url;
     this.publication = new Publication("", "", "", "", this.identity._id);
     this.page = 1;
+  }
+  ngAfterContentInit() {
+    d3.select('#chart').style('color', 'red');
   }
 
   ngOnInit() {
