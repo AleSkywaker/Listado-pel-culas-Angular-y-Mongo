@@ -28,6 +28,7 @@ import { EditarperfilComponent } from './components/editarperfil/editarperfil.co
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { MomentModule } from 'angular2-moment';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -44,7 +45,8 @@ import { MomentModule } from 'angular2-moment';
     UsersComponent,
     EditarperfilComponent,
     PublicacionesComponent,
-    TimelineComponent
+    TimelineComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
