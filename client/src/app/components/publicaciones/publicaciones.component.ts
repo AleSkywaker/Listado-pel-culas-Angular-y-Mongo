@@ -38,7 +38,7 @@ export class PublicacionesComponent implements OnInit, AfterContentInit {
     this.page = 1;
   }
   ngAfterContentInit() {
-    d3.select('#chart').style('color', 'red');
+    d3.select('.rolex').style('color', 'red');
   }
 
   ngOnInit() {
