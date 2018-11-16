@@ -20,6 +20,7 @@ export class PublicacionesComponent implements OnInit {
   public status;
   public peliFavorita;
   public publication: Publication;
+  public publications: Publication[];
   public page;
   constructor(
     private _userService: UserService,
@@ -80,7 +81,8 @@ export class PublicacionesComponent implements OnInit {
   }
   getMypublications() {
     this._publicationService.getMyPublications(this.token, this.page).subscribe((response) => {
-      console.log("this is it my friend", response)
+      this.publications = response.publications;
+      console.log("this is it my friend", response.publications)
     })
   }
 
