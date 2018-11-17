@@ -108,5 +108,11 @@ export class UserService implements OnInit {
       .set('Authorization', this.getToken())
     return this._http.get(this.url + '/get-user/' + id, { headers: headers })
   }
+  seeCompatibility(id): Observable<any> {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', this.getToken())
+    return this._http.get(this.url + '/compatibilidad/' + id, { headers: headers })
+  }
 
 }
