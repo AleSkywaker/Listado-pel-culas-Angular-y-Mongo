@@ -12,6 +12,7 @@ import { UsersComponent } from './components/users/users.component';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'mispeliculas', component: MispeliculasComponent },
       { path: 'usuarios', component: UsersComponent },
       { path: 'publicaciones', component: PublicacionesComponent },
-      { path: 'usuarios/:page', component: UsersComponent }
+      { path: 'usuarios/:page', component: UsersComponent },
+      { path: 'perfil/:id', component: ProfileComponent }
     ]
   },
   { path: '', component: LoginComponent },
