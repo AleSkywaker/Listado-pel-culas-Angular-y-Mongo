@@ -360,10 +360,14 @@ async function compatibilidad(user_logeado, user_seguido) {
         return count;
     })
 
+    let pelisIguales = await Pelicula.find({ user: user_seguido, imdbID: { '$in': pelisUserLogeado } }).exec().then((iguales) => {
+        return iguales;
+    })
     return {
         pelisuser: pelisUserLogeado,
         pelisuser2: pelisUserSeguido,
-        compatibilidad: contador
+        compatibilidad: contador,
+        coincidencias: pelisIguales
     }
 
 }
