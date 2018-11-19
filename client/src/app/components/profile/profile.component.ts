@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/users';
 import { Follow } from '../../models/follow';
+import { Pelicula } from '../../models/pelicula';
 import { FollowService } from './../../service/follow.service';
 import { UserService } from './../../service/user.service';
+import { PeliculaService } from './../../service/pelicula.service';
 import { GLOBAL } from '../../service/global';
 
 @Component({
@@ -19,18 +21,22 @@ export class ProfileComponent implements OnInit {
   public url: string;
   public token: string;
   public identity: User;
-  public stats: string;
+  public stats;
   public follow: string;
+  public peliculasSeguido: Pelicula[];
+  public counters;
+  public compatibilidad;
 
   constructor(
     private _userService: UserService,
     private _followService: FollowService,
+    private _peliculaService: PeliculaService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
 
     this.url = GLOBAL.url;
-    this.titulo = "Perfil de usuario";
+    this.titulo = "Perfil de ";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
   }
@@ -53,6 +59,8 @@ export class ProfileComponent implements OnInit {
       let id = params['id'];
       this.getUser(id);
       this.verCompatibilidad(id);
+      this.peliculaSeguido(id, this.token);
+      this.getCounters(id);
     })
   }
 
@@ -60,7 +68,6 @@ export class ProfileComponent implements OnInit {
     this._userService.getUser(id).subscribe(
       response => {
         if (response.user) {
-          console.log(response)
           this.user = response.user;
         } else {
           this.status = 'error'
@@ -81,7 +88,25 @@ export class ProfileComponent implements OnInit {
         console.log(<any>error)
         this.status = 'error'
       })
+  }
 
+  peliculaSeguido(id, token) {
+    this._peliculaService.getPeliculasSeguido(id, token).subscribe(
+      response => {
+        this.peliculaSeguido = response.peliculasUsuario;
+        console.log("pelis seguido", this.peliculaSeguido)
+      }
+    )
+  }
+
+  getCounters(id) {
+    this._userService.getCounters(id).subscribe(
+      response => {
+        this.stats = response;
+      }, error => {
+        console.log(<any>error)
+      }
+    )
   }
 
 }
