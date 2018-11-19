@@ -1,6 +1,9 @@
-<div class="row justify-content-md-center mb-2">
+<div class="row justify-content-md-center mb-2 bordediv" *ngIf="user">
+    <div class="col-lg-1 perfil-image">
+        <img src="{{url + '/get-image-user/' +  user.image}}" alt="">
+    </div>
     <div id="user-card" class="col-lg-10 card text-center sombreado">
-        <h2>{{titulo}}</h2>
+        <h2>{{titulo}}{{user.name}}</h2>
         <br>
         <br>
         <br>
