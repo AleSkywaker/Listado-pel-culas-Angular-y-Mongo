@@ -1,0 +1,7 @@
+.bordediv {
+    border: 1px solid black;
+}
+
+.perfil-image>img {
+    width: 100%;
+}
