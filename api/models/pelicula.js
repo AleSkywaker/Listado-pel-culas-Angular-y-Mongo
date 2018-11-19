@@ -25,7 +25,7 @@ let PeliculasSchema = Schema({
     imdbID: String,
     imdbRating: String,
     imdbVotes: String,
-    points: String,
+    points: Number,
     porcentaje: String,
     type: String
 })
