@@ -63,7 +63,7 @@ export class PeliculaService implements OnInit {
   }
   getPeliculasSeguido(id, token): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
-      .set('authorization', token);
+      .set('authorization', token)
     return this._http.get(this.url + '/peliculas-seguidos/' + id, { headers: headers })
   }
 }
