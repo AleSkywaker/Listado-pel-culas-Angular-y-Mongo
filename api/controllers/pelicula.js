@@ -33,7 +33,7 @@ function grabarPeli(req, res) {
     pelicula.imdbRating = params.imdbRating;
     pelicula.imdbVotes = params.imdbVotes;
     pelicula.type = params.Type;
-    pelicula.points = params.puntos;
+    pelicula.points = Number(params.puntos);
 
     if (pelicula.points == null || pelicula.points == undefined || pelicula.points == "") {
         return res.status(402).send({
@@ -131,7 +131,7 @@ function getMyMovie(req, res) {
 
 function getMoviesSeguido(req, res) {
     var userSeguido = req.params.id;
-    Pelicula.find({ user: userSeguido }).exec((err, peliculas) => {
+    Pelicula.find({ user: userSeguido }).sort('-points').exec((err, peliculas) => {
         if (err) return res.status(500).send({ message: 'Error al devolver peliculas de usuario' });
 
         return res.status(200).send({
