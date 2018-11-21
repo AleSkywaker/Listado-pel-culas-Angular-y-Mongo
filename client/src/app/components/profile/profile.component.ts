@@ -60,6 +60,7 @@ export class ProfileComponent implements OnInit {
   loadPage() {
     this._route.params.subscribe(params => {
       let id = params["id"];
+      console.log("id de usuario", id);
       this.getUser(id);
       this.verCompatibilidad(id);
       this.peliculaSeguido(id, this.token);
@@ -99,7 +100,7 @@ export class ProfileComponent implements OnInit {
   verCompatibilidad(id) {
     this._userService.seeCompatibility(id).subscribe(
       response => {
-        console.log("ESTO ES COMPATIBLIDAD", response);
+        // console.log("ESTO ES COMPATIBLIDAD", response);
       },
       error => {
         console.log(<any>error);
@@ -111,7 +112,7 @@ export class ProfileComponent implements OnInit {
   peliculaSeguido(id, token) {
     this._peliculaService.getPeliculasSeguido(id, token).subscribe(response => {
       this.peliculaSeguido = response.peliculasUsuario;
-      console.log("pelis seguido", this.peliculaSeguido);
+      // console.log("pelis seguido", this.peliculaSeguido);
     });
   }
 
