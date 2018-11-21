@@ -67,6 +67,7 @@ export class ProfileComponent implements OnInit {
   getUser(id) {
     this._userService.getUser(id).subscribe(
       response => {
+        console.log("respuesta usuario", response)
         if (response.user) {
           this.user = response.user;
         } else {
