@@ -75,9 +75,14 @@ export class ProfileComponent implements OnInit {
           this.user = response.user;
 
           if (response.siguiendo._id) {
-            this.siguiendo = false;
+            this.siguiendo = true;
           } else {
             this.siguiendo = false;
+          }
+          if (response.seguido._id) {
+            this.seguido = true;
+          } else {
+            this.seguido = false;
           }
         } else {
           this.status = "error";
