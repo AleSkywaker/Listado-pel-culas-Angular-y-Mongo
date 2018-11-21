@@ -40,6 +40,8 @@ export class ProfileComponent implements OnInit {
     this.titulo = "Perfil de ";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.seguido = false;
+    this.siguiendo = false;
   }
 
   ngOnInit() {
