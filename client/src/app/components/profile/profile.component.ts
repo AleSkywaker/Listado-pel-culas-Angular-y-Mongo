@@ -74,7 +74,7 @@ export class ProfileComponent implements OnInit {
         console.log("respuesta usuario", response);
         if (response.user) {
           this.user = response.user;
-
+          console.log("que ess", response);
           if (response.siguiendo._id) {
             this.siguiendo = true;
           } else {
