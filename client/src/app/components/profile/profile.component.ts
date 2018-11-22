@@ -140,4 +140,14 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+  dejarDeSeguir(seguido) {
+    this._followService.deleteFollow(this.token, seguido).subscribe(
+      response => {
+        console.log("dejar de seguir", response);
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
 }
