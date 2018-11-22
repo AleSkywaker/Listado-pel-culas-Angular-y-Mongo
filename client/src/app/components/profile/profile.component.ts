@@ -133,6 +133,7 @@ export class ProfileComponent implements OnInit {
     this._followService.addFollow(this.token, seguir).subscribe(
       response => {
         console.log("respuesta seguido", response);
+        this.siguiendo = true;
       },
       error => {
         console.log(<any>error);
