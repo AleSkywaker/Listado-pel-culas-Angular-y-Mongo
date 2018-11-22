@@ -126,4 +126,17 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  seguirUsuario(seguido) {
+    let seguir = new Follow("", this.identity._id, seguido);
+
+    this._followService.addFollow(this.token, seguir).subscribe(
+      response => {
+        console.log("respuesta seguido", response);
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
 }
