@@ -144,6 +144,7 @@ export class ProfileComponent implements OnInit {
     this._followService.deleteFollow(this.token, seguido).subscribe(
       response => {
         console.log("dejar de seguir", response);
+        this.siguiendo = false;
       },
       error => {
         console.log(<any>error);
