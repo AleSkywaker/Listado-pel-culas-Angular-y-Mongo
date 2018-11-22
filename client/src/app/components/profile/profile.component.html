@@ -3,15 +3,15 @@
     <img src="{{url + '/get-image-user/' +  user.image}}" alt="" />
   </div>
   <div id="user-card" class="col-lg-10 card text-center sombreado">
-    <h2>{{ titulo }}{{ user.name }}</h2>
+    <h2>
+      {{ titulo }}{{ user.name }}
+      <span class="badge badge-secondary" *ngIf="seguido">Te sigue</span>
+    </h2>
     <span>{{ user.nick }}</span> <br />
     <br />
     <br />
-
-    <div class="follow">
-      <h3>
-        <span class="badge badge-secondary" *ngIf="seguido">Te sigue</span>
-      </h3>
-    </div>
+    <button class="btn btn-success" *ngIf="!siguiendo">Seguir</button>
+    <button class="btn btn-primary" *ngIf="siguiendo">Dejar de seguir</button>
+    <br />
   </div>
 </div>
