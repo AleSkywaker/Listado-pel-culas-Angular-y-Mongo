@@ -10,8 +10,20 @@
     <span>{{ user.nick }}</span> <br />
     <br />
     <br />
-    <button class="btn btn-success" *ngIf="!siguiendo">Seguir</button>
-    <button class="btn btn-primary" *ngIf="siguiendo">Dejar de seguir</button>
+    <button
+      class="btn btn-success"
+      *ngIf="!siguiendo"
+      (click)="seguirUsuario(user._id)"
+    >
+      Seguir
+    </button>
+    <button
+      class="btn btn-primary"
+      *ngIf="siguiendo"
+      (click)="dejarDeSeguir(user._id)"
+    >
+      Dejar de seguir
+    </button>
     <br />
   </div>
 </div>
