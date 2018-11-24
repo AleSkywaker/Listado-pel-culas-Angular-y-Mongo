@@ -75,12 +75,12 @@ export class ProfileComponent implements OnInit {
         if (response.user) {
           this.user = response.user;
           console.log("que ess", response);
-          if (response.siguiendo._id) {
+          if (response.siguiendo && response.siguiendo._id) {
             this.siguiendo = true;
           } else {
             this.siguiendo = false;
           }
-          if (response.seguido._id) {
+          if (response.seguido && response.seguido._id) {
             this.seguido = true;
           } else {
             this.seguido = false;
@@ -150,5 +150,14 @@ export class ProfileComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  public seguirUsuarioOver;
+
+  mouseEnter(userId) {
+    this.seguirUsuarioOver = userId;
+  }
+  mouseLeave() {
+    this.seguirUsuarioOver = 0;
   }
 }
