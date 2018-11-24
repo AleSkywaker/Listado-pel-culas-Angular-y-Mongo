@@ -21,8 +21,14 @@
       class="btn btn-primary"
       *ngIf="siguiendo"
       (click)="dejarDeSeguir(user._id)"
+      (mouseenter)="mouseEnter(user._id)"
+      (mouseleave)="mouseLeave()"
+      [class.btn-danger]="user._id == seguirUsuarioOver"
     >
-      Dejar de seguir
+      <span *ngIf="user._id == seguirUsuarioOver; else: following"
+        >Dejar de seguir</span
+      >
+      <ng-template #following> Siguiendo </ng-template>
     </button>
     <br />
   </div>
