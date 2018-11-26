@@ -6,10 +6,12 @@
     <h2>
       {{ titulo }}{{ user.name }}
       <span class="badge badge-secondary" *ngIf="seguido">Te sigue</span>
+      <span class="badge badge-secondary" *ngIf="!seguido">No te sigue</span>
     </h2>
     <span>{{ user.nick }}</span> <br />
     <br />
     <br />
+
     <button
       class="btn btn-success"
       *ngIf="!siguiendo"
