@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from '../../models/users';
-import { UserService } from './../../service/user.service';
-import { UploadService } from './../../service/upload.service';
-import { GLOBAL } from './../../service/global';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, Params } from "@angular/router";
+import { User } from "../../models/users";
+import { UserService } from "./../../service/user.service";
+import { UploadService } from "./../../service/upload.service";
+import { GLOBAL } from "./../../service/global";
 @Component({
-  selector: 'app-editarperfil',
-  templateUrl: './editarperfil.component.html',
-  styleUrls: ['./editarperfil.component.css'],
+  selector: "app-editarperfil",
+  templateUrl: "./editarperfil.component.html",
+  styleUrls: ["./editarperfil.component.css"],
   providers: [UploadService]
 })
 export class EditarperfilComponent implements OnInit {
-
   public titulo: String;
   public user: User;
   public status: string;
@@ -22,7 +21,6 @@ export class EditarperfilComponent implements OnInit {
   public url: string;
   public astronautmonkey: string;
   public astronauta3: string;
-
 
   public budista: string;
   public japo: string;
@@ -72,40 +70,45 @@ export class EditarperfilComponent implements OnInit {
     this.chica45 = "chica45.jpg";
 
     this.urlsImagesDefault = [
-      { 'urlImage': '../../../assets/userdefaultimage/chico2.png', 'value': 1 },
-      { 'urlImage': '../../../assets/userdefaultimage/chico1.jpg', 'value': 2 },
-      { 'urlImage': '../../../assets/userdefaultimage/astronautmonkey.jpg', 'value': 3 },
-      { 'urlImage': '../../../assets/userdefaultimage/atronauta3.jpg', 'value': 4 },
-      { 'urlImage': '../../../assets/userdefaultimage/budista.png', 'value': 5 },
-      { 'urlImage': '../../../assets/userdefaultimage/chica42.png', 'value': 6 },
-    ]
+      { urlImage: "../../../assets/userdefaultimage/chico2.png", value: 1 },
+      { urlImage: "../../../assets/userdefaultimage/chico1.jpg", value: 2 },
+      {
+        urlImage: "../../../assets/userdefaultimage/astronautmonkey.jpg",
+        value: 3
+      },
+      { urlImage: "../../../assets/userdefaultimage/atronauta3.jpg", value: 4 },
+      { urlImage: "../../../assets/userdefaultimage/budista.png", value: 5 },
+      { urlImage: "../../../assets/userdefaultimage/chica42.png", value: 6 }
+    ];
   }
 
   ngOnInit() {
-    $('.img-check').click(function (e) {
-      $('.img-check').not(this).removeClass('check')
-        .siblings('input').prop('checked', false);
-      $(this).addClass('check')
-        .siblings('input').prop('checked', true);
+    $(".img-check").click(function(e) {
+      $(".img-check")
+        .not(this)
+        .removeClass("check")
+        .siblings("input")
+        .prop("checked", false);
+      $(this)
+        .addClass("check")
+        .siblings("input")
+        .prop("checked", true);
     });
   }
   onSubmit(form) {
     this._userSerivice.updateUser(this.user).subscribe(
       response => {
         if (!response.user) {
-          this.status = 'error';
+          this.status = "error";
           this.message = response.message;
         } else {
-          this.status = 'success';
-          localStorage.setItem('identity', JSON.stringify(this.user))
+          this.status = "success";
+          localStorage.setItem("identity", JSON.stringify(this.user));
           this.identity = this.user;
           this.message = response.message;
-          this._userSerivice.changeNav(response.user.image)
-          localStorage.setItem('identity', JSON.stringify(this.user));
+          this._userSerivice.changeNav(response.user.image);
+          localStorage.setItem("identity", JSON.stringify(this.user));
           //Subida imagen de usuario
-
-
-
         }
       },
       error => {
@@ -116,11 +119,10 @@ export class EditarperfilComponent implements OnInit {
           this.message = error;
         }
       }
-    )
-
+    );
   }
   clak(v) {
-    console.log("clak", v)
+    console.log("clak", v);
     this.user.image = v;
   }
 
@@ -128,19 +130,21 @@ export class EditarperfilComponent implements OnInit {
 
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
-    console.log("this file", this.filesToUpload)
+    console.log("this file", this.filesToUpload);
 
-
-
-    this._uploadService.makeFileRequest(this.url + '/upload-image-user/' + this.user._id, [], this.filesToUpload, this.token, 'image')
+    this._uploadService
+      .makeFileRequest(
+        this.url + "/upload-image-user/" + this.user._id,
+        [],
+        this.filesToUpload,
+        this.token,
+        "image"
+      )
       .then((result: any) => {
         console.log("resultado", result);
         this.user.image = result.user.image;
-        localStorage.setItem('identity', JSON.stringify(this.user));
+        localStorage.setItem("identity", JSON.stringify(this.user));
         // location.reload();
-      })
-
-
+      });
   }
-
 }
