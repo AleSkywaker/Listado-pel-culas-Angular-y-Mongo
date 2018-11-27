@@ -71,13 +71,6 @@ export class EditarperfilComponent implements OnInit {
     this.chica19 = "chica19.png";
     this.chica45 = "chica45.jpg";
 
-
-
-
-
-
-
-
     this.urlsImagesDefault = [
       { 'urlImage': '../../../assets/userdefaultimage/chico2.png', 'value': 1 },
       { 'urlImage': '../../../assets/userdefaultimage/chico1.jpg', 'value': 2 },
