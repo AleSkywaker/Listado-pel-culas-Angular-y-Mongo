@@ -63,7 +63,7 @@ export class NgbdModalConfirm {
   selector: "ngbd-modal-confirm-autofocus",
   template: `
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+      <h4 class="modal-title" id="modal-title">{{ titulo }}</h4>
       <button
         type="button"
         class="close"
@@ -99,7 +99,7 @@ export class NgbdModalConfirm {
         type="button"
         ngbAutofocus
         class="btn btn-danger"
-        (click)="modal.close('Ok click'); dowaht()"
+        (click)="modal.close('Ok click'); dowaht(e)"
       >
         Okis
       </button>
@@ -107,9 +107,12 @@ export class NgbdModalConfirm {
   `
 })
 export class NgbdModalConfirmAutofocus {
-  constructor(public modal: NgbActiveModal) {}
-  dowaht() {
-    alert("hola");
+  public titulo;
+  constructor(public modal: NgbActiveModal) {
+    this.titulo = "Eliminar pelicula";
+  }
+  dowaht(e) {
+    console.log("hola", e);
   }
 }
 
@@ -159,6 +162,14 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
         // Calling the DT trigger to manually render the table
         this.dtTrigger.next();
       }
+    });
+  }
+
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    $("#myModal").on("shown.bs.modal", function() {
+      $("#myInput").trigger("focus");
     });
   }
   ngOnDestroy(): void {
