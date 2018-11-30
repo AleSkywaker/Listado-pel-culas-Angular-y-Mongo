@@ -8,118 +8,8 @@ import "rxjs/add/operator/map";
 import { DOCUMENT } from "@angular/common";
 import * as $ from "jquery";
 
-import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-@Component({
-  selector: "ngbd-modal-confirm",
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Profile deletion</h4>
-      <button
-        type="button"
-        class="close"
-        aria-describedby="modal-title"
-        (click)="modal.dismiss('Cross click')"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>
-        <strong
-          >Are you sure you want to delete
-          <span class="text-primary">"John Doe"</span> profile?</strong
-        >
-      </p>
-      <p>
-        All information associated to this user profile will be permanently
-        deleted.
-        <span class="text-danger">This operation can not be undone.</span>
-      </p>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-outline-secondary"
-        (click)="modal.dismiss('cancel click')"
-      >
-        Cancel
-      </button>
-      <button
-        type="button"
-        class="btn btn-danger"
-        (click)="modal.close('Ok click')"
-      >
-        Ok
-      </button>
-    </div>
-  `
-})
-export class NgbdModalConfirm {
-  constructor(public modal: NgbActiveModal) {}
-}
-
-@Component({
-  selector: "ngbd-modal-confirm-autofocus",
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">{{ titulo }}</h4>
-      <button
-        type="button"
-        class="close"
-        aria-label="Close button"
-        aria-describedby="modal-title"
-        (click)="modal.dismiss('Cross click')"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>
-        <strong
-          >Are you sure you want to delete
-          <span class="text-primary">"John Doe"</span> profile?</strong
-        >
-      </p>
-      <p>
-        All information associated to this user profile will be permanently
-        deleted.
-        <span class="text-danger">This operation can not be undone.</span>
-      </p>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-outline-secondary"
-        (click)="modal.dismiss('cancel click')"
-      >
-        Cancel
-      </button>
-      <button
-        type="button"
-        ngbAutofocus
-        class="btn btn-danger"
-        (click)="modal.close('Ok click'); dowaht(e)"
-      >
-        Okis
-      </button>
-    </div>
-  `
-})
-export class NgbdModalConfirmAutofocus {
-  public titulo;
-  constructor(public modal: NgbActiveModal) {
-    this.titulo = "Eliminar pelicula";
-  }
-  dowaht(e) {
-    console.log("hola", e);
-  }
-}
-
-const MODALS = {
-  focusFirst: NgbdModalConfirm,
-  autofocus: NgbdModalConfirmAutofocus
-};
 @Component({
   selector: "app-mispeliculas",
   templateUrl: "./mispeliculas.component.html",
@@ -134,6 +24,7 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
   starsPercetaje;
   token;
   identity;
+  pelicula;
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
@@ -149,10 +40,9 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    console.log("Balssss", this.identity);
     this.dtOptions = {
       pagingType: "full_numbers",
-      pageLength: 10,
+      pageLength: 25,
       order: [[5, "desc"]]
     };
     this._peliculaService.getMisPeliculas(this.token).subscribe(data => {
@@ -192,14 +82,17 @@ export class MispeliculasComponent implements OnDestroy, OnInit {
   }
 
   borrarPeli(id) {
-    console.log("Esto es el id", id);
     this._peliculaService.deleteMovie(id).subscribe(data => {
       console.log(data);
-      this.getPelis();
     });
+    this.getPelis();
+    this._modalService.dismissAll();
   }
-
-  open(name: string) {
-    this._modalService.open(MODALS[name]);
+  open(peli, modal) {
+    this.pelicula = peli;
+    this._modalService.open(modal);
+  }
+  cierraModal() {
+    this._modalService.dismissAll();
   }
 }
