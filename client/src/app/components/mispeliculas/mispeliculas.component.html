@@ -5,16 +5,6 @@
   <h1 *ngIf="!identity" class="text-center">Mi Selección de peliculas</h1>
   <br />
 
-  <!-- Button trigger modal -->
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-toggle="modal"
-    data-target="#exampleModal"
-  >
-    Launch demo modal
-  </button>
-
   <!-- Modal -->
   <div
     class="modal fade"
@@ -89,7 +79,10 @@
             <!--
               <i class="fas fa-trash-alt" (click)="borrarPeli(peli.imdbID)"></i>
             -->
-            <i class="fas fa-trash-alt" (click)="open('autofocus')"></i>
+            <i
+              class="fas fa-trash-alt papelera"
+              (click)="open(peli, peliModal)"
+            ></i>
           </td>
         </tr>
       </tbody>
@@ -98,3 +91,35 @@
   <br />
   <br />
 </div>
+
+<!-- Modal -->
+<ng-template #peliModal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Eliminar Pelicula</h5>
+    <button class="btn btn-outline-warning text-right" (click)="cierraModal()">
+      <!-- <span aria-hidden="true">&times;</span> -->
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img src="{{pelicula.poster}}" />
+    <h3>¿Estas seguro que quieres eliminar {{ pelicula.title }}?</h3>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      data-dismiss="modal"
+      (click)="cierraModal()"
+    >
+      Cancelar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      (click)="borrarPeli(pelicula.imdbID)"
+    >
+      Eliminar
+    </button>
+  </div>
+</ng-template>
