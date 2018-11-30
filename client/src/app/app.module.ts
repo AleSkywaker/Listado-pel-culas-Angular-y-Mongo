@@ -34,10 +34,6 @@ import { PeliculaService } from "./service/pelicula.service";
 import { UserService } from "./service/user.service";
 import { UserGuard } from "./service/user.guard";
 
-import {
-  NgbdModalConfirm,
-  NgbdModalConfirmAutofocus
-} from "./components/mispeliculas/mispeliculas.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,11 +48,8 @@ import {
     EditarperfilComponent,
     PublicacionesComponent,
     TimelineComponent,
-    ProfileComponent,
-    NgbdModalConfirm,
-    NgbdModalConfirmAutofocus
+    ProfileComponent
   ],
-  entryComponents: [NgbdModalConfirm, NgbdModalConfirmAutofocus],
   imports: [
     BrowserModule,
     HttpClientModule, // cargamos el módulo en el array de imports
