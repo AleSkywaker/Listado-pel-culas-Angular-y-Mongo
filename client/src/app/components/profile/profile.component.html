@@ -11,19 +11,19 @@
     <img src="{{url + '/get-image-user/' +  user.image}}" alt="" /> <br />
     <br />
     <button
-      class="btn btn-success btn-sm"
+      class="btn btn-outline-primary btn-sm"
       *ngIf="!siguiendo"
       (click)="seguirUsuario(user._id)"
     >
       Seguir &nbsp;<i class="far fa-thumbs-up"></i>
     </button>
     <button
-      class="btn btn-primary btn-sm"
+      class="btn btn-outline-secondary btn-sm"
       *ngIf="siguiendo"
       (click)="dejarDeSeguir(user._id)"
       (mouseenter)="mouseEnter(user._id)"
       (mouseleave)="mouseLeave()"
-      [class.btn-danger]="user._id == seguirUsuarioOver"
+      [class.btn-outline-danger]="user._id == seguirUsuarioOver"
     >
       <span *ngIf="user._id == seguirUsuarioOver; else: following"
         >Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i
