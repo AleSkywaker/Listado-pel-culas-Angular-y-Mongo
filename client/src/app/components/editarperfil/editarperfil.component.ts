@@ -94,6 +94,7 @@ export class EditarperfilComponent implements OnInit {
         .siblings("input")
         .prop("checked", true);
     });
+    console.log("nada mas entrar", this.identity);
   }
   onSubmit(form) {
     this._userSerivice.updateUser(this.user).subscribe(
