@@ -1,8 +1,8 @@
 <div class="row justify-content-md-center mb-2 bordediv" *ngIf="user">
-  <div class="col-lg-1 perfil-image">
+  <div class="col-md-1 perfil-image">
     <img src="{{url + '/get-image-user/' +  user.image}}" alt="" />
   </div>
-  <div id="user-card" class="col-lg-10 card text-center sombreado">
+  <div id="user-card" class="col-md-10 card text-center sombreado">
     <h2>
       {{ titulo }}{{ user.name }}
       <span class="badge badge-secondary" *ngIf="seguido">Te sigue</span>
@@ -11,16 +11,15 @@
     <span>{{ user.nick }}</span> <br />
     <br />
     <br />
-
     <button
-      class="btn btn-success"
+      class="btn btn-success btn-sm"
       *ngIf="!siguiendo"
       (click)="seguirUsuario(user._id)"
     >
       Seguir
     </button>
     <button
-      class="btn btn-primary"
+      class="btn btn-primary btn-sm"
       *ngIf="siguiendo"
       (click)="dejarDeSeguir(user._id)"
       (mouseenter)="mouseEnter(user._id)"
