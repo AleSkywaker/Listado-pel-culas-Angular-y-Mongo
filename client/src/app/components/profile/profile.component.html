@@ -15,7 +15,7 @@
       *ngIf="!siguiendo"
       (click)="seguirUsuario(user._id)"
     >
-      Seguir
+      Seguir &nbsp;<i class="far fa-thumbs-up"></i>
     </button>
     <button
       class="btn btn-primary btn-sm"
@@ -26,9 +26,11 @@
       [class.btn-danger]="user._id == seguirUsuarioOver"
     >
       <span *ngIf="user._id == seguirUsuarioOver; else: following"
-        >Dejar de seguir</span
-      >
-      <ng-template #following> Siguiendo </ng-template>
+        >Dejar de seguir &nbsp;<i class="far fa-thumbs-down"></i
+      ></span>
+      <ng-template #following>
+        Siguiendo&nbsp;<i class="fas fa-user-check"></i>
+      </ng-template>
     </button>
     <br />
     <br />
