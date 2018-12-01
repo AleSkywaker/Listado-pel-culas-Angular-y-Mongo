@@ -1,15 +1,14 @@
+<h2 class="text-center">{{ titulo }}{{ user.name }}</h2>
+
 <div class="row justify-content-md-center mb-2 bordediv" *ngIf="user">
-  <div class="col-md-1 perfil-image">
-    <img src="{{url + '/get-image-user/' +  user.image}}" alt="" />
-  </div>
-  <div id="user-card" class="col-md-10 card text-center sombreado">
-    <h2>
-      {{ titulo }}{{ user.name }}
-      <span class="badge badge-secondary" *ngIf="seguido">Te sigue</span>
-      <span class="badge badge-secondary" *ngIf="!seguido">No te sigue</span>
-    </h2>
-    <span>{{ user.nick }}</span> <br />
+  <div class="col-md-1 perfil-image text-center">
     <br />
+    <span class="mr-1">{{ user.nick }}</span>
+    <span class="badge badge-secondary" *ngIf="seguido">Te sigue</span>
+    <span class="badge badge-secondary" *ngIf="!seguido">No te sigue</span>
+    <br />
+    <br />
+    <img src="{{url + '/get-image-user/' +  user.image}}" alt="" /> <br />
     <br />
     <button
       class="btn btn-success btn-sm"
@@ -32,5 +31,12 @@
       <ng-template #following> Siguiendo </ng-template>
     </button>
     <br />
+    <br />
+  </div>
+  <div id="user-card" class="col-md-10 card text-center sombreado">
+    <div class="row">
+      <div class="col col-md-5"></div>
+      <div class="col-md-auto"></div>
+    </div>
   </div>
 </div>
