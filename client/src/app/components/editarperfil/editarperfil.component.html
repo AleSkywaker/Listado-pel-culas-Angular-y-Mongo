@@ -1,138 +1,466 @@
 <div class="row">
+  <div class="col-lg-8">
+    <!-- <h1>{{titulo}}</h1> -->
+    <div class="alert alert-success" *ngIf="status == 'success'">
+      {{ message }}
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+      {{ message }}
+    </div>
 
-    <div class="col-lg-8">
-        <!-- <h1>{{titulo}}</h1> -->
-        <div class="alert alert-success" *ngIf="status == 'success'">
-            {{message}}
+    <form
+      #userEditForm="ngForm"
+      (ngSubmit)="onSubmit(userEditForm)"
+      class="col-lg-12"
+    >
+      <h3 class="text-center mb-3" *ngIf="identity.image != null">
+        Selecciona una imagen para tu perfil o sube la tuya propia.
+      </h3>
+      <h3 class="text-center mb-3" *ngIf="identity.image === null">
+        Gracais por registrarte {{ identity.name }}, ahora necesito que escojas
+        una imagen de perfil y escribas cuatro palabras sobre ti.
+      </h3>
+
+      <div class="form-group user-images">
+        <div class="row">
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/virtualgirl.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(virtualgirl)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val1"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/morena.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(morena)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/astronautmonkey.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(astronautmonkey)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val1"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/astronauta3.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(astronauta3)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/budista.png' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(budista)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val1"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/japo.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(japo)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chico1.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chico1)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val1"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chico2.png' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chico2)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica10.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica10)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val1"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica8.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica8)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica41.png' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica41)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val1"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica22.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica22)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica15.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica15)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/unicorn.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(unicorn)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/mono.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(mono)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica19.png' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica19)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/chica45.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input
+                (click)="clak(chica45)"
+                type="radio"
+                name="image"
+                #image="ngModel"
+                [(ngModel)]="user.image"
+                id="item4"
+                value="val2"
+                class="hidden"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <div class="col-md-2 box">
+            <label class="imagecustom"
+              ><img
+                src="{{url + '/get-image-user/snapshots.jpg' }}"
+                alt="..."
+                class="img-thumbnail img-check"/>
+              <input type="file" (change)="fileChangeEvent($event)"
+            /></label>
+          </div>
         </div>
-        <div class="alert alert-danger" *ngIf="status == 'error'">
-            {{message}}
-        </div>
+      </div>
 
-        <form #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)" class="col-lg-12">
-            <h3 class="text-center mb-3">Selecciona una imagen para tu perfil o sube la tuya</h3>
-
-            <div class="form-group user-images">
-                <div class="row">
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/virtualgirl.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(virtualgirl)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/morena.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(morena)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/astronautmonkey.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(astronautmonkey)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/astronauta3.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(astronauta3)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/budista.png' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(budista)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/japo.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(japo)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chico1.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chico1)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chico2.png' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chico2)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica10.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica10)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica8.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica8)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica41.png' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica41)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val1" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica22.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica22)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica15.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica15)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/unicorn.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(unicorn)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/mono.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(mono)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica19.png' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica19)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/chica45.jpg' }}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(chica45)" type="radio" name="image" #image="ngModel" [(ngModel)]="user.image" id="item4" value="val2" class="hidden" autocomplete="off"></label></div>
-
-
-
-                    <div class="col-md-2 box"><label class="imagecustom"><img src="{{url + '/get-image-user/snapshots.jpg' }}" alt="..." class="img-thumbnail img-check">
-                    <input type="file" (change)="fileChangeEvent($event)"></label></div>
-                </div>
+      <!--
+        <div class="form-group user-images">
+            <div class="row">
+                <div class="col-md-2 box" *ngFor="let img of urlsImagesDefault"><label class="imagecustom"><img src="{{img.urlImage}}" alt="..." class="img-thumbnail img-check">
+                <input (click)="clak(img.urlImage, buttonsForm)" #buttonsForm type="radio" name="image" id="item4"
+                value="{{img.value}}" class="hidden" autocomplete="off"></label></div>
             </div>
-
-
-            <!-- <div class="form-group user-images">
-              <div class="row">
-                  <div class="col-md-2 box" *ngFor="let img of urlsImagesDefault"><label class="imagecustom"><img src="{{img.urlImage}}" alt="..." class="img-thumbnail img-check">
-                  <input (click)="clak(img.urlImage, buttonsForm)" #buttonsForm type="radio" name="image" id="item4"
-                  value="{{img.value}}" class="hidden" autocomplete="off"></label></div>
-              </div>
-          </div> -->
-
-            <!-- <div class="clearfix"></div>
-          <input type="submit" value="Check Item" class="btn btn-success"> -->
-
-            <hr>
-            <h3 class="text-center">Datos</h3>
-            <p>
-                <label>Nombre</label>
-                <input type="text" name='name' #name="ngModel" [(ngModel)]="user.name" class="form-control" required/>
-                <span *ngIf="!name.value && name.touched">
-             El nombre es obligatorio
-           </span>
-            </p>
-            <p>
-                <label>Nick</label>
-                <input type="text" name='nick' #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required/>
-                <span *ngIf="!nick.value && nick.touched">
-             El nick es obligatorio
-           </span>
-            </p>
-            <p>
-                <label>Apellidos</label>
-                <input type="text" name='surname' #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required/>
-                <span *ngIf="!surname.value && surname.touched">
-             Los apellidos es obligatorio
-           </span>
-            </p>
-            <p>
-                <label>Correo electronico</label>
-                <input type="text" name='email' #email="ngModel" [(ngModel)]="user.email" class="form-control" required/>
-                <span *ngIf="!email.value && email.touched">
-             El nombre es obligatorio
-           </span>
-            </p>
-
-            <p>
-                <label>Descripción acerca de ti</label>
-                <textarea maxlength="280" name="description" #description="ngModel" [(ngModel)]="user.description" class="form-control" placeholder="¿Donde vives?, ¿Cual es tu ciudad o lugar favorito?, ¿cual es tu serie o pelicula favorita?, ¿Que música escuchas?, ¿Que te gusta hacer?, Indica algún hobbie......."
-                    required></textarea>
-                <span *ngIf="!description.value && description.touched">
-             El nombre es obligatorio
-           </span>
-            </p>
-
-            <input type="submit" value="Guardar cambios" class="btn btn-warning" [disabled]="!userEditForm.form.valid" />
-        </form>
-    </div>
-
-    <div class="col-lg-4">
-        <h3 class="text-center mb-3">Imagen Seleccionada</h3>
-        <div *ngIf="user.image" class="imagendefault text-center">
-            <img src="{{url + '/get-image-user/' + user.image }}" alt="">
         </div>
-    </div>
+      -->
 
+      <!--
+        <div class="clearfix"></div>
+        <input type="submit" value="Check Item" class="btn btn-success">
+      -->
+
+      <hr />
+      <h3 class="text-center">Datos</h3>
+      <p>
+        <label>Nombre</label>
+        <input
+          type="text"
+          name="name"
+          #name="ngModel"
+          [(ngModel)]="user.name"
+          class="form-control"
+          required
+        />
+        <span *ngIf="!name.value && name.touched">
+          El nombre es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Nick</label>
+        <input
+          type="text"
+          name="nick"
+          #nick="ngModel"
+          [(ngModel)]="user.nick"
+          class="form-control"
+          required
+        />
+        <span *ngIf="!nick.value && nick.touched">
+          El nick es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Apellidos</label>
+        <input
+          type="text"
+          name="surname"
+          #surname="ngModel"
+          [(ngModel)]="user.surname"
+          class="form-control"
+          required
+        />
+        <span *ngIf="!surname.value && surname.touched">
+          Los apellidos es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Correo electronico</label>
+        <input
+          type="text"
+          name="email"
+          #email="ngModel"
+          [(ngModel)]="user.email"
+          class="form-control"
+          required
+        />
+        <span *ngIf="!email.value && email.touched">
+          El nombre es obligatorio
+        </span>
+      </p>
+
+      <p>
+        <label>Descripción acerca de ti</label>
+        <textarea
+          maxlength="280"
+          name="description"
+          #description="ngModel"
+          [(ngModel)]="user.description"
+          class="form-control"
+          placeholder="¿Donde vives?, ¿Cual es tu ciudad o lugar favorito?, ¿cual es tu serie o pelicula favorita?, ¿Que música escuchas?, ¿Que te gusta hacer?, Indica algún hobbie......."
+          required
+        ></textarea>
+        <span *ngIf="!description.value && description.touched">
+          El nombre es obligatorio
+        </span>
+      </p>
+
+      <input
+        type="submit"
+        value="Guardar cambios"
+        class="btn btn-warning"
+        [disabled]="!userEditForm.form.valid"
+      />
+    </form>
+  </div>
+
+  <div class="col-lg-4">
+    <h3 class="text-center mb-3">Imagen Seleccionada</h3>
+    <div *ngIf="user.image" class="imagendefault text-center">
+      <img src="{{url + '/get-image-user/' + user.image }}" alt="" />
+    </div>
+  </div>
 </div>
