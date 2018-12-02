@@ -28,6 +28,7 @@ import { PublicacionesComponent } from "./components/publicaciones/publicaciones
 import { TimelineComponent } from "./components/timeline/timeline.component";
 import { MomentModule } from "angular2-moment";
 import { ProfileComponent } from "./components/profile/profile.component";
+import { ChartComponent } from "./components/profile/chart.component";
 
 //Servicios
 import { PeliculaService } from "./service/pelicula.service";
@@ -48,7 +49,8 @@ import { UserGuard } from "./service/user.guard";
     EditarperfilComponent,
     PublicacionesComponent,
     TimelineComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
