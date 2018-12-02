@@ -1,4 +1,4 @@
-<h2 class="text-center">{{ titulo }}{{ user.name }}</h2>
+<h2 class="text-center" *ngIf="user">{{ titulo }}{{ user.name }}</h2>
 
 <div class="row justify-content-md-center mb-2 bordediv" *ngIf="user">
   <div class="col-md-1 perfil-image text-center">
@@ -35,10 +35,10 @@
     <br />
     <br />
   </div>
-  <div id="user-card" class="col-md-10 card text-center sombreado">
+  <div id="user-card" class="col-md-10 card text-center sombreado ml-5">
     <div class="row">
-      <div class="col col-md-5"></div>
-      <div class="col-md-auto"></div>
+      <div class="col col-md-5"><p>Hola Alex</p></div>
+      <div class="col-md-auto"><chart></chart></div>
     </div>
   </div>
 </div>
