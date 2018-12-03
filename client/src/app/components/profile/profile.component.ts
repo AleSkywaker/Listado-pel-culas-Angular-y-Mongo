@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
   public compatibilidad;
   public seguido;
   public siguiendo;
+  public id;
 
   constructor(
     private _userService: UserService,
@@ -60,6 +61,7 @@ export class ProfileComponent implements OnInit {
   loadPage() {
     this._route.params.subscribe(params => {
       let id = params["id"];
+      this.id = params["id"];
       console.log("id de usuario", id);
       this.getUser(id);
       this.verCompatibilidad(id);
