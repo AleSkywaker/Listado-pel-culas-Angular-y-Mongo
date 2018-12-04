@@ -46,8 +46,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Profile cargado");
-
     // this._route.params.subscribe(params => {
     //   console.log("parametros", params)
     //   this._userService.seeCompatibility(params.id).subscribe(data => {
@@ -62,7 +60,6 @@ export class ProfileComponent implements OnInit {
     this._route.params.subscribe(params => {
       let id = params["id"];
       this.id = params["id"];
-      console.log("id de usuario", id);
       this.getUser(id);
       this.verCompatibilidad(id);
       this.peliculaSeguido(id, this.token);
@@ -73,10 +70,8 @@ export class ProfileComponent implements OnInit {
   getUser(id) {
     this._userService.getUser(id).subscribe(
       response => {
-        console.log("respuesta usuario", response);
         if (response.user) {
           this.user = response.user;
-          console.log("que ess", response);
           if (response.siguiendo && response.siguiendo._id) {
             this.siguiendo = true;
           } else {
@@ -134,7 +129,6 @@ export class ProfileComponent implements OnInit {
 
     this._followService.addFollow(this.token, seguir).subscribe(
       response => {
-        console.log("respuesta seguido", response);
         this.siguiendo = true;
       },
       error => {
@@ -145,7 +139,6 @@ export class ProfileComponent implements OnInit {
   dejarDeSeguir(seguido) {
     this._followService.deleteFollow(this.token, seguido).subscribe(
       response => {
-        console.log("dejar de seguir", response);
         this.siguiendo = false;
       },
       error => {
