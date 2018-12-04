@@ -96,11 +96,9 @@ function loginUser(req, res) {
         }
       });
     } else {
-      return res
-        .status(500)
-        .send({
-          message: "El usuario no existe o la contraseña es incorrecta!!"
-        });
+      return res.status(500).send({
+        message: "El usuario no existe o la contraseña es incorrecta!!"
+      });
     }
   });
 }
@@ -239,11 +237,9 @@ function updateUser(req, res) {
 
   delete update.password;
   if (userId != req.user.sub) {
-    return res
-      .status(500)
-      .send({
-        message: "No tienes permisos para actualizar los datos del usuario"
-      });
+    return res.status(500).send({
+      message: "No tienes permisos para actualizar los datos del usuario"
+    });
   }
   if (update.image == "" || update.image == null || update.image == undefined) {
     return res
@@ -271,11 +267,9 @@ function updateUser(req, res) {
             .status(403)
             .send({ message: "error al actualizar los datos del usuario" });
         if (!userUpdated)
-          return res
-            .status(404)
-            .send({
-              message: "No se ha podido actualizar los datos del usuario"
-            });
+          return res.status(404).send({
+            message: "No se ha podido actualizar los datos del usuario"
+          });
         return res.status(200).send({
           user: userUpdated,
           message: "Se han actualizado tus datos correctamente"
@@ -320,11 +314,9 @@ function uploadImage(req, res) {
               .status(403)
               .send({ message: "error al actualizar los datos del usuario" });
           if (!userUpdated)
-            return res
-              .status(404)
-              .send({
-                message: "No se ha podido actualizar los datos del usuario"
-              });
+            return res.status(404).send({
+              message: "No se ha podido actualizar los datos del usuario"
+            });
           return res.status(200).send({ user: userUpdated });
         }
       );
@@ -407,11 +399,9 @@ function esCompatible(req, res) {
 
   compatibilidad(userId, userLogeado).then(v => {
     if (v.pelisuser.length < 10) {
-      return res
-        .status(200)
-        .send({
-          message: "elige por lo menos 10 pelis para saber compatibilidad"
-        });
+      return res.status(200).send({
+        message: "elige por lo menos 10 pelis para saber compatibilidad"
+      });
     }
     return res.status(200).send({ compatibilidad: v });
   });
