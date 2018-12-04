@@ -386,7 +386,14 @@ async function getCounterFollow(user_id) {
     return {
       numeroSeguidos,
       numeroSeguidores,
-      publications
+      publications,
+      stats: [
+        {
+          seguidos: numeroSeguidos,
+          seguidores: numeroSeguidores,
+          publicaciones: publications
+        }
+      ]
     };
   } catch (e) {
     console.log(e);
