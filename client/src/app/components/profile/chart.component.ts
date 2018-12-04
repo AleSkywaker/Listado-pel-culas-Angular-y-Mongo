@@ -25,6 +25,7 @@ export class ChartComponent implements OnInit {
     this._userService.getCounters(id).subscribe(
       response => {
         this.stats = response;
+        console.log("stats", this.stats);
       },
       error => {
         console.log(<any>error);
