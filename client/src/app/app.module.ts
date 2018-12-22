@@ -34,6 +34,7 @@ import { ChartComponent } from "./components/profile/chart.component";
 import { PeliculaService } from "./service/pelicula.service";
 import { UserService } from "./service/user.service";
 import { UserGuard } from "./service/user.guard";
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { UserGuard } from "./service/user.guard";
     PublicacionesComponent,
     TimelineComponent,
     ProfileComponent,
-    ChartComponent
+    ChartComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
