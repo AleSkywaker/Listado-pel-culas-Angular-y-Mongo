@@ -30,11 +30,17 @@ import { MomentModule } from "angular2-moment";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { ChartComponent } from "./components/profile/chart.component";
 
+//Sockets
+import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
+
+const config: SocketIoConfig = { url: environment.wsURL, options: {} };
+
 //Servicios
 import { PeliculaService } from "./service/pelicula.service";
 import { UserService } from "./service/user.service";
 import { UserGuard } from "./service/user.guard";
-import { ChatComponent } from './components/chat/chat.component';
+import { ChatComponent } from "./components/chat/chat.component";
+import { environment } from "../environments/environmentt";
 
 @NgModule({
   declarations: [
@@ -61,7 +67,8 @@ import { ChatComponent } from './components/chat/chat.component';
     APP_ROUITNG,
     DataTablesModule,
     NgbModule,
-    MomentModule
+    MomentModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [PeliculaService, UserService, UserGuard],
   bootstrap: [AppComponent]
