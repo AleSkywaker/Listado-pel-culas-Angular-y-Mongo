@@ -16,6 +16,7 @@ import { ProfileComponent } from "./components/profile/profile.component";
 
 import { UserService } from "./service/user.service";
 import { UserGuard } from "./service/user.guard";
+import { ChatComponent } from "./components/chat/chat.component";
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
         canActivate: [UserGuard]
       },
       { path: "usuarios", component: UsersComponent, canActivate: [UserGuard] },
+      { path: "chat", component: ChatComponent, canActivate: [UserGuard] },
       {
         path: "publicaciones",
         component: PublicacionesComponent,
