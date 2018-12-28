@@ -78,8 +78,7 @@ function loginUser(req, res) {
           if (params.gettoken) {
             //generar y devolver token
             return res.status(200).send({
-              token: jwtService.createToken(user),
-              message: "Usuario logeado correctamente"
+              token: jwtService.createToken(user)
             });
           } else {
             //Devolver datos de usuario
