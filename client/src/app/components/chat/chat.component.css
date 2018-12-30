@@ -1,0 +1,7 @@
+@import "https://fonts.googleapis.com/css?family=Lobster:300,400,500,600,700";
+body,
+h1,
+input {
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: "Lobster", cursive;
+}
