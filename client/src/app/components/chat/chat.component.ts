@@ -7,6 +7,7 @@ import { UserService } from "./../../service/user.service";
   styleUrls: ["./chat.component.css"]
 })
 export class ChatComponent implements OnInit {
+  public name;
   constructor(private userService: UserService) {}
 
   ngOnInit() {}
