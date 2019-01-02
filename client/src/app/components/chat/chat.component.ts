@@ -12,7 +12,6 @@ export class ChatComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    console.log(this.userService.getIdentity());
     this.name = this.userService.getIdentity().name;
   }
   enviar() {
