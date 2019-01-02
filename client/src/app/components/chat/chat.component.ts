@@ -8,10 +8,14 @@ import { UserService } from "./../../service/user.service";
 })
 export class ChatComponent implements OnInit {
   public name;
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
     console.log(this.userService.getIdentity());
     this.name = this.userService.getIdentity().name;
+  }
+  enviar() {
+    console.log(this.texto);
   }
 }
