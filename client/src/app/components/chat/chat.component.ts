@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit {
     this.name = this.userService.getIdentity().name;
   }
   enviar() {
+    // console.log(this.texto);
     console.log(this.texto);
   }
 }
